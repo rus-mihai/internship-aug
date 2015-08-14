@@ -27,8 +27,8 @@ public class HomeController {
 	@RequestMapping("/")
 	public String root(Model model){
 		model.addAttribute("fp", "Prima pagina");
-		model.addAttribute("linkHello", "<a href=\"/hello\">Hello page</a>");
-		return "hello";
+		model.addAttribute("hellow", "/hello");
+		return "fp";
 		
 	}
 	
