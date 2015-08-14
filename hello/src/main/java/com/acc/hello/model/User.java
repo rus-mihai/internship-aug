@@ -1,4 +1,4 @@
-package com.acc.hello;
+package com.acc.hello.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

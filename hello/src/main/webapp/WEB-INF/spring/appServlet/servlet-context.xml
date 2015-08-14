@@ -23,7 +23,7 @@
   <!--  SPRING ANNOTATION PROCESSING                                    -->
   <!-- **************************************************************** -->
   <mvc:annotation-driven conversion-service="conversionService" />
-  <context:component-scan base-package="thymeleafexamples.stsm" />
+ 
 
 
   <!-- **************************************************************** -->
