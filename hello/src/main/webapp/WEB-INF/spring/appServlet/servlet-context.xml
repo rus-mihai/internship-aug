@@ -71,10 +71,5 @@
     <property name="templateEngine" ref="templateEngine" />
   </bean>    
 
-  <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
-      <property ref="dataSource" name="dataSource"></property>
-      <property name="changeLog" value="classpath:db/changelog-master.xml"></property>
 
-      <property name="contexts" value="test, production"></property>
-  </bean>  
 </beans>

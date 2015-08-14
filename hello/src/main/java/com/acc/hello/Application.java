@@ -1,5 +1,7 @@
 package com.acc.hello;
 
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,8 +11,6 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 		
-		IUserRepo repo;
-		List<User> u = repo.findAll();
 
 	}
 
