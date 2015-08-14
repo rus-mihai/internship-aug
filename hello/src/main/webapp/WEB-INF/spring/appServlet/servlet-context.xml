@@ -22,7 +22,7 @@
   <!-- **************************************************************** -->
   <!--  SPRING ANNOTATION PROCESSING                                    -->
   <!-- **************************************************************** -->
-  <mvc:annotation-driven conversion-service="conversionService" />
+<!--   <mvc:annotation-driven conversion-service="conversionService" /> -->
  
 
 
@@ -30,9 +30,9 @@
   <!--  MESSAGE EXTERNALIZATION/INTERNATIONALIZATION                    -->
   <!--  Standard Spring MessageSource implementation                    -->
   <!-- **************************************************************** -->
-  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-    <property name="basename" value="Messages" />
-  </bean>
+<!--   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"> -->
+<!--     <property name="basename" value="Messages" /> -->
+<!--   </bean> -->
 
 
   <!-- **************************************************************** -->
