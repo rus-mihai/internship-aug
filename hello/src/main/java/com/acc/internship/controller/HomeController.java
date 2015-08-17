@@ -1,4 +1,4 @@
-package com.acc.hello;
+package com.acc.internship.controller;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.acc.hello.model.AbstractUser;
-import com.acc.hello.model.UserDAO;
+import com.acc.internship.model.AbstractUser;
+import com.acc.internship.repo.UserDAO;
 
 /**
  * Handles requests for the application home page.
@@ -30,17 +30,16 @@ public class HomeController {
 		model.addAttribute("fp", "Prima pagina");
 		model.addAttribute("hellow", "/hello");
 		
-		AbstractUser au = new AbstractUser(1,"nume", "prenume", "username", "password");
+		//AbstractUser au = new AbstractUser(1,"nume", "prenume", "username", "password");
 		
-		userDao.saveOrUpdate(au);
+		AbstractUser au = userDao.login("username", "");
 		
-		AbstractUser u1 = userDao.get(3);
-		System.out.println("get: " + u1.getName());
+		//userDao.add(au);
 		
-		System.out.println("lista");
-		List<AbstractUser> users = userDao.list();
-		for(AbstractUser a: users){
-			System.out.println(a.getName());
+		if(au != null){
+			System.out.println("ok");
+		}else{
+			System.out.println("xxxxx, fail login");
 		}
 		 
 		return "fp";

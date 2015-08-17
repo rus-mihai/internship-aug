@@ -1,4 +1,4 @@
-package com.acc.hello.model;
+package com.acc.internship.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,11 +15,11 @@ public class AbstractUser {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@Column(name = "nume", nullable = false)
-	private String nume;
+	@Column(name = "lastName", nullable = false)
+	private String lastName;
 	
-	@Column(name = "prenume", nullable = false)
-	private String prenume;
+	@Column(name = "firstName", nullable = false)
+	private String firstName;
 	
 	@Column(name = "username", nullable = false)
 	private String username;
@@ -30,9 +30,9 @@ public class AbstractUser {
 	@Column(name = "idRole", nullable = false)
 	private int idRole;
 	
-	public AbstractUser(int idRole, String nume, String prenume, String username, String password){
-		this.nume = nume;
-		this.prenume = prenume;
+	public AbstractUser(int idRole, String lastName, String firstName, String username, String password){
+		this.lastName = lastName;
+		this.firstName = firstName;
 		this.username = username;
 		this.password = password;
 		this.idRole = idRole;
@@ -59,19 +59,19 @@ public class AbstractUser {
 	
 	
 	
-	public String getName(){
-		return this.nume;
+	public String getLastName(){
+		return this.lastName;
 	}
-	public void setName(String name){
-		this.nume = name;
+	public void setLastName(String lastName){
+		this.lastName = lastName;
 	}
 	
 	
-	public String getPrenume(){
-		return this.prenume;
+	public String getfirstName(){
+		return this.firstName;
 	}
-	public void setPrenume(String prenume){
-		this.prenume = prenume;
+	public void setfirstName(String firstName){
+		this.firstName = firstName;
 	}
 	
 

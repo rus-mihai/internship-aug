@@ -1,4 +1,4 @@
-package com.acc.hello.config;
+package com.acc.internship.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,13 +1,12 @@
-package com.acc.hello;
+package com.acc.internship;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 
-import com.acc.hello.model.AbstractUser;
-import com.acc.hello.model.UserDAO;
-import com.acc.hello.model.UserDAO;
+import com.acc.internship.model.AbstractUser;
+import com.acc.internship.repo.UserDAO;
 @SpringBootApplication
 
 public class Application {

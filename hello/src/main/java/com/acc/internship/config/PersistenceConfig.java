@@ -1,4 +1,4 @@
-package com.acc.hello.config;
+package com.acc.internship.config;
 
 import java.util.Properties;
 
@@ -18,8 +18,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.acc.hello.model.UserDAO;
-import com.acc.hello.model.UserDAOImpl;
+import com.acc.internship.repo.UserDAO;
+import com.acc.internship.repo.UserDAOImpl;
 
 import liquibase.integration.spring.SpringLiquibase;
 
@@ -60,7 +60,7 @@ public class PersistenceConfig {
 		vendorAdapter.setShowSql(Boolean.TRUE);
 		factory.setDataSource(dataSource());
 		factory.setJpaVendorAdapter(vendorAdapter);
-		factory.setPackagesToScan("com.acc.hello.model");
+		factory.setPackagesToScan("com.acc.internship.model");
 		Properties jpaProperties = new Properties();
 		jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 		factory.setJpaProperties(jpaProperties);

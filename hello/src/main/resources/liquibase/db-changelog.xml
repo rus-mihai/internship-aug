@@ -32,5 +32,19 @@
 	<changeSet id="2" author="Cristi">
 		<addForeignKeyConstraint constraintName="idRole" referencedTableName="Roles" baseColumnNames="idRole" baseTableName="Users" referencedColumnNames="id"/>
 	</changeSet>
+	
+	<changeSet id="3" author="Cristi">
+		<renameColumn newColumnName="firstName"
+					columnDataType="varchar(50)"
+					oldColumnName="prenume"
+					tableName="Users"
+		/>
+		
+		<renameColumn newColumnName="lastName"
+					columnDataType="varchar(50)"
+					oldColumnName="nume"
+					tableName="Users"
+		/>
+	</changeSet>
     
 </databaseChangeLog>
