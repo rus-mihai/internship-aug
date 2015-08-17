@@ -6,25 +6,28 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.resourceresolver.ClassLoaderResourceResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter{
 	
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry){
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-	}
+//	@Override
+//	public void addResourceHandlers(ResourceHandlerRegistry registry){
+//		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+//	}
 
 	
 	@Bean
-	public ServletContextTemplateResolver templateResolver(){
-		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();		
+	public ClassLoaderTemplateResolver templateResolver(){
+		ClassLoaderTemplateResolver  templateResolver = new ClassLoaderTemplateResolver();
+//		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();		
 		
-		templateResolver.setPrefix("/WEB-INF/templates/");
+		templateResolver.setPrefix("templates/");
 		templateResolver.setSuffix(".html");
 		templateResolver.setTemplateMode("HTML5");
 		templateResolver.setOrder(1);
