@@ -24,6 +24,7 @@ public class HomeController {
 		return "fp";
 		
 	}
+
 	
 	@RequestMapping("/login")
 	public String login(Model model){

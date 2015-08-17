@@ -1,25 +1,33 @@
 package com.acc.hello.config;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebMvc
-public class WebConfig {
+public class WebConfig extends WebMvcConfigurerAdapter{
+	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry){
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
+
+	
 	@Bean
 	public ServletContextTemplateResolver templateResolver(){
 		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();		
 		
-		
-		templateResolver.setPrefix("/WEB-INF/templates");
+		templateResolver.setPrefix("/WEB-INF/templates/");
 		templateResolver.setSuffix(".html");
 		templateResolver.setTemplateMode("HTML5");
+		templateResolver.setOrder(1);
 		
 		return templateResolver;
 	}
