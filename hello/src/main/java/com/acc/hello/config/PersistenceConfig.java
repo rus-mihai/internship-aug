@@ -2,6 +2,7 @@ package com.acc.hello.config;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -16,6 +17,9 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+
+import com.acc.hello.model.UserDAO;
+import com.acc.hello.model.UserDAOImpl;
 
 import liquibase.integration.spring.SpringLiquibase;
 
@@ -70,6 +74,8 @@ public class PersistenceConfig {
 		EntityManagerFactory factory = entityManagerFactory().getObject();
 		return new JpaTransactionManager(factory);
 	}
+	
+
 	
 	
 }
