@@ -1,15 +1,22 @@
 package com.acc.internship.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "Users")
-public class AbstractUser {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,27 +34,27 @@ public class AbstractUser {
 	@Column(name = "password", nullable = false)
 	private String password;
 	
-	@Column(name = "idRole", nullable = false)
-	private int idRole;
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade=CascadeType.ALL)
+	private UserRole userRole;
 	
-	public AbstractUser(int idRole, String lastName, String firstName, String username, String password){
+	public User(UserRole role, String lastName, String firstName, String username, String password){
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.username = username;
 		this.password = password;
-		this.idRole = idRole;
+		this.userRole = role;
 	}
 	
-	public AbstractUser(){
+	public User(){
 		
 	}
 	
 
-	public int getIdRole(){
-		return this.idRole;
+	public UserRole getRole(){
+		return this.userRole;
 	}
-	public void setIdRole(int idRole){
-		this.idRole = idRole;
+	public void setRole(UserRole role){
+		this.userRole = role;
 	}
 	
 	public int getId(){
