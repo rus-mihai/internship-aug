@@ -29,9 +29,6 @@ public class HomeController {
 	public String root(Model model){
 		model.addAttribute("fp", "Prima pagina");
 		model.addAttribute("hellow", "/hello");
-		
-		String p = new BCryptPasswordEncoder().encode("driver");
-		System.out.println(p);
 		return "index";
 		
 	}

@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.acc.internship.handler.AuthenticationSuccessHandler;
+
 
 @Configuration
 @EnableWebMvcSecurity
@@ -21,6 +23,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	@Qualifier("userDetailsService")
 	UserDetailsService userDetailsService;
+	
+	@Autowired
+	AuthenticationSuccessHandler authenticationSuccessHandler;
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -34,12 +39,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/admin/**").access("hasRole('admin')")
 				.antMatchers("/driver/**").access("hasRole('driver')")				
 				.and()
-					.formLogin().loginPage("/login").failureUrl("/login?error")
-					.usernameParameter("username").passwordParameter("password")
+					.formLogin()
+					.loginPage("/login")
+					.successHandler(authenticationSuccessHandler)
+					.failureUrl("/login?error")
+					.usernameParameter("username")
+					.passwordParameter("password")
 				.and()
-					.logout().logoutSuccessUrl("/login?logout")
+					.logout()
+					.logoutSuccessUrl("/login?logout")
 				.and()
-					.exceptionHandling().accessDeniedPage("/403")
+					.exceptionHandling()
+					.accessDeniedPage("/403")
 				.and()
 					.csrf();
 		
@@ -57,4 +68,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder;
 	}
+	
 }
