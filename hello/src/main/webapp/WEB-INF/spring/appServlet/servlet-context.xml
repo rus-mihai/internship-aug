@@ -39,6 +39,15 @@
   <!--  CONVERSION SERVICE                                              -->
   <!--  Standard Spring formatting-enabled implementation               -->
   <!-- **************************************************************** -->
+  <bean id="conversionService" 
+        class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+<!--     <property name="formatters"> -->
+<!--       <set> -->
+<!--         <bean class="thymeleafexamples.stsm.web.conversion.VarietyFormatter" /> -->
+<!--         <bean class="thymeleafexamples.stsm.web.conversion.DateFormatter" /> -->
+<!--       </set> -->
+<!--     </property> -->
+  </bean>
 
 
   <!-- **************************************************************** -->
