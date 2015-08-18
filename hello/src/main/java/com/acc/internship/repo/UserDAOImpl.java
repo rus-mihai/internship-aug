@@ -55,7 +55,7 @@ public class UserDAOImpl implements UserDAO{
 	
 	@Override
 	public List<User> list() {
-		String sql = "from AbstractUser";
+		String sql = "from User";
 		Query query = getEntityManager().createQuery(sql);
 		List<User> resultList = query.getResultList();
 		
@@ -72,7 +72,7 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	@Transactional
 	public void add(User u) {
-		String hql = "from AbstractUser a where a.username=:username";
+		String hql = "from User a where a.username=:username";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("username", u.getUsername());
 		List<User> users = query.getResultList();
@@ -96,6 +96,7 @@ public class UserDAOImpl implements UserDAO{
 		List<User> users = new ArrayList<User>();
 		
 		Query query = getEntityManager().createQuery("from User where username=?");
+		query.setParameter(1, username);
 		
 		users = query.getResultList();
 		
