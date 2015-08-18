@@ -1,14 +1,14 @@
 package com.acc.internship.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.acc.internship.model.AbstractUser;
+import com.acc.internship.model.User;
 import com.acc.internship.repo.UserDAO;
 
 /**
@@ -32,7 +32,7 @@ public class HomeController {
 		
 		//AbstractUser au = new AbstractUser(1,"nume", "prenume", "username", "password");
 		
-		AbstractUser au = userDao.login("username", "");
+		User au = userDao.login("username", "password");
 		
 		//userDao.add(au);
 		
@@ -41,7 +41,9 @@ public class HomeController {
 		}else{
 			System.out.println("xxxxx, fail login");
 		}
-		 
+		
+		System.out.println(au.getRole().getRole());
+		
 		return "fp";
 		
 	}

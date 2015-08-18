@@ -1,18 +1,18 @@
 package com.acc.internship.repo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.acc.internship.model.AbstractUser;
+import com.acc.internship.model.User;
 
 
 @Repository
@@ -38,14 +38,14 @@ public class UserDAOImpl implements UserDAO{
 	}
 	
 	@Override
-	public AbstractUser login(String username, String password){
-		String hql = "from AbstractUser d where d.username=:username and d.password=:password";
+	public User login(String username, String password){
+		String hql = "from User d where d.username=:username and d.password=:password";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("username", username);
 		query.setParameter("password", password);
-		AbstractUser u = null;
+		User u = null;
 		try{
-			u = (AbstractUser)query.getSingleResult();	
+			u = (User)query.getSingleResult();	
 		}catch(NoResultException e){
 			System.out.println("does not exist");
 		}
@@ -54,28 +54,28 @@ public class UserDAOImpl implements UserDAO{
 	}
 	
 	@Override
-	public List<AbstractUser> list() {
-		String sql = "from AbstractUser";
+	public List<User> list() {
+		String sql = "from User";
 		Query query = getEntityManager().createQuery(sql);
-		List<AbstractUser> resultList = query.getResultList();
+		List<User> resultList = query.getResultList();
 		
 		return resultList;
 	}
 
 	@Override
 	@Transactional
-	public AbstractUser get(int id) {
+	public User get(int id) {
 		
-		return getEntityManager().find(AbstractUser.class, id);
+		return getEntityManager().find(User.class, id);
 	}
 
 	@Override
 	@Transactional
-	public void add(AbstractUser u) {
-		String hql = "from AbstractUser a where a.username=:username";
+	public void add(User u) {
+		String hql = "from User a where a.username=:username";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("username", u.getUsername());
-		List<AbstractUser> users = query.getResultList();
+		List<User> users = query.getResultList();
 		
 		if(users == null || users.size() == 0 ){
 			entityManager.persist(u);
@@ -88,6 +88,23 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public User findByUsername(String username){
+		List<User> users = new ArrayList<User>();
+		
+		Query query = getEntityManager().createQuery("from User where username=?");
+		query.setParameter(1, username);
+		
+		users = query.getResultList();
+		
+		if(users.size() > 0){
+			return users.get(0);
+		}else{
+			return null;
+		}
 		
 	}
 	

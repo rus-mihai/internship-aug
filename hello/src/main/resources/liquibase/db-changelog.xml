@@ -46,5 +46,12 @@
 					tableName="Users"
 		/>
 	</changeSet>
+	
+	<changeSet id="4" author="Cristi">
+			<modifyDataType columnName="password"
+						newDataType ="varchar(70)"
+						tableName="users"
+						/>
+	</changeSet>
     
 </databaseChangeLog>

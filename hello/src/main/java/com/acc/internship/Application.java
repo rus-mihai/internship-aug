@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 
-import com.acc.internship.model.AbstractUser;
+import com.acc.internship.model.User;
 import com.acc.internship.repo.UserDAO;
 @SpringBootApplication
 
