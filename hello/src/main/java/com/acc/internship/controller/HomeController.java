@@ -30,21 +30,8 @@ public class HomeController {
 		model.addAttribute("fp", "Prima pagina");
 		model.addAttribute("hellow", "/hello");
 		
-		//AbstractUser au = new AbstractUser(1,"nume", "prenume", "username", "password");
 		
-		User au = userDao.login("username", "password");
-		
-		//userDao.add(au);
-		
-		if(au != null){
-			System.out.println("ok");
-		}else{
-			System.out.println("xxxxx, fail login");
-		}
-		
-		System.out.println(au.getRole().getRole());
-		
-		return "fp";
+		return "index";
 		
 	}
 
@@ -55,6 +42,12 @@ public class HomeController {
 //		model.addAttribute("hellow", "/hello");
 		return "login";
 		
+	}
+	
+	@RequestMapping("/admin")
+	public String admin(Model model){
+		
+		return "admin";
 	}
 	
 }
