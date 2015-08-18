@@ -16,11 +16,12 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter{
 	
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry){
-//		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-//	}
-
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+		registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+	
+	}
 	
 	@Bean
 	public ClassLoaderTemplateResolver templateResolver(){
