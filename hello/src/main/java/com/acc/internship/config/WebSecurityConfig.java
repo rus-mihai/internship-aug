@@ -31,22 +31,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception{
 		http
 			.authorizeRequests()
-				.antMatchers("/","/fp").permitAll()
-				.anyRequest().authenticated()
+				.antMatchers("/admin/**").access("hasRole('admin')")
+				.antMatchers("/driver/**").access("hasRole('driver')")				
 				.and()
-			.formLogin()
-				.loginPage("/login")
-				.permitAll()
+					.formLogin().loginPage("/login").failureUrl("/login?error")
+					.usernameParameter("username").passwordParameter("password")
 				.and()
-			.logout()
-				.permitAll();
+					.logout().logoutSuccessUrl("/login?logout")
+				.and()
+					.exceptionHandling().accessDeniedPage("/403")
+				.and()
+					.csrf();
+		
 	}
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 		
 		//TODO password encode
-		auth.userDetailsService(userDetailsService);
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 	
 	@Bean
