@@ -30,7 +30,8 @@ public class HomeController {
 		model.addAttribute("fp", "Prima pagina");
 		model.addAttribute("hellow", "/hello");
 		
-		
+		String p = new BCryptPasswordEncoder().encode("driver");
+		System.out.println(p);
 		return "index";
 		
 	}
@@ -48,6 +49,12 @@ public class HomeController {
 	public String admin(Model model){
 		
 		return "admin";
+	}
+	
+	@RequestMapping("/driver")
+	public String driver(Model model){
+		
+		return "driver";
 	}
 	
 }
