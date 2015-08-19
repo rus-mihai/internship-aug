@@ -124,9 +124,12 @@
 
 	<div class="login">
 		<div class="rib"></div>
-
+		
+		<div class="error" th:if="${param.error}">
+			<p>Authentication error</p> 
+		</div>
 		<form th:action="@{/login}" method="post">
-
+			
 			<label> User Name : 
 			<input type="text" value="User" name="username" onfocus="this.value = '';"
 				onblur="if (this.value == '') {this.value = 'Email Address';}"/>

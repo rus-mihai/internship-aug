@@ -26,13 +26,7 @@ public class LoginController {
 		if(SecurityContextHolder.getContext().getAuthentication() != null){
 			List<GrantedAuthority> authorities= (List<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 			if(authorities.size() > 0){
-//				System.out.println(authorities.get(0).getAuthority());
-//				if(authorities.get(0).getAuthority().contains("admin")){
-//					return "admin";
-//				}else if(authorities.get(0).getAuthority().contains("driver")){
-//					return "driver";
-//				}
-//				
+				
 				SchemaFactory schemaFactory = new SchemaFactory();
 				schema = schemaFactory.getSchema(authorities.get(0).getAuthority());
 				

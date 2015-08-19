@@ -13,6 +13,9 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
+import com.acc.internship.controller.RoleSchema;
+import com.acc.internship.controller.SchemaFactory;
+
 @Component
 public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 
@@ -35,14 +38,13 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
 		String url = "";
 		List<GrantedAuthority> authorities = (List<GrantedAuthority>) authentication.getAuthorities();
 	
-		//System.out.println("test");
 		if(authorities.size() > 0){
-			System.out.println(authorities.get(0).getAuthority());
-			if(authorities.get(0).getAuthority().contains("admin")){
-				url = "/admin";
-			}else{
-				url = "/driver";
-			}
+
+			
+			SchemaFactory schemaFactory = new SchemaFactory();
+			RoleSchema schema = schemaFactory.getSchema(authorities.get(0).getAuthority());
+			
+			url = "/"+schema.getRoleSchema();
 		}
 		
 		return url;

@@ -384,3 +384,11 @@ form {
 		padding: 40px 20px;
 	}
 }
+
+.error{
+	margin: 10px;
+}
+
+.error p {
+	color: red;
+}
