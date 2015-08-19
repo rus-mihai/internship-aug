@@ -18,8 +18,8 @@ import com.acc.internship.repo.UserDAO;
  */
 @Controller
 public class HomeController {
-	@Autowired
-	private  UserDAO userDao;
+	//@Autowired
+	//private  UserDAO userDao;
 	
 	@RequestMapping("/hello")
 	public String hello(@RequestParam(value="name", required=false, defaultValue="world") String name, Model model){
@@ -50,25 +50,6 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String autoRedirect(){
-		boolean isLoggedIn = false;
-		
-		if(SecurityContextHolder.getContext().getAuthentication() != null){
-			List<GrantedAuthority> authorities= (List<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-			if(authorities.size() > 0){
-				System.out.println(authorities.get(0).getAuthority());
-				if(authorities.get(0).getAuthority().contains("admin")){
-					return "admin";
-				}else if(authorities.get(0).getAuthority().contains("driver")){
-					return "driver";
-				}
-			}
-			
-			
-		}
-		
-		return "login";
-	}
+	
 	
 }
