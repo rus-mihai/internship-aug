@@ -306,3 +306,49 @@ nav a:hover {
 		page-break-after: avoid;
 	}
 }
+
+div#map {
+	height: 91.8%;
+    width: 136%;
+    right: 17.75%;
+}
+
+#panel {
+	position: center;
+	top: 0.5%;
+	left: 0.5%;
+	z-index: 10;
+	background-color: #fff;
+	padding: 1px;
+	border: 1px solid #999;
+	text-align: center;
+	color:chocolate;
+}
+
+
+/**
+ * Provide the following styles for both ID and class, where ID represents an
+ * actual existing "panel" with JS bound to its name, and the class is just
+ * non-map content that may already have a different ID with JS bound to its
+ * name.
+ */
+#panel, .panel {
+	font-family: 'Roboto', 'sans-serif';
+	line-height: 30px;
+	padding-left: 0px;
+}
+
+#panel select, #panel input, .panel select, .panel input {
+	font-size: 15px;
+}
+
+#panel select, .panel select {
+	width: 20%;
+}
+
+#panel i, .panel i {
+	font-size: 12px;
+}
+
+div#panel{width:100%;
+	}

@@ -14,7 +14,7 @@ html, body {
 	position: center;
 	top: 0.5%;
 	left: 0.5%;
-	z-index: 5;
+	z-index: 10;
 	background-color: #fff;
 	padding: 1px;
 	border: 1px solid #999;
