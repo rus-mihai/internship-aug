@@ -1,27 +1,50 @@
 package com.acc.internship.controller;
 
-import org.springframework.security.core.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.acc.internship.model.Station;
+import com.acc.internship.repo.RouteDAO;
+import com.acc.internship.repo.StationDAO;
+import com.acc.internship.repo.UserDAO;
+
 @Controller
 public class AdminController {
 
-	@RequestMapping(value="/admin?routes")
-	public String adminRoutes(Model model){
-		model.addAttribute("proba", "asta sa apara");
+		@Autowired
+		private StationDAO stationDao;
 		
-		return "/admin?routes";
-	}
-	
-	   @RequestMapping(value="/admin?newstation", method=RequestMethod.GET)
-	    public String greetingForm(Model model) {
-	       // model.addAttribute("fetchroute", new setRoute());
+		@Autowired
+		private RouteDAO routeDao;
+		
+		@Autowired
+		private UserDAO userDao;
+		
+		@RequestMapping(value="/admin?routes")
+		public String adminRoutes(Model model){
+			model.addAttribute("proba", "asta sa apara");
+			
+			return "/admin?routes";
+		}
+		
+		@RequestMapping(value="/admin?newstation", method=RequestMethod.GET)
+		public String stationForm(Model model){
+			model.addAttribute("station", new Station());
+			return "/admin?newstation";
+		}
+		
+	   @RequestMapping(value="/admin?newstation", method=RequestMethod.POST)
+	    public String stationSubmit(@ModelAttribute("station") Station station, Model model) {
+	       	stationDao.add(station);
+	       	//model.addAttribute("station", station);
 	        return "/admin?newstation";
 	    }
+	   
+	   
 
 	
 	

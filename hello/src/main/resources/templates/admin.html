@@ -205,11 +205,10 @@ right:3%;
 
 			</header>
 			<h1>Add New Station</h1>
-			<form action="#" method="post">
-				<!-- th:action="@{/fetchroute}" th:object="${fetchroute}" -->
-
+			<form action="#" th:action="@{/admin?newstation}" th:object="${station}" method="post">
+				
 				<p>
-					Name: <input type="text" />
+					Name: <input type="text" th:field="*{name}"/>
 				</p>
 
 				<p>

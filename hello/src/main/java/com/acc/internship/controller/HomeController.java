@@ -36,22 +36,7 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String root(Model model){
-		//insert satations and list 
-		Station s = new Station();
-		s.setName("test3");
-
-		stationDao.add(s);
 		
-		List<Station> list = stationDao.list();
-		
-		Route r = new Route();
-		
-		r.setId(35);
-		r.setDuration("30");
-		r.setStart(list.get(0));
-		r.setEnd(list.get(1));
-		
-		routeDao.add(r);
 		return "index";
 		
 	}
