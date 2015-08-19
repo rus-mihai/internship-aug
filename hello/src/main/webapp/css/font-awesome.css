@@ -80,6 +80,14 @@
   -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear;
 }
+
+#logout {
+		float: right ;
+		position: absolute;
+		right: 1%;
+		margin-top: 0.6%;
+	}
+	
 @-webkit-keyframes fa-spin {
   0% {
     -webkit-transform: rotate(0deg);
