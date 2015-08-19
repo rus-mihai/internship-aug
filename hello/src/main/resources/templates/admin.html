@@ -55,12 +55,10 @@
 	<header id="header">
 		<hgroup>
 			<h1 class="site_title">
-				<a href="index.html">Website Admin</a>
+				<b>Website Admin</b>
 			</h1>
 			<h2 class="section_title">Dashboard</h2>
-			<div class="btn_view_site">
-				<a href="http://www.medialoot.com">View Site</a>
-			</div>
+			<div class="btn_view_site"></div>
 		</hgroup>
 	</header>
 	<!-- end of header bar -->
@@ -85,14 +83,18 @@
 	<aside id="sidebar" class="column">
 		<form class="quick_search">
 			<input type="text" value="Quick Search"
-				onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;"/>
+				onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" />
 		</form>
-		lo
+
 		<hr />
-		<h3><a th:href="@{/admin?routes}">Content</a></h3>
+		<h3>
+			<a href="/admin?routes">Content</a>
+		</h3>
 		<ul class="toggle">
-			<li class="icn_new_article"><a href="#">New Article</a></li>
-			<li class="icn_edit_article"><a href="#">Edit Articles</a></li>
+			<li class="icn_new_article"><a href="/admin">New Route</a></li>
+			<li class="icn_new_article"><a href="/admin?newstation">New
+					Station</a></li>
+			<li class="icn_edit_article"><a href="#">Edit Route</a></li>
 			<li class="icn_categories"><a href="#">Categories</a></li>
 			<li class="icn_tags"><a href="#">Tags</a></li>
 		</ul>
@@ -126,19 +128,89 @@
 			<p>
 				<strong>Copyright &copy; 2011 Website Admin</strong>
 			</p>
-			<p>
-				Theme by <a href="http://www.medialoot.com">MediaLoot</a>
-			</p>
+
 		</footer>
 	</aside>
 	<!-- end of sidebar -->
 
 	<section id="main" class="column">
 
-		<div th:if="${param.routes}">
-			<p th:text="#{proba}"></p>
-		</div>
+		<h4 class="alert_info">Welcome to admin panel.</h4>
 
+		<article class="module width_full">
+			<header>
+				<h3>Stats</h3>
+			</header>
+			<div class="module_content">
+
+				<div class="clear"></div>
+			</div>
+		</article>
+		<!-- end of stats article -->
+
+		<article class="module width_3_quarter" th:if="${param.routes}">
+			<header>
+				<h3 class="tabs_involved">Content Manager</h3>
+
+			</header>
+
+			<div class="tab_container">
+				<div id="tab1" class="tab_content">
+					<table class="tablesorter" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Start</th>
+								<th>Destination</th>
+								<th>Duration</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+
+								<td>Lorem Ipsum Dolor Sit Amet</td>
+								<td>Articles</td>
+								<td>5th April 2011</td>
+								<td><input type="image" src="images/icn_edit.png"
+									title="Edit" /><input type="image" src="images/icn_trash.png"
+									title="Trash" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- end of #tab1 -->
+
+
+			</div>
+			<!-- end of .tab_container -->
+
+		</article>
+		<!-- end of content manager article -->
+
+		<article class="module width_3_quarter" th:if="${param.newstation}">
+			<header>
+				<h3 class="tabs_involved">Content Manager</h3>
+
+			</header>
+			<h1>Add New Station</h1>
+			<form action="#" method="post"><!-- th:action="@{/fetchroute}" th:object="${fetchroute}" -->
+			
+				<p>
+					Name: <input type="text" />
+				</p>
+				
+				<p>
+					<input type="submit" value="Submit" /> <input type="reset"
+						value="Reset" />
+				</p>
+			</form>
+
+
+		</article>
+		<!-- end of content manager article -->
+
+		<!-- end of styles article -->
+		<div class="spacer"></div>
 	</section>
 
 
