@@ -79,4 +79,8 @@
     	<addForeignKeyConstraint constraintName="idStart" referencedTableName="stations" baseColumnNames="idStart" baseTableName="routes" referencedColumnNames="id"/>
     	<addForeignKeyConstraint constraintName="idEnd" referencedTableName="stations" baseColumnNames="idEnd" baseTableName="routes" referencedColumnNames="id"/>
     </changeSet>
+    
+    <changeSet id="6" author="Cristian">
+    	<modifyDataType tableName="routes" columnName="duration" newDataType="varchar(255)"/>
+    </changeSet>
 </databaseChangeLog>

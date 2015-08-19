@@ -3,15 +3,15 @@ package com.acc.internship.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.acc.internship.repo.UserDAO;
+import com.acc.internship.model.Route;
+import com.acc.internship.model.Station;
+import com.acc.internship.repo.RouteDAO;
+import com.acc.internship.repo.StationDAO;
 
 /**
  * Handles requests for the application home page.
@@ -21,6 +21,13 @@ public class HomeController {
 	//@Autowired
 	//private  UserDAO userDao;
 	
+	@Autowired
+	private StationDAO stationDao;
+	
+	@Autowired
+	private RouteDAO routeDao;
+	
+	
 	@RequestMapping("/hello")
 	public String hello(@RequestParam(value="name", required=false, defaultValue="world") String name, Model model){
 		model.addAttribute("name", name);
@@ -29,8 +36,22 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String root(Model model){
-		model.addAttribute("fp", "Prima pagina");
-		model.addAttribute("hellow", "/hello");
+		//insert satations and list 
+		Station s = new Station();
+		s.setName("test3");
+
+		stationDao.add(s);
+		
+		List<Station> list = stationDao.list();
+		
+		Route r = new Route();
+		
+		r.setId(35);
+		r.setDuration("30");
+		r.setStart(list.get(0));
+		r.setEnd(list.get(1));
+		
+		routeDao.add(r);
 		return "index";
 		
 	}

@@ -27,13 +27,13 @@ public class RouteDAOImpl implements RouteDAO{
 	}
 	
 	@PersistenceContext
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}
 
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
 
 	@Override
 	@Transactional
