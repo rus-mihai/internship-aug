@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" style="height:100%">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -13,7 +13,6 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png"></link>
 <link rel="stylesheet" href="css/normalize.min.css"></link>
 <link rel="stylesheet" href="css/main.css"></link>
-<link rel="stylesheet" href="css/map.css"></link>
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
 </head>
@@ -30,7 +29,7 @@
 					<li><a href="/">HomePage</a></li>
 					<li><a href="/login">Login</a></li>
 					<li><a href="#">ContactUs</a></li>
-					
+
 				</ul>
 			</nav>
 		</header>
@@ -78,100 +77,108 @@
 			</article>
 
 			<aside>
-				
-	<div id="panel">
-		<b>Start: </b> <select id="start" onchange="calcRoute();">
-			<option
-				value="Observatorului I, Strada Observatorului, Cluj-Napoca 400000, Romania">Observatorului
-				I</option>
-			<option
-				value="Regionala CFR Bus Station, Bulevardul 21 Decembrie 1989, Cluj-Napoca, Romania">Regionala
-				CFR Bus Station</option>
-			<option value="Post Zorilor, Romania">Zorilor</option>
-			<option
-				value="Gheorghe Dima II, Strada Observatorului, Cluj-Napoca 400000, Romania">Gheorghe
-				Dima II</option>
-			<option value="Spitalul de Copii, Cluj-Napoca 400000,Romania">Spitalul
-				de Copii</option>
-			<option
-				value="Statia Campului, Calea Mănăștur, Cluj-Napoca 400000, Romania">Statia
-				Campului</option>
-			<option
-				value="Stația Piața 14 Iulie, Piața 14 Iulie, Cluj-Napoca 400000, Romania">Stația
-				Piața 14 Iulie</option>
-			<option value="Piața Mihai Viteazul, Cluj-Napoca 400000, Romania">Piața
-				Mihai Viteazul</option>
-			<option value="Sinterom, Romania">Sinterom</option>
-			<option value="Arte Plastice,Cluj-Napoca">Arte Plastice</option>
 
-		</select> <b>End: </b> <select id="end" onchange="calcRoute();">
-			<option
-				value="Observatorului I, Strada Observatorului, Cluj-Napoca 400000, Romania">Observatorului
-				I</option>
-			<option
-				value="Regionala CFR Bus Station, Bulevardul 21 Decembrie 1989, Cluj-Napoca, Romania">Regionala
-				CFR Bus Station</option>
-			<option value="Post Zorilor, Romania">Zorilor</option>
-			<option
-				value="Gheorghe Dima II, Strada Observatorului, Cluj-Napoca 400000, Romania">Gheorghe
-				Dima II</option>
-			<option value="Spitalul de Copii, Cluj-Napoca 400000,Romania">Spitalul
-				de Copii</option>
-			<option
-				value="Statia Campului, Calea Mănăștur, Cluj-Napoca 400000, Romania">Statia
-				Campului</option>
-			<option
-				value="Stația Piața 14 Iulie, Piața 14 Iulie, Cluj-Napoca 400000, Romania">Stația
-				Piața 14 Iulie</option>
-			<option value="Piața Mihai Viteazul, Cluj-Napoca 400000, Romania">Piața
-				Mihai Viteazul</option>
-			<option value="Sinterom, Romania">Sinterom</option>
-			<option value="Arte Plastice,Cluj-Napoca">Arte Plastice</option>
+				<div id="panel">
+					<b>Start: </b> <select id="start" onchange="calcRoute();">
+						<option
+							value="Observatorului I, Strada Observatorului, Cluj-Napoca 400000, Romania">Observatorului
+							I</option>
+						<option
+							value="Regionala CFR Bus Station, Bulevardul 21 Decembrie 1989, Cluj-Napoca, Romania">Regionala
+							CFR Bus Station</option>
+						<option value="Post Zorilor, Romania">Zorilor</option>
+						<option
+							value="Gheorghe Dima II, Strada Observatorului, Cluj-Napoca 400000, Romania">Gheorghe
+							Dima II</option>
+						<option value="Spitalul de Copii, Cluj-Napoca 400000,Romania">Spitalul
+							de Copii</option>
+						<option
+							value="Statia Campului, Calea Mănăștur, Cluj-Napoca 400000, Romania">Statia
+							Campului</option>
+						<option
+							value="Stația Piața 14 Iulie, Piața 14 Iulie, Cluj-Napoca 400000, Romania">Stația
+							Piața 14 Iulie</option>
+						<option value="Piața Mihai Viteazul, Cluj-Napoca 400000, Romania">Piața
+							Mihai Viteazul</option>
+						<option value="Sinterom, Romania">Sinterom</option>
+						<option value="Arte Plastice,Cluj-Napoca">Arte Plastice</option>
 
-		</select>
-	</div>
-	<div id="map">
-		<script>
-			function initMap() {
-				var directionsService = new google.maps.DirectionsService;
-				var directionsDisplay = new google.maps.DirectionsRenderer;
-				var map = new google.maps.Map(document.getElementById('map'), {
-					zoom : 10,
-					center : {
-						lat : 46.767307,
-						lng : 23.603637
-					}
-				});
-				directionsDisplay.setMap(map);
+					</select> <b>End: </b> <select id="end" onchange="calcRoute();">
+						<option
+							value="Observatorului I, Strada Observatorului, Cluj-Napoca 400000, Romania">Observatorului
+							I</option>
+						<option
+							value="Regionala CFR Bus Station, Bulevardul 21 Decembrie 1989, Cluj-Napoca, Romania">Regionala
+							CFR Bus Station</option>
+						<option value="Post Zorilor, Romania">Zorilor</option>
+						<option
+							value="Gheorghe Dima II, Strada Observatorului, Cluj-Napoca 400000, Romania">Gheorghe
+							Dima II</option>
+						<option value="Spitalul de Copii, Cluj-Napoca 400000,Romania">Spitalul
+							de Copii</option>
+						<option
+							value="Statia Campului, Calea Mănăștur, Cluj-Napoca 400000, Romania">Statia
+							Campului</option>
+						<option
+							value="Stația Piața 14 Iulie, Piața 14 Iulie, Cluj-Napoca 400000, Romania">Stația
+							Piața 14 Iulie</option>
+						<option value="Piața Mihai Viteazul, Cluj-Napoca 400000, Romania">Piața
+							Mihai Viteazul</option>
+						<option value="Sinterom, Romania">Sinterom</option>
+						<option value="Arte Plastice,Cluj-Napoca">Arte Plastice</option>
 
-				var onChangeHandler = function() {
-					calculateAndDisplayRoute(directionsService,
-							directionsDisplay);
-				};
-				document.getElementById('start').addEventListener('change',
-						onChangeHandler);
-				document.getElementById('end').addEventListener('change',
-						onChangeHandler);
-			}
+					</select>
+				</div>
+				<div id="map">
+					<script>
+						function initMap() {
+							var directionsService = new google.maps.DirectionsService;
+							var directionsDisplay = new google.maps.DirectionsRenderer;
+							var map = new google.maps.Map(document
+									.getElementById('map'), {
+								zoom : 10,
+								center : {
+									lat : 46.767307,
+									lng : 23.603637
+								}
+							});
+							directionsDisplay.setMap(map);
 
-			function calculateAndDisplayRoute(directionsService,
-					directionsDisplay) {
-				directionsService.route({
-					origin : document.getElementById('start').value,
-					destination : document.getElementById('end').value,
-					travelMode : google.maps.TravelMode.DRIVING
-				}, function(response, status) {
-					if (status === google.maps.DirectionsStatus.OK) {
-						directionsDisplay.setDirections(response);
-					} else {
-						window.alert('Directions request failed due to '
-								+ status);
-					}
-				});
-			}
-		</script>
-		<script src="js/maping.js"></script>
-	</div>
+							var onChangeHandler = function() {
+								calculateAndDisplayRoute(directionsService,
+										directionsDisplay);
+							};
+							document.getElementById('start').addEventListener(
+									'change', onChangeHandler);
+							document.getElementById('end').addEventListener(
+									'change', onChangeHandler);
+						}
+
+						function calculateAndDisplayRoute(directionsService,
+								directionsDisplay) {
+							directionsService
+									.route(
+											{
+												origin : document
+														.getElementById('start').value,
+												destination : document
+														.getElementById('end').value,
+												travelMode : google.maps.TravelMode.DRIVING
+											},
+											function(response, status) {
+												if (status === google.maps.DirectionsStatus.OK) {
+													directionsDisplay
+															.setDirections(response);
+												} else {
+													window
+															.alert('Directions request failed due to '
+																	+ status);
+												}
+											});
+						}
+					</script>
+					<script src="js/maping.js"></script>
+				</div>
 			</aside>
 
 		</div>
@@ -180,21 +187,20 @@
 	<!-- #main-container -->
 
 	<div class="footer-container">
-		<footer class="wrapper">	
-<div class="large-12 columns">
-<div class="row">
-<div class="large-6 columns">
-<p>© Copyright no one at all. Go to town.</p>
-</div>
-<div class="large-6 columns">
-<ul class="inline-list right">
-<li><a href="#">FAQ</a></li>
-<li><a href="#">Privacy</a></li>
-<li><a href="#">Suscribe</a></li>
-</ul>
-</div>
-</div>
-</div>
+		<footer class="wrapper clearfix">
+			<div class="footer">
+			© Copyright 2015. All Rights Reserved.© Copyright 2015. All Rights Reserved.© Copyright 2015. All Rights Reserved.
+				
+			<nav>
+				<ul >
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">Privacy</a></li>
+					<li><a href="#">Suscribe</a></li>
+				</ul>
+			</nav>
+
+			</div>
+			
 		</footer>
 	</div>
 
@@ -205,13 +211,20 @@
 	<script src="js/main.js"></script>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
- <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
+	<script>
+		(function(b, o, i, l, e, r) {
+			b.GoogleAnalyticsObject = l;
+			b[l] || (b[l] = function() {
+				(b[l].q = b[l].q || []).push(arguments)
+			});
+			b[l].l = +new Date;
+			e = o.createElement(i);
+			r = o.getElementsByTagName(i)[0];
+			e.src = '//www.google-analytics.com/analytics.js';
+			r.parentNode.insertBefore(e, r)
+		}(window, document, 'script', 'ga'));
+		ga('create', 'UA-XXXXX-X', 'auto');
+		ga('send', 'pageview');
+	</script>
 </body>
 </html>
