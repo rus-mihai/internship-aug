@@ -36,10 +36,6 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String root(Model model){
-<<<<<<< HEAD
-		
-=======
->>>>>>> origin/dev_c
 		return "index";
 		
 	}
