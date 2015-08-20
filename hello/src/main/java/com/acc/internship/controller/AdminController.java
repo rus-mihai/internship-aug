@@ -31,17 +31,20 @@ public class AdminController {
 			return "/admin?routes";
 		}
 		
-		@RequestMapping(value="/admin?newstation", method=RequestMethod.GET)
+		@RequestMapping(value="/admin", method=RequestMethod.GET)
 		public String stationForm(Model model){
-			model.addAttribute("station", new Station());
-			return "/admin?newstation";
+			
+			Station s = new Station();
+			model.addAttribute("station",s);
+			
+			return "admin";
 		}
 		
-	   @RequestMapping(value="/admin?newstation", method=RequestMethod.POST)
-	    public String stationSubmit(@ModelAttribute("station") Station station, Model model) {
+	   @RequestMapping(value="/admin", method=RequestMethod.POST)
+	    public String stationSubmit(@ModelAttribute Station station, Model model) {
 	       	stationDao.add(station);
 	       	//model.addAttribute("station", station);
-	        return "/admin?newstation";
+	        return "admin";
 	    }
 	   
 	   
