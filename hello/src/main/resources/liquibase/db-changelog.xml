@@ -54,4 +54,74 @@
 						/>
 	</changeSet>
     
+    <changeSet id="5" author="Cristi">
+    	<createTable tableName="stations">
+    		<column name="id" type="int" autoIncrement="true">
+    			<constraints primaryKey="true" nullable="false" />
+    		</column>
+    		<column name="name" type="varchar(200)">
+    			<constraints nullable = "false"/>
+    		</column>
+    	</createTable>
+    	
+    	<createTable tableName="routes">
+    		<column name="id" type="int">
+    			<constraints primaryKey="true" nullable = "false"/>
+    		</column>
+    		<column name="idStart" type = "int">
+    			<constraints nullable = "false" />
+    		</column>
+    		<column name="idEnd" type = "int">
+    			<constraints nullable = "false" />
+    		</column>
+    		<column name="duration" type ="datetime"></column>
+    	</createTable>
+    	<addForeignKeyConstraint constraintName="idStart" referencedTableName="stations" baseColumnNames="idStart" baseTableName="routes" referencedColumnNames="id"/>
+    	<addForeignKeyConstraint constraintName="idEnd" referencedTableName="stations" baseColumnNames="idEnd" baseTableName="routes" referencedColumnNames="id"/>
+    </changeSet>
+    
+    <changeSet id="6" author="Cristian">
+    	<modifyDataType tableName="routes" columnName="duration" newDataType="varchar(255)"/>
+    </changeSet>
+    
+    <changeSet id="7" author="Cristi">
+    	<insert tableName="Roles">
+    		<column name="type" value="admin"></column>
+    	</insert>
+    	
+    	<insert tableName="Roles">
+    		<column name="type" value="driver"></column>
+    	</insert>
+    	
+    	<insert tableName="Users">
+    		<column name="idRole" value="1"></column>
+    		<column name="lastName" value="default"></column>
+    		<column name="firstName" value="default"></column>
+    		<column name="username" value="admin"></column>
+    		<column name="password" value="$2a$10$5aFjUYMNj1EvB/1uOx0sW.PWqDnYEMPaSpkzoRt.o7NxIdzLuBnzm"></column>
+    	</insert>
+    	
+    	<insert tableName="Users">
+    		<column name="idRole" value="2"></column>
+    		<column name="lastName" value="default_driver"></column>
+    		<column name="firstName" value="default_driver"></column>
+    		<column name="username" value="driver"></column>
+    		<column name="password" value="$2a$10$uOsbT4Uq2jwwtw5aGpp5oejcgbuFicxY1nlOeS/JbRx8M1cDIlpb2"></column>
+    	</insert>
+    	
+    	<insert tableName="Stations">
+    		<column name="name" value="Strada Observatorului"></column>
+    	</insert>
+    	
+    	<insert tableName="Stations">
+    		<column name="name" value="Piata Garii"></column>
+    	</insert>
+    	
+    	<insert tableName="routes">
+    		<column name="id" value="35"></column>
+    		<column name="idStart" value="1"></column>
+    		<column name="idEnd" value="2"></column>
+    		<column name="duration" value="30"></column>
+    	</insert>
+    </changeSet>
 </databaseChangeLog>

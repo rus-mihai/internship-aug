@@ -1,3 +1,5 @@
+
+
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {
 	color: #222;
@@ -122,9 +124,12 @@ nav a:hover {
 
 .footer-container footer {
 	color: white;
-	padding: 20px 0;
+	padding: opx 0;
 }
-
+.footer-container {
+	margin-top:6%;
+	position:relative;
+}
 /* ===============
     ALL: IE Fixes
    =============== */
@@ -207,7 +212,7 @@ nav a:hover {
     Maximal Width
    =============== */
 	.wrapper {
-		width: 1026px; /* 1140px - 10% for margins */
+		width: 80%;
 		margin: 0 auto;
 	}
 }
@@ -258,10 +263,10 @@ nav a:hover {
 }
 
 .map {
-    width: 430px;
-    height: 295px;
-    position: relative;
-    display: block;
+	width: 430px;
+	height: 295px;
+	position: relative;
+	display: block;
 }
 /* ==========================================================================
    Print styles
@@ -309,8 +314,8 @@ nav a:hover {
 
 div#map {
 	height: 91.8%;
-    width: 136%;
-    right: 17.75%;
+	width: 136%;
+	right: 17.75%;
 }
 
 #panel {
@@ -322,9 +327,8 @@ div#map {
 	padding: 1px;
 	border: 1px solid #999;
 	text-align: center;
-	color:chocolate;
+	color: chocolate;
 }
-
 
 /**
  * Provide the following styles for both ID and class, where ID represents an
@@ -343,12 +347,13 @@ div#map {
 }
 
 #panel select, .panel select {
-	width: 20%;
+	width: 40%;
 }
 
 #panel i, .panel i {
 	font-size: 12px;
 }
 
-div#panel{width:100%;
-	}
+div#panel {
+	width: 100%;
+}
