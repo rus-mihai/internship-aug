@@ -205,7 +205,8 @@ right:3%;
 
 			</header>
 			<h1>Add New Station</h1>
-			<form action="#" th:action="@{/admin?newstation}" th:object="${station}" method="post">
+			 <!-- form new station -->
+			<form action="#" th:action="@{/admin}" th:object="${station}" method="post">
 				
 				<p>
 					Name: <input type="text" th:field="*{name}"/>
@@ -216,7 +217,7 @@ right:3%;
 						value="Reset" />
 				</p>
 			</form>
-
+			
 
 		</article>
 		<!-- end of NewStation-->
