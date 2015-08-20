@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.acc.internship.model.Station;
 import com.acc.internship.repo.RouteDAO;
@@ -40,11 +41,14 @@ public class AdminController {
 			return "admin";
 		}
 		
-	   @RequestMapping(value="/admin", method=RequestMethod.POST)
+	   @RequestMapping(value="/admin/newstation", method=RequestMethod.POST)
 	    public String stationSubmit(@ModelAttribute Station station, Model model) {
 	       	stationDao.add(station);
+	       	
+	       	model.addAttribute("success", true);
+
 	       	//model.addAttribute("station", station);
-	        return "admin";
+	        return "redirect:/admin?newstation";
 	    }
 	   
 	   
