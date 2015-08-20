@@ -1,3 +1,5 @@
+
+
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 html {
 	color: #222;
@@ -122,9 +124,12 @@ nav a:hover {
 
 .footer-container footer {
 	color: white;
-	padding: 15px 0;
+	padding: opx 0;
 }
-
+.footer-container {
+	margin-top:6%;
+	position:relative;
+}
 /* ===============
     ALL: IE Fixes
    =============== */
@@ -339,7 +344,6 @@ div#map {
 
 #panel select, #panel input, .panel select, .panel input {
 	font-size: 15px;
-	
 }
 
 #panel select, .panel select {
