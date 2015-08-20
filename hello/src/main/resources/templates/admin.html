@@ -206,7 +206,7 @@ right:3%;
 			</header>
 			<h1>Add New Station</h1>
 			 <!-- form new station -->
-			<form action="#" th:action="@{/admin}" th:object="${station}" method="post">
+			<form action="#" th:action="@{/admin/newstation}" th:object="${station}" method="post">
 				
 				<p>
 					Name: <input type="text" th:field="*{name}"/>
@@ -229,20 +229,20 @@ right:3%;
 
 			</header>
 			<h1>Add User</h1>
-			<form action="#" method="post">
-				<!-- th:action="@{/fetchuser}" th:object="${fetchuser}" -->
+			<form action="#" method="post"
+				 th:action="@{/admin/adduser}" th:object="${user}" >
 
 				<p>
-					Firstname: <input type="text" />
+					Firstname: <input type="text" th:field="*{firstName}" />
 				</p>
 				<p>
-					Lastname: <input type="text" />
+					Lastname: <input type="text" th:field="*{lastName}" />
 				</p>
 				<p>
-					Username: <input type="text" />
+					Username: <input type="text" th:field="*{username}"/>
 				</p>
 				<p>
-					Password: <input type="password" />
+					Password: <input type="password" th:field="*{password}"/>
 				</p>
 
 				<p>
