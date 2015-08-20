@@ -42,11 +42,7 @@ public class HomeController {
 
 	
 	
-	@RequestMapping("/admin")
-	public String admin(Model model){
-		
-		return "admin";
-	}
+	
 	
 	@RequestMapping("/driver")
 	public String driver(Model model){

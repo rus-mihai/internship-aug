@@ -1,5 +1,7 @@
 package com.acc.internship.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.acc.internship.model.Route;
 import com.acc.internship.model.Station;
 import com.acc.internship.model.User;
 import com.acc.internship.repo.RouteDAO;
@@ -31,12 +34,6 @@ public class AdminController {
 		@Autowired
 		private UserRoleDAO userRoleDao;
 		
-		@RequestMapping(value="/admin?routes")
-		public String adminRoutes(Model model){
-			model.addAttribute("proba", "asta sa apara");
-			
-			return "/admin?routes";
-		}
 		
 		@RequestMapping(value="/admin", method=RequestMethod.GET)
 		public String stationForm(Model model){
@@ -72,6 +69,29 @@ public class AdminController {
 	       	//model.addAttribute("station", station);
 	        return "redirect:/admin?adduser";
 	    }
+	   
+	   
+	   @RequestMapping(value="/admin/routes", method = RequestMethod.GET)
+	   public String getRoutes(Model model){
+		   
+		   model.addAttribute("routes");
+		   return "admin";
+	   }
+	   
+	   
+	   @RequestMapping(value="/admin/routes")
+	   public String viewRoutes(Model model){
+			   List<Route> list  = routeDao.list();
+			   
+			   
+			   for(Route r: list){
+				   System.out.println(r.getStart().getName() + " " + r.getEnd().getName());
+			   }
+			   model.addAttribute("routes", list);
+
+		   
+		   return "admin";
+	   }
 	   
 	   
 

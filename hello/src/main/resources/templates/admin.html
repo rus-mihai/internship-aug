@@ -99,7 +99,7 @@ right:3%;
 
 		<hr />
 		<h3>
-			<a href="/admin?routes">Content</a>
+			<a href="/admin/route">Routes</a>
 		</h3>
 		<ul class="toggle">
 			<li class="icn_new_article"><a href="/admin?newroute">View Route</a></li>
@@ -164,7 +164,6 @@ right:3%;
 				<h3 class="tabs_involved">Content Manager</h3>
 
 			</header>
-
 			<div class="tab_container">
 				<div id="tab1" class="tab_content">
 					<table class="tablesorter" cellspacing="0">
@@ -177,11 +176,11 @@ right:3%;
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<tr th:each="route: ${routeslist}">
 
-								<td>Lorem Ipsum Dolor Sit Amet</td>
-								<td>Articles</td>
-								<td>5th April 2011</td>
+								<td th:text="${route.start.name}"></td>
+								<td th:text="${route.end.name}"></td>
+								<td th:text="${route.duration}"></td>
 								<td><input type="image" src="images/icn_edit.png"
 									title="Edit" /><input type="image" src="images/icn_trash.png"
 									title="Trash" /></td>
@@ -206,10 +205,7 @@ right:3%;
 			</header>
 			<h1>Add New Station</h1>
 			 <!-- form new station -->
-<<<<<<< HEAD
-			 
-=======
->>>>>>> origin/dev_c
+
 			<form action="#" th:action="@{/admin/newstation}" th:object="${station}" method="post">
 				
 				<p>
