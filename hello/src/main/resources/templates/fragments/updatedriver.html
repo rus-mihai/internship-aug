@@ -47,22 +47,16 @@
 			<div class="row" id="Home">
 				<div class="col-md-4">
 					<img src="img/250x250.png" class="img-rounded img-responsive" /> <br></br>
-					<form action="#" th:action="@{/driver}"
-						th:object="${userupdate}" method="post">
-						<label>FirstName</label> 
-						<input type="text" class="form-control"
-							th:value="${firstName}" th:field="*{firstName}" /> <label>Registered
-							LastName</label>
-						 <input type="text" class="form-control" 
-							th:field="*{lastName}" /> 
-							<label>Username</label>
-						 <input type="text" class="form-control" th:field="*{username}"
-						 /> 
-							 <input type="hidden" class="form-control" th:field="*{id}"
-						 /> 
-							<br></br> <input
-							type="submit" value="Submit" style="width: 80px;" /> 
-						 <br></br> <br></br>
+					<form action="#" th:action="@{/driver}" th:object="${userupdate}"
+						method="post">
+						<label>FirstName</label> <input type="text" class="form-control"
+							th:value="${firstName}" th:field="*{firstName}" /> <label>
+							LastName</label> <input type="text" class="form-control"
+							th:field="*{lastName}" /> <label>Username</label> <input
+							type="hidden" class="form-control" th:field="*{username}" /> <input
+							type="hidden" class="form-control" th:field="*{id}" /> <br></br>
+						<input type="submit" value="Update" style="width: 80px;"
+							class="btn btn-warning" /> <br></br> <br></br>
 					</form>
 				</div>
 				<div class="col-md-8">
@@ -85,11 +79,24 @@
 					</div>
 					<div class="form-group col-md-8">
 						<h3>Change YOur Password</h3>
-						<br></br> <label>Enter Old Password</label> <input type="password"
-							class="form-control" /> <label>Enter New Password</label> <input
-							type="password" class="form-control" /> <label>Confirm
-							New Password</label> <input type="password" class="form-control" /> <br></br>
-						<a href="#" class="btn btn-warning">Change Password</a>
+						<form action="#" th:action="@{/driver/updatepass}" th:object="${passupdate}"
+							method="post">
+							<br></br> 
+<!-- 							<label>Enter Old Password</label> <input -->
+<!-- 								type="password" class="form-control" th:field="*{password}" /> -->
+							<input type="hidden" class="form-control" th:value="${firstName}"
+								th:field="*{firstName}" /> 
+							<input type="hidden"	class="form-control" th:field="*{lastName}" />
+							<label>EnterNew Password</label> <input type="password" class="form-control"
+								th:field="*{password}" /> 
+<!-- 								<label>Confirm New Password</label> <input -->
+<!-- 								type="password" class="form-control" th:field="*{password}" /> -->
+							<input type="hidden" th:value="${firstName}" class="form-control"
+								th:field="*{username}" /> <input type="hidden"
+								class="form-control" th:field="*{id}" /> <br></br> <input
+								type="submit" value="Change password" style="width: 140px;"
+								class="btn btn-warning" />
+						</form>
 					</div>
 				</div>
 			</div>

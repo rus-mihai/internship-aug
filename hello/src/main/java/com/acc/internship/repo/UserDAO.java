@@ -12,5 +12,6 @@ public interface UserDAO {
 	public void add(User u);
 	public void delete(int id);
 	public void update(User u);
+	public void updatepass(User u);
 	
 }
