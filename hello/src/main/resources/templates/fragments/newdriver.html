@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="newdriver">
+		<section id="main" class="column" >
+<!--start of NewStation-->
+		<article class="module width_3_quarter">
+			<header>
+				<h3 class="tabs_involved">Content Manager</h3>
+
+			</header>
+			<h1>Add User</h1>
+			<form action="#" method="post"
+				 th:action="@{/admin/adduser}" th:object="${user}" >
+
+				<p>
+					Firstname: <input type="text" th:field="*{firstName}" />
+				</p>
+				<p>
+					Lastname: <input type="text" th:field="*{lastName}" />
+				</p>
+				<p>
+					Username: <input type="text" th:field="*{username}"/>
+				</p>
+				<p>
+					Password: <input type="password" th:field="*{password}"/>
+				</p>
+
+				<p>
+					<input type="submit" value="Submit" /> <input type="reset"
+						value="Reset" />
+				</p>
+			</form>
+
+
+		</article>
+		<!-- end of NewStation-->
+		</section>
+	</div>
+</body>
+</html>

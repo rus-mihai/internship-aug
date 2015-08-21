@@ -50,6 +50,11 @@ public class HomeController {
 		return "driver";
 	}
 	
+	@RequestMapping("/test")
+	public String xxx(Model model){
+		return "test";
+	}
+	
 	
 	
 	

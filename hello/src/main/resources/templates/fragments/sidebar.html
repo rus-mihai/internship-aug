@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="sidebar">
+		<aside id="sidebar" class="column" style="height:89%">
+		<form class="quick_search">
+			<input type="text" value="Quick Search"
+				onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" />
+		</form>
+
+		<hr />
+		<h3>
+			<a href="/admin/routes">Routes</a>
+		</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="/admin?newroute">View Route</a></li>
+			<li class="icn_new_article"><a href="/admin/newstation">New
+					Station</a></li>
+			<li class="icn_edit_article"><a href="#">Edit Route</a></li>
+			<li class="icn_categories"><a href="#">Categories</a></li>
+			<li class="icn_tags"><a href="#">Tags</a></li>
+		</ul>
+		<h3>Users</h3>
+		<ul class="toggle">
+			<li class="icn_add_user"><a href="/admin/adduser">Add New User</a></li>
+			<li class="icn_view_users"><a href="/admin?viewuser">View Users</a></li>
+			<li class="icn_profile"><a href="#">Your Profile</a></li>
+		</ul>
+		<h3>Media</h3>
+		<ul class="toggle">
+			<li class="icn_folder"><a href="#">File Manager</a></li>
+			<li class="icn_photo"><a href="#">Gallery</a></li>
+			<li class="icn_audio"><a href="#">Audio</a></li>
+			<li class="icn_video"><a href="#">Video</a></li>
+		</ul>
+		<h3>Admin</h3>
+		<ul class="toggle">
+			<li class="icn_settings"><a href="#">Options</a></li>
+			<li class="icn_security"><a href="#">Security</a></li>
+			<li class="icn_jump_back">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" />
+				</form>
+			</li>
+
+		</ul>
+
+		<footer>
+			<hr />
+			<p>
+				<strong>Copyright &copy; 2011 Website Admin</strong>
+			</p>
+
+		</footer>
+	</aside>
+	<!-- end of sidebar -->
+	</div>
+</body>
+</html>

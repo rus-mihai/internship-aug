@@ -22,79 +22,67 @@ import com.acc.internship.repo.UserRoleDAO;
 @Controller
 public class AdminController {
 
-		@Autowired
-		private StationDAO stationDao;
-		
-		@Autowired
-		private RouteDAO routeDao;
-		
-		@Autowired
-		private UserDAO userDao;
-		
-		@Autowired
-		private UserRoleDAO userRoleDao;
-		
-		
-		@RequestMapping(value="/admin", method=RequestMethod.GET)
-		public String stationForm(Model model){
-			
-			Station s = new Station();
-			model.addAttribute("station",s);
-			
-			User user = new User();
-			model.addAttribute("user",user);
-			
-			return "admin";
-		}
-		
-	   @RequestMapping(value="/admin/newstation", method=RequestMethod.POST)
-	    public String stationSubmit(@ModelAttribute Station station, Model model) {
-		   
-	       	stationDao.add(station);
-	       	
-	       	model.addAttribute("success", true);
+	@Autowired
+	private StationDAO stationDao;
 
-	       	//model.addAttribute("station", station);
-	        return "redirect:/admin?newstation";
-	    }
-	   
-		
-	   @RequestMapping(value="/admin/adduser", method=RequestMethod.POST)
-	    public String userSubmit(@ModelAttribute User user, Model model) {
+	@Autowired
+	private RouteDAO routeDao;
 
-		   	user.setRole(userRoleDao.list().get(1));
-		   	String pass = new BCryptPasswordEncoder().encode(user.getPassword());
-		   	user.setPassword(pass);
-	       	userDao.add(user);
-	       	//model.addAttribute("station", station);
-	        return "redirect:/admin?adduser";
-	    }
-	   
-	   
-	   @RequestMapping(value="/admin/routes", method = RequestMethod.GET)
-	   public String getRoutes(Model model){
-		   
-		   model.addAttribute("routes");
-		   return "admin";
-	   }
-	   
-	   
-	   @RequestMapping(value="/admin/routes")
-	   public String viewRoutes(Model model){
-			   List<Route> list  = routeDao.list();
-			   
-			   
-			   for(Route r: list){
-				   System.out.println(r.getStart().getName() + " " + r.getEnd().getName());
-			   }
-			   model.addAttribute("routes", list);
+	@Autowired
+	private UserDAO userDao;
 
-		   
-		   return "admin";
-	   }
-	   
-	   
+	@Autowired
+	private UserRoleDAO userRoleDao;	
 
 	
+	//NEW
 	
+	@RequestMapping(value = "/admin")
+	public String adminDash(Model model) {
+		model.addAttribute("page", "routes");
+		return "admin";
+	}
+	
+	@RequestMapping(value = "admin/routes")
+	public String adminViewRoutes(Model model){
+		model.addAttribute("page", "routes");
+		List<Route> list = routeDao.list();
+		model.addAttribute("routes", list);
+		return "admin";
+	}
+	
+	@RequestMapping(value = "/admin/newstation", method = RequestMethod.GET)
+	public String newStationGet(Model model) {
+		model.addAttribute("station", new Station());
+		model.addAttribute("page","newstation");
+		return "admin";
+		
+	}
+	
+	@RequestMapping(value = "/admin/newstation", method = RequestMethod.POST)
+	public String newStationPost(@ModelAttribute Station station, Model model){
+		stationDao.add(station);
+		model.addAttribute("page", "newstation");		
+		return "admin";
+	}
+	
+	@RequestMapping(value = "/admin/adduser", method = RequestMethod.GET)
+	public String newDriverGet(Model model) {
+		model.addAttribute("user", new User());
+		model.addAttribute("page","newdriver");
+		return "admin";
+		
+	}
+	
+	@RequestMapping(value = "/admin/adduser", method = RequestMethod.POST)
+	public String newDriverPost(@ModelAttribute User user, Model model){
+		//set role to driver
+		user.setRole(userRoleDao.list().get(1));
+		userDao.add(user);
+		model.addAttribute("page", "newdriver");		
+		return "admin";
+	}
+	
+	
+
 }

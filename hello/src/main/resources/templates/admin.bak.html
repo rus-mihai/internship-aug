@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<title>Dashboard I Admin Panel</title>
+
+<link rel="stylesheet" href="css/layout.css" type="text/css"
+	media="screen" />
+	<link rel="stylesheet" href="css/map.css" type="text/css"
+	media="screen" />
+<!--[if lt IE 9]>
+	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
+<script src="js/hideshow.js" type="text/javascript"></script>
+<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.equalHeight.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".tablesorter").tablesorter();
+	});
+	$(document).ready(function() {
+
+		//When page loads...
+		$(".tab_content").hide(); //Hide all content
+		$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+		$(".tab_content:first").show(); //Show first tab content
+
+		//On Click Event
+		$("ul.tabs li").click(function() {
+
+			$("ul.tabs li").removeClass("active"); //Remove any "active" class
+			$(this).addClass("active"); //Add "active" class to selected tab
+			$(".tab_content").hide(); //Hide all tab content
+
+			var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+			$(activeTab).fadeIn(); //Fade in the active ID content
+			return false;
+		});
+
+	});
+</script>
+<script type="text/javascript">
+	$(function() {
+		$('.column').equalHeight();
+	});
+</script>
+
+<style>
+#map {
+	height:69%;
+	width: 95%;
+	left:3%;
+}
+#panel{
+right:3%;
+}</style>
+</head>
+
+
+<body>
+
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title">
+				<b>Website Admin</b>
+			</h1>
+			<h2 class="section_title">Dashboard</h2>
+			<div class="btn_view_site"></div>
+		</hgroup>
+	</header>
+	<!-- end of header bar -->
+
+	<section id="secondary_bar">
+		<div class="user">
+			<p>
+				John Doe (<a href="#">3 Messages</a>)
+			</p>
+			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs">
+				<a href="index.html">Website Admin</a>
+				<div class="breadcrumb_divider"></div>
+				<a class="current">Dashboard</a>
+			</article>
+		</div>
+	</section>
+	<!-- end of secondary bar -->
+
+	<aside id="sidebar" class="column" style="height:89%">
+		<form class="quick_search">
+			<input type="text" value="Quick Search"
+				onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" />
+		</form>
+
+		<hr />
+		<h3>
+			<a href="routes">Routes</a>
+		</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="/admin?newroute">View Route</a></li>
+			<li class="icn_new_article"><a href="/admin?newstation">New
+					Station</a></li>
+			<li class="icn_edit_article"><a href="#">Edit Route</a></li>
+			<li class="icn_categories"><a href="#">Categories</a></li>
+			<li class="icn_tags"><a href="#">Tags</a></li>
+		</ul>
+		<h3>Users</h3>
+		<ul class="toggle">
+			<li class="icn_add_user"><a href="/admin?adduser">Add New User</a></li>
+			<li class="icn_view_users"><a href="/admin?viewuser">View Users</a></li>
+			<li class="icn_profile"><a href="#">Your Profile</a></li>
+		</ul>
+		<h3>Media</h3>
+		<ul class="toggle">
+			<li class="icn_folder"><a href="#">File Manager</a></li>
+			<li class="icn_photo"><a href="#">Gallery</a></li>
+			<li class="icn_audio"><a href="#">Audio</a></li>
+			<li class="icn_video"><a href="#">Video</a></li>
+		</ul>
+		<h3>Admin</h3>
+		<ul class="toggle">
+			<li class="icn_settings"><a href="#">Options</a></li>
+			<li class="icn_security"><a href="#">Security</a></li>
+			<li class="icn_jump_back">
+				<form th:action="@{/logout}" method="post">
+					<input type="submit" value="Sign Out" />
+				</form>
+			</li>
+
+		</ul>
+
+		<footer>
+			<hr />
+			<p>
+				<strong>Copyright &copy; 2011 Website Admin</strong>
+			</p>
+
+		</footer>
+	</aside>
+	<!-- end of sidebar -->
+
+	<section id="main" class="column" >
+
+		<h4 class="alert_info">Welcome to admin panel.</h4>
+
+		<article class="module width_full">
+			<header>
+				<h3>Stats</h3>
+			</header>
+			<div class="module_content">
+
+				<div class="clear"></div>
+			</div>
+		</article>
+		<!-- end of stats article -->
+
+		<article class="module width_3_quarter" th:if="${param.routes}">
+			<header>
+				<h3 class="tabs_involved">Content Manager</h3>
+
+			</header>
+			<div class="tab_container">
+				<div id="tab1" class="tab_content">
+					<table class="tablesorter" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Start</th>
+								<th>Destination</th>
+								<th>Duration</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="route: ${routeslist}">
+
+								<td th:text="${route.start.name}"></td>
+								<td th:text="${route.end.name}"></td>
+								<td th:text="${route.duration}"></td>
+								<td><input type="image" src="images/icn_edit.png"
+									title="Edit" /><input type="image" src="images/icn_trash.png"
+									title="Trash" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- end of #tab1 -->
+
+
+			</div>
+			<!-- end of .tab_container -->
+
+		</article>
+		<!-- end of content manager article -->
+
+		<!--start of NewStation-->
+		<article class="module width_3_quarter" th:if="${param.newstation}">
+			<header>
+				<h3 class="tabs_involved">Content Manager</h3>
+
+			</header>
+			<h1>Add New Station</h1>
+			 <!-- form new station -->
+
+			<form action="#" th:action="@{/admin/newstation}" th:object="${station}" method="post">
+				
+				<p>
+					Name: <input type="text" th:field="*{name}"/>
+				</p>
+
+				<p>
+					<input type="submit" value="Submit" /> <input type="reset"
+						value="Reset" />
+				</p>
+			</form>
+			
+
+		</article>
+		<!-- end of NewStation-->
+		
+			<!--start of NewStation-->
+		<article class="module width_3_quarter" th:if="${param.adduser}">
+			<header>
+				<h3 class="tabs_involved">Content Manager</h3>
+
+			</header>
+			<h1>Add User</h1>
+			<form action="#" method="post"
+				 th:action="@{/admin/adduser}" th:object="${user}" >
+
+				<p>
+					Firstname: <input type="text" th:field="*{firstName}" />
+				</p>
+				<p>
+					Lastname: <input type="text" th:field="*{lastName}" />
+				</p>
+				<p>
+					Username: <input type="text" th:field="*{username}"/>
+				</p>
+				<p>
+					Password: <input type="password" th:field="*{password}"/>
+				</p>
+
+				<p>
+					<input type="submit" value="Submit" /> <input type="reset"
+						value="Reset" />
+				</p>
+			</form>
+
+
+		</article>
+		<!-- end of NewStation-->
+		
+		
+		
+			<!--start of NewRoute-->
+		<article class="module width_3_quarter" th:if="${param.newroute}">
+		<div id="biggerpanel">	<header>
+				<h3 class="tabs_involved">Content Manager</h3>
+
+			</header>
+			<h1>View Route</h1>
+				<div id="panel">
+		<b>Start: </b> <select id="start" onchange="calcRoute();">
+			<option
+				value="Observatorului I, Strada Observatorului, Cluj-Napoca 400000, Romania">Observatorului
+				I</option>
+			<option
+				value="Regionala CFR Bus Station, Bulevardul 21 Decembrie 1989, Cluj-Napoca, Romania">Regionala
+				CFR Bus Station</option>
+			<option value="Post Zorilor, Romania">Zorilor</option>
+			<option
+				value="Gheorghe Dima II, Strada Observatorului, Cluj-Napoca 400000, Romania">Gheorghe
+				Dima II</option>
+			<option value="Spitalul de Copii, Cluj-Napoca 400000,Romania">Spitalul
+				de Copii</option>
+			<option
+				value="Statia Campului, Calea Mănăștur, Cluj-Napoca 400000, Romania">Statia
+				Campului</option>
+			<option
+				value="Stația Piața 14 Iulie, Piața 14 Iulie, Cluj-Napoca 400000, Romania">Stația
+				Piața 14 Iulie</option>
+			<option value="Piața Mihai Viteazul, Cluj-Napoca 400000, Romania">Piața
+				Mihai Viteazul</option>
+			<option value="Sinterom, Romania">Sinterom</option>
+			<option value="Arte Plastice,Cluj-Napoca">Arte Plastice</option>
+
+		</select> <b>End: </b> <select id="end" onchange="calcRoute();">
+			<option
+				value="Observatorului I, Strada Observatorului, Cluj-Napoca 400000, Romania">Observatorului
+				I</option>
+			<option
+				value="Regionala CFR Bus Station, Bulevardul 21 Decembrie 1989, Cluj-Napoca, Romania">Regionala
+				CFR Bus Station</option>
+			<option value="Post Zorilor, Romania">Zorilor</option>
+			<option
+				value="Gheorghe Dima II, Strada Observatorului, Cluj-Napoca 400000, Romania">Gheorghe
+				Dima II</option>
+			<option value="Spitalul de Copii, Cluj-Napoca 400000,Romania">Spitalul
+				de Copii</option>
+			<option
+				value="Statia Campului, Calea Mănăștur, Cluj-Napoca 400000, Romania">Statia
+				Campului</option>
+			<option
+				value="Stația Piața 14 Iulie, Piața 14 Iulie, Cluj-Napoca 400000, Romania">Stația
+				Piața 14 Iulie</option>
+			<option value="Piața Mihai Viteazul, Cluj-Napoca 400000, Romania">Piața
+				Mihai Viteazul</option>
+			<option value="Sinterom, Romania">Sinterom</option>
+			<option value="Arte Plastice,Cluj-Napoca">Arte Plastice</option>
+
+		</select>
+	</div>
+	</div>
+		</article>
+		
+		<article class="module width_3_quarter" th:if="${param.viewuser}">
+			<header>
+				<h3 class="tabs_involved">Content Manager</h3>
+
+			</header>
+
+			<div class="tab_container">
+				<div id="tab1" class="tab_content">
+					<table class="tablesorter" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Firstname</th>
+								<th>Lastname</th>
+								<th>Routes</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+
+								<td>Lorem Ipsum Dolor Sit Amet</td>
+								<td>Articles</td>
+								<td>5th April 2011</td>
+								<td><input type="image" src="images/icn_edit.png"
+									title="Edit" /><input type="image" src="images/icn_trash.png"
+									title="Trash" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- end of #tab1 -->
+
+
+			</div>
+			<!-- end of .tab_container -->
+
+		</article>
+		<!-- end of content manager article -->
+			
+		<div id="map" th:if="${param.newroute}">
+		<script>
+			function initMap() {
+				var directionsService = new google.maps.DirectionsService;
+				var directionsDisplay = new google.maps.DirectionsRenderer;
+				var map = new google.maps.Map(document.getElementById('map'), {
+					zoom : 10,
+					center : {
+						lat : 46.767307,
+						lng : 23.603637
+					}
+				});
+				directionsDisplay.setMap(map);
+
+				var onChangeHandler = function() {
+					calculateAndDisplayRoute(directionsService,
+							directionsDisplay);
+				};
+				document.getElementById('start').addEventListener('change',
+						onChangeHandler);
+				document.getElementById('end').addEventListener('change',
+						onChangeHandler);
+			}
+
+			function calculateAndDisplayRoute(directionsService,
+					directionsDisplay) {
+				directionsService.route({
+					origin : document.getElementById('start').value,
+					destination : document.getElementById('end').value,
+					travelMode : google.maps.TravelMode.DRIVING
+				}, function(response, status) {
+					if (status === google.maps.DirectionsStatus.OK) {
+						directionsDisplay.setDirections(response);
+					} else {
+						window.alert('Directions request failed due to '
+								+ status);
+					}
+				});
+			}
+		</script>
+		<script src="js/maping.js"></script>
+	</div>
+		<!-- end of NewRoute-->
+
+		<!-- end of content manager article -->
+
+		<!-- end of styles article -->
+		<div class="spacer"></div>
+	</section>
+
+
+</body>
+
+</html>
