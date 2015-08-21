@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta charset="ISO-8859-1"/>
 <title>Insert title here</title>
@@ -17,7 +19,7 @@
 			<a href="/admin/routes">Routes</a>
 		</h3>
 		<ul class="toggle">
-			<li class="icn_new_article"><a href="/admin?newroute">View Route</a></li>
+			<li class="icn_new_article"><a href="/admin/newroute">New route</a></li>
 			<li class="icn_new_article"><a href="/admin/newstation">New
 					Station</a></li>
 			<li class="icn_edit_article"><a href="#">Edit Route</a></li>

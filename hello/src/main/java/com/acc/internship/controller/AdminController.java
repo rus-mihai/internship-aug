@@ -78,8 +78,21 @@ public class AdminController {
 	public String newDriverPost(@ModelAttribute User user, Model model){
 		//set role to driver
 		user.setRole(userRoleDao.list().get(1));
+		//Crypt password
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		userDao.add(user);
 		model.addAttribute("page", "newdriver");		
+		return "admin";
+	}
+	
+	@RequestMapping(value = "/admin/newroute", method = RequestMethod.GET)
+	public String newRouteGet(Model model){
+		
+		List<Station> stations = stationDao.list();
+		
+		model.addAttribute("stations", stations);
+		
+		model.addAttribute("page", "newroute");
 		return "admin";
 	}
 	
