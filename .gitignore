@@ -17,5 +17,3 @@ target
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 hello/src/main/resources/application.properties
-hello/src/main/resources/templates/admin.html
-hello/src/main/java/com/acc/internship/controller/AdminController.java
