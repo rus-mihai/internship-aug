@@ -14,58 +14,57 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.acc.internship.model.User;
 
-
 @Repository
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
 	@Autowired
 	private EntityManager entityManager;
-	
-	public UserDAOImpl(){
-		
+
+	public UserDAOImpl() {
+
 	}
-	
-	public UserDAOImpl(EntityManager em){
+
+	public UserDAOImpl(EntityManager em) {
 		this.entityManager = em;
 	}
-	
+
 	@PersistenceContext
-	public void setEntityManager(EntityManager entityManager){
+	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
-	
-	public EntityManager getEntityManager(){
+
+	public EntityManager getEntityManager() {
 		return this.entityManager;
 	}
-	
+
 	@Override
-	public User login(String username, String password){
+	public User login(String username, String password) {
 		String hql = "from User d where d.username=:username and d.password=:password";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("username", username);
 		query.setParameter("password", password);
 		User u = null;
-		try{
-			u = (User)query.getSingleResult();	
-		}catch(NoResultException e){
+		try {
+			u = (User) query.getSingleResult();
+		} catch (NoResultException e) {
 			System.out.println("does not exist");
 		}
-		
+
 		return u;
 	}
-	
+
 	@Override
 	public List<User> list() {
 		String sql = "from User";
 		Query query = getEntityManager().createQuery(sql);
 		List<User> resultList = query.getResultList();
-		
+
 		return resultList;
 	}
 
 	@Override
 	@Transactional
 	public User get(int id) {
-		
+
 		return getEntityManager().find(User.class, id);
 	}
 
@@ -77,42 +76,41 @@ public class UserDAOImpl implements UserDAO{
 		query.setParameter("username", u.getUsername());
 		List<User> users = query.getResultList();
 
-		
-		if(users == null || users.size() == 0 ){
+		if (users == null || users.size() == 0) {
 			entityManager.persist(u);
-		}else{
+		} else {
 			System.out.println("exista deja");
 		}
-		
+
 	}
 
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
-	public User findByUsername(String username){
+	public User findByUsername(String username) {
 		List<User> users = new ArrayList<User>();
-		
+
 		Query query = getEntityManager().createQuery("from User where username=?");
 		query.setParameter(1, username);
-		
+
 		users = query.getResultList();
-		
-		if(users.size() > 0){
+
+		if (users.size() > 0) {
 			return users.get(0);
-		}else{
+		} else {
 			return null;
 		}
-		
+
 	}
-	
+
 	@Override
 	@Transactional
 	public void update(User u) {
-		
+
 		String hql = "update User a set a.firstName =:firstname,a.lastName =:lastname,a.username =:username where a.id =:id";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("firstname", u.getFirstName());
@@ -121,5 +119,18 @@ public class UserDAOImpl implements UserDAO{
 		query.setParameter("id", u.getId());
 		query.executeUpdate();
 	}
-	
+
+	@Override
+	@Transactional
+	public void updatepass(User u) {
+		// TODO Auto-generated method stub
+		String hql = "update User b set b.password=:password where b.id =:id";
+		Query query = getEntityManager().createQuery(hql);
+		
+		query.setParameter("password", u.getPassword());
+		query.setParameter("id", u.getId());
+		query.executeUpdate();
+		
+	}
+
 }
