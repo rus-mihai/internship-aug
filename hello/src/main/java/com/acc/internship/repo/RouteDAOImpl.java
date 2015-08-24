@@ -60,8 +60,8 @@ public class RouteDAOImpl implements RouteDAO{
 	}
 
 	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
+	public void delete(Route r) {
+		getEntityManager().remove(r);
 		
 	}
 
