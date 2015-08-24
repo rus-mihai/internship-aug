@@ -2,6 +2,7 @@ package com.acc.internship.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Entity
 @Table(name = "stations")
@@ -57,9 +56,13 @@ public class Station {
 		return endRoutes;
 	}
 
-	public void setEndRoutes(Set<Route> r) {
-		this.endRoutes = r;
+	public void setEndRoutes(Set<Route> endRoutes) {
+		this.endRoutes = endRoutes;
 	}
 	
+	@Override
+	public String toString(){
+		return id + ","+ name;			
+	}
 	
 }

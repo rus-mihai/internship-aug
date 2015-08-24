@@ -9,5 +9,4 @@ public interface StationDAO {
 	public List<Station> list();
 	public void add(Station r);
 	public void delete(int id);
-	
 }

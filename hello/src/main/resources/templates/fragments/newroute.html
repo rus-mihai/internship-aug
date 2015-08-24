@@ -19,21 +19,20 @@
 					<h1>Add new route</h1>
 					<h1>Insert route number and select Start and End stations</h1>
 					<div id="x">
-						<form action="#" th:action="@{/admin/newroute}" th:object="${xxx}" method="post">
-							<label>Line no. </label><input type="text" th:field="*{id}"/>
-							<label>Duration </label><input type="text" th:field="*{duration}"/>
-							<b>Start: </b> 
-							<select th:field="*{start.id}" onchange="calcRoute();">
-								<option th:each="s: ${stations}" th:value="${s.id}" 
+						<form action="#" th:action="@{/admin/newroute}" th:object="${route}"
+							method="post">
+							<label>Line no. </label><input type="text" th:field="*{id}" /> <label>Duration
+							</label><input type="text" th:field="*{duration}" /> <b>Start: </b> 
+							<select id="start"
+								th:field="*{start.id}" onchange="calcRoute();">
+								<option th:each="s: ${stations}" th:value="${s.id}"
 									th:text="${s.name}"></option>
-							</select> 
-							<b>End: </b> <select th:field="*{end.id}" onchange="calcRoute();">
-								<option th:each="x: ${stations}" th:value="${x.id}" 
+							</select> <b>End: </b> <select id="end" th:field="*{end.id}"
+								onchange="calcRoute();">
+								<option th:each="x: ${stations}" th:value="${x.id}"
 									th:text="${x.name}"></option>
-	
-							</select>
-							
-							<input type="submit" value="Add route" />
+
+							</select> <input type="submit" value="Add route" />
 						</form>
 					</div>
 				</div>
@@ -64,7 +63,7 @@
 								'change', onChangeHandler);
 					}
 
-					function calculateAndDisplayRoute(directionsService,
+					function calcRoute(directionsService,
 							directionsDisplay) {
 						directionsService
 								.route(
@@ -87,9 +86,12 @@
 										});
 					}
 				</script>
+				
 				<script src="/js/maping.js"></script>
+				
 			</div>
 		</section>
+
 	</div>
 </body>
 </html>

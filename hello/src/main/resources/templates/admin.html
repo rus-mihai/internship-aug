@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" href="/css/layout.css" type="text/css"
 	media="screen" />
-<link rel="stylesheet" href="/css/map.css" type="text/css"
+	<link rel="stylesheet" href="/css/map.css" type="text/css"
 	media="screen" />
 <!--[if lt IE 9]>
 	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
@@ -49,17 +49,16 @@
 	});
 </script>
 
+
 <style>
 #map {
-	height: 69%;
+	height:69%;
 	width: 95%;
-	left: 3%;
+	left:3%;
 }
-
-#panel {
-	right: 3%;
-}
-</style>
+#panel{
+right:3%;
+}</style>
 </head>
 
 
@@ -67,7 +66,6 @@
 	<div th:include="fragments/header :: header"></div>
 	<div th:include="fragments/sidebar :: sidebar"></div>
 	<div th:replace="|fragments/${page} :: ${page}|"></div>
-
 </body>
 
 </html>

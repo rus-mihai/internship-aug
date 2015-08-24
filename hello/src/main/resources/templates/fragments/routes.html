@@ -46,8 +46,12 @@
 								<td th:text="${route.end.name}"></td>
 								<td th:text="${route.duration}"></td>
 								<td><input type="image" src="/images/icn_edit.png"
-									title="Edit" /><input type="image" src="/images/icn_trash.png"
-									title="Trash" /></td>
+									title="Edit" />
+									<form action="#" th:action="@{/admin/deleteroute}" th:object="${route}" method="post">
+										<input type="image" src="/images/icn_trash.png"
+										title="Trash" th:field="*{route.id}"/>
+									</form>
+									</td>
 							</tr>
 						</tbody>
 					</table>

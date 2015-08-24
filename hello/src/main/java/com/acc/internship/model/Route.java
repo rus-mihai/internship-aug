@@ -16,15 +16,14 @@ public class Route {
 	@Column(name = "id")
 	private int id;
 	
-	
 	@Column(name = "duration")
 	private String duration;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idStart", nullable=false)
 	private Station start;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idEnd", nullable=false)
 	private Station end;
 
@@ -35,8 +34,7 @@ public class Route {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
+
 	public String getDuration() {
 		return duration;
 	}
