@@ -13,6 +13,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.acc.internship.model.Route;
 import com.acc.internship.model.Station;
@@ -131,13 +132,36 @@ public class AdminController {
 		return "admin";
 	}
 	
-	@RequestMapping(value = "/admin/deleteroute", method = RequestMethod.POST)
-	public String deleteRoute(@ModelAttribute("route") Route route, Model model){
+	@RequestMapping(value = "/admin/deleteroute")
+	public String deleteRoute(@RequestParam("id") Integer id, Model model){
 		
-		System.out.println(route.getId());
-		routeDao.delete(route);
+		System.out.println(id);
+		routeDao.delete(id);
+		
 		
 		return "redirect:/admin/routes";
+	}
+	
+	@RequestMapping(value = "/admin/view-edit-route", method = RequestMethod.GET)
+	public String viewEditRoute(@RequestParam("id") Integer id, @RequestParam(value = "edit", required = false) String edit, Model model){
+		if(edit != null){
+			model.addAttribute("stations", stationDao.list());
+		}
+		
+		Route route = routeDao.get(id);
+		model.addAttribute("route", route);
+		
+		model.addAttribute("page", "view-edit-route");
+		return "admin";
+	}
+	
+	@RequestMapping(value = "/admin/view-edit-route", method = RequestMethod.POST)
+	public String updateRoute(@ModelAttribute("route") Route route, Model model){
+		
+		System.out.println(route.getId() + route.getDuration());
+		routeDao.update(route);
+		model.addAttribute("page", "routes");
+		return "admin";
 	}
 	
 	@RequestMapping(value = "/admin/userview", method = RequestMethod.GET)
