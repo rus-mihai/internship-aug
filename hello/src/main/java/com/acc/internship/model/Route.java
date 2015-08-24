@@ -15,6 +15,7 @@ public class Route {
 	@Column(name = "id")
 	private int id;
 	
+	
 	@Column(name = "duration")
 	private String duration;
 	
@@ -33,7 +34,8 @@ public class Route {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
+	
 	public String getDuration() {
 		return duration;
 	}

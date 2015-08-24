@@ -66,7 +66,7 @@
 					<li><a href="#contact">CONTACT</a></li>
 					<li id="logout">
 						<form th:action="@{/logout}" method="post">
-							<input type="submit" value="Sign Out" style="width:80px;"/>
+							<input type="submit" value="Sign Out" style="width: 80px;" />
 						</form>
 					</li>
 				</ul>
@@ -79,124 +79,11 @@
 
 	<div class="container">
 		<section style="padding-bottom: 50px; padding-top: 50px;">
-			<div class="row" id="Home">
-				<div class="col-md-4">
-					<img src="img/250x250.png" class="img-rounded img-responsive" /> <br></br>
-					<br></br> <label>Registered Username</label> <input type="text"
-						class="form-control" placeholder="Demouser" /> <label>Registered
-						Name</label> <input type="text" class="form-control"
-						placeholder="Jhon Deo" /> <label>Registered Email</label> <input
-						type="text" class="form-control" placeholder="jnondeao@gmail.com" />
-					<br></br> <a href="#" class="btn btn-success">Update Details</a> <br></br>
-					<br></br>
-				</div>
-				<div class="col-md-8">
-					<div class="alert alert-info">
-						<h2>User Info :</h2>
-						<h4>User profile</h4>
-						<p>A complete and usefull feature for all drivers who wish to
-							review their status or update their profile.</p>
-					</div>
-					<div>
-						<a href="#" class="btn btn-social btn-facebook"> <i
-							class="fa fa-facebook"></i>&nbsp; Facebook
-						</a> <a href="#" class="btn btn-social btn-google"> <i
-							class="fa fa-google-plus"></i>&nbsp; Google
-						</a> <a href="#" class="btn btn-social btn-twitter"> <i
-							class="fa fa-twitter"></i>&nbsp; Twitter
-						</a> <a href="#" class="btn btn-social btn-linkedin"> <i
-							class="fa fa-linkedin"></i>&nbsp; Linkedin
-						</a>
-					</div>
-					<div class="form-group col-md-8">
-						<h3>Change YOur Password</h3>
-						<br></br> <label>Enter Old Password</label> <input type="password"
-							class="form-control" /> <label>Enter New Password</label> <input
-							type="password" class="form-control" /> <label>Confirm
-							New Password</label> <input type="password" class="form-control" /> <br></br>
-						<a href="#" class="btn btn-warning">Change Password</a>
-					</div>
-				</div>
-			</div>
-			<!-- ROW END -->
 
-			<div class="container2" id="Routes">
-				<table>
-					<thead>
-						<tr>
-							<th>RouteID</th>
-							<th>Start</th>
-							<th>End</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each=" u : ${users}">
-							<td th:text="${u.lastName}"></td>
-							<td th:text="${u.firstName}"></td>
-							<td th:text="${u.username}"></td>
-							<td ><input type="image" src="images/icn_edit.png" width="16px" height="16px"
-									title="Edit" /></td>
-							</tr>
-					</tbody>
-				</table>
+			
+			<div th:include="fragments/updatedriver :: updatedriver "></div>
+			<div th:replace="fragments/driverview :: driverview "></div>
 
-				<div class="row-fluid" id="contact">
-					<h1>Contact Me</h1>
-					<div class="span12 ">
-						<div class="span8 well">
-							<div class="feedback-form">
-
-
-
-								<form action="" method="post" id="contact-form">
-									<fieldset>
-										<div class="form-group form-group-fullname">
-											<label class="control-label" for="fullname">NAME *</label> <input
-												type="text" class="form-control input-lg" name="fullname"
-												id="fullname" placeholder="Enter Your Name" />
-										</div>
-										<div class="form-group form-group-email">
-											<label class="control-label" for="email">E-MAIL *</label> <input
-												type="text" class="form-control input-lg" name="email"
-												id="email" placeholder="Enter Your E-Mail" />
-										</div>
-										<div class="form-group form-group-message">
-											<label class="control-label" for="message">MESSAGE *</label>
-											<textarea class="form-control" name="message" id="message"
-												rows="3"></textarea>
-										</div>
-										<button type="submit" class="btn btn-brand">Submit</button>
-									</fieldset>
-								</form>
-
-							</div>
-
-						</div>
-						<div class="span4 well" style="padding-bottom: 10.3%;">
-							<div class="address-subsection" style="text-align: center">
-								<div class="address-icon">
-									<i class="icon-map-marker icon-5x"></i>
-								</div>
-								<h4 class="address-title">LOCATE US</h4>
-								<address>
-									795 Apartment, Building 600<br></br> New Delhi, India 94107<br></br>
-									<abbr title="Phone">P:</abbr> (123) 456-7890
-								</address>
-
-
-								<h4>Contact Details</h4>
-								<p>
-									<strong>Email:</strong>me@domain.com
-								</p>
-								<p>
-									<strong>Phone:</strong>+1-xxx-xxx-xxxx
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</section>
 		<!-- SECTION END -->
 	</div>

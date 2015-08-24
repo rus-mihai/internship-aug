@@ -57,8 +57,8 @@ public class Station {
 		return endRoutes;
 	}
 
-	public void setEndRoutes(Set<Route> endRoutes) {
-		this.endRoutes = endRoutes;
+	public void setEndRoutes(Set<Route> r) {
+		this.endRoutes = r;
 	}
 	
 	

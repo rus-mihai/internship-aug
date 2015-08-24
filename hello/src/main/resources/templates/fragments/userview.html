@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<title>Insert title here</title>
+
+</head>
+<body>
+	<div th:fragment="userview">
+
+		<section id="main" class="column">
+
+			<!--start of NewStation-->
+			<article class="module width_3_quarter">
+				<header>
+					<h3 class="tabs_involved">Content Manager</h3>
+
+				</header>
+
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<table class="tablesorter">
+							<thead>
+								<tr>
+									<th>Firstname</th>
+									<th>Lastname</th>
+									<th>Username</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody id="ByParameter">
+								<tr th:each="u: ${users}">
+									<td th:text="${u.firstName}"></td>
+									<td th:text="${u.lastName}"></td>
+									<td th:text="${u.username}"></td>
+									<td><input type="image" src="/images/icn_edit.png"
+										title="Edit" /><input type="image"
+										src="/images/icn_trash.png" title="Trash" /></td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+					<!-- end of #tab1 -->
+
+
+				</div>
+				<!-- end of .tab_container -->
+
+			</article>
+			<!-- end of content manager article -->
+		</section>
+	</div>
+</body>
+</html>

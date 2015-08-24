@@ -31,70 +31,77 @@ public class AdminController {
 	private UserDAO userDao;
 
 	@Autowired
-	private UserRoleDAO userRoleDao;	
+	private UserRoleDAO userRoleDao;
 
-	
-	//NEW
-	
+	// NEW
+
 	@RequestMapping(value = "/admin")
 	public String adminDash(Model model) {
 		model.addAttribute("page", "routes");
 		return "admin";
 	}
-	
+
 	@RequestMapping(value = "admin/routes")
-	public String adminViewRoutes(Model model){
+	public String adminViewRoutes(Model model) {
 		model.addAttribute("page", "routes");
 		List<Route> list = routeDao.list();
 		model.addAttribute("routes", list);
 		return "admin";
 	}
-	
+
 	@RequestMapping(value = "/admin/newstation", method = RequestMethod.GET)
 	public String newStationGet(Model model) {
 		model.addAttribute("station", new Station());
-		model.addAttribute("page","newstation");
+		model.addAttribute("page", "newstation");
 		return "admin";
-		
+
 	}
-	
+
+	@RequestMapping(value = "/admin/userview", method = RequestMethod.GET)
+	public String userView(Model model) {
+		List<User> users = userDao.list();
+		model.addAttribute("users", users);
+		model.addAttribute("page", "userview");
+		return "admin";
+
+	}
+
+
 	@RequestMapping(value = "/admin/newstation", method = RequestMethod.POST)
-	public String newStationPost(@ModelAttribute Station station, Model model){
+	public String newStationPost(@ModelAttribute Station station, Model model) {
 		stationDao.add(station);
-		model.addAttribute("page", "newstation");		
+		model.addAttribute("page", "newstation");
 		return "admin";
 	}
-	
+
 	@RequestMapping(value = "/admin/adduser", method = RequestMethod.GET)
 	public String newDriverGet(Model model) {
 		model.addAttribute("user", new User());
-		model.addAttribute("page","newdriver");
+		model.addAttribute("page", "newdriver");
 		return "admin";
-		
+
 	}
-	
+
 	@RequestMapping(value = "/admin/adduser", method = RequestMethod.POST)
-	public String newDriverPost(@ModelAttribute User user, Model model){
-		//set role to driver
+	public String newDriverPost(@ModelAttribute User user, Model model) {
+		// set role to driver
 		user.setRole(userRoleDao.list().get(1));
-		//Crypt password
+		// Crypt password
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		userDao.add(user);
-		model.addAttribute("page", "newdriver");		
+		model.addAttribute("page", "newdriver");
 		return "admin";
 	}
-	
+
 	@RequestMapping(value = "/admin/newroute", method = RequestMethod.GET)
-	public String newRouteGet(Model model){
-		
+	public String newRouteGet(Model model) {
+
 		List<Station> stations = stationDao.list();
-		
+
 		model.addAttribute("stations", stations);
-		
+
 		model.addAttribute("page", "newroute");
 		return "admin";
 	}
-	
-	
 
 }
