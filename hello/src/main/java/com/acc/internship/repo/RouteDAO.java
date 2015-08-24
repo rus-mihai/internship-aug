@@ -8,5 +8,6 @@ public interface RouteDAO {
 	public Route get(int id);
 	public List<Route> list();
 	public void add(Route r);
-	public void delete(Route r);
+	public void delete(int id);
+	public void update(Route r);
 }

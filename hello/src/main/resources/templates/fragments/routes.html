@@ -40,17 +40,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="route: ${routes}">
+							
+							<tr th:each="route: ${routes}" th:href="@{/admin/routes(id=${route.id})}">
 
 								<td th:text="${route.start.name}"></td>
 								<td th:text="${route.end.name}"></td>
 								<td th:text="${route.duration}"></td>
-								<td><input type="image" src="/images/icn_edit.png"
-									title="Edit" />
-									<form action="#" th:action="@{/admin/deleteroute}" th:object="${route}" method="post">
-										<input type="image" src="/images/icn_trash.png"
-										title="Trash" th:field="*{route.id}"/>
-									</form>
+								<td>
+									<a th:href="@{/admin/view-edit-route(id=${route.id})}">
+										<input type="image" src="/images/icn_edit.png"
+										title="Edit" />
+									</a>
+									
+										<a th:href="@{/admin/deleteroute(id=${route.id})}">
+											<input type="image" src="/images/icn_trash.png" title="Trash" /> 
+										</a>
 									</td>
 							</tr>
 						</tbody>

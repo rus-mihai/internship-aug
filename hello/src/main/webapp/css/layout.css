@@ -918,3 +918,30 @@ fieldset textarea:focus {
 	text-indent: 40px;
 	font-size: 14px;
 }
+
+
+#viewRoute {
+    margin: 30px;
+    width: 50%;
+}
+
+.no h1{
+	font-size: 50px;
+	color: #3CB371;
+}
+
+.station h2 {
+	font-size: 25 px;
+	color: #58064C
+}
+
+.station h3{
+	font-size: 35px !important;
+	color: #323232 !important;
+}
+
+.duration h3{
+	font-size: 30px !important;
+	color: red !important;
+}
+

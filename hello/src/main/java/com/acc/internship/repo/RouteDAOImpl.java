@@ -60,8 +60,27 @@ public class RouteDAOImpl implements RouteDAO{
 	}
 
 	@Override
-	public void delete(Route r) {
-		getEntityManager().remove(r);
+	@Transactional
+	public void delete(int id) {
+		String hql = "delete from Route where id=?";
+		Query query = getEntityManager().createQuery(hql);
+		query.setParameter(1, id);
+		query.executeUpdate();
+		
+	}
+
+	
+	@Override
+	@Transactional
+	public void update(Route route) {
+		String hql = "update Route r set r.start = ?, r.end = ?, r.duration = ? where r.id=?";
+		Query query = getEntityManager().createQuery(hql);
+		
+		query.setParameter(1, route.getStart());
+		query.setParameter(2, route.getEnd());
+		query.setParameter(3, route.getDuration());
+		query.setParameter(4,route.getId());
+		query.executeUpdate();
 		
 	}
 
