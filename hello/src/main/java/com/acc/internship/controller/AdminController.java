@@ -140,5 +140,14 @@ public class AdminController {
 		return "redirect:/admin/routes";
 	}
 	
+	@RequestMapping(value = "/admin/userview", method = RequestMethod.GET)
+	public String userView(Model model) {
+		List<User> users = userDao.list();
+		model.addAttribute("users", users);
+		model.addAttribute("page", "userview");
+		return "admin";
+
+	}
+	
 
 }
