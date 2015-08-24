@@ -52,12 +52,12 @@ public class DriverController {
 		model.addAttribute("passupdate", user);
 		
 
-		return "/driver";
+		return "driver";
 
 	}
 
 	@RequestMapping(value = {"/driver"},method = RequestMethod.POST)
-	@ResponseBody
+
 	public String newDriverPost(
 			@ModelAttribute("userupdate") User userupdate,
 			@ModelAttribute("passupdate") User passupdate, ModelMap model) {
