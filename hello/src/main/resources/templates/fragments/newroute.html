@@ -18,17 +18,23 @@
 					</header>
 					<h1>Add new route</h1>
 					<h1>Insert route number and select Start and End stations</h1>
-					<div id="panel">
-						<b>Start: </b> 
-						<select id="start" onchange="calcRoute();">
-							<option th:each="station: ${stations}" th:object="${station}"
-								th:text="${station.name}"></option>
-						</select> 
-						<b>End: </b> <select id="end" onchange="calcRoute();">
-							<option th:each="station: ${stations}" th:object="${station}"
-								th:text="${station.name}"></option>
-
-						</select>
+					<div id="x">
+						<form action="#" th:action="@{/admin/newroute}" th:object="${xxx}" method="post">
+							<label>Line no. </label><input type="text" th:field="*{id}"/>
+							<label>Duration </label><input type="text" th:field="*{duration}"/>
+							<b>Start: </b> 
+							<select th:field="*{start.id}" onchange="calcRoute();">
+								<option th:each="s: ${stations}" th:value="${s.id}" 
+									th:text="${s.name}"></option>
+							</select> 
+							<b>End: </b> <select th:field="*{end.id}" onchange="calcRoute();">
+								<option th:each="x: ${stations}" th:value="${x.id}" 
+									th:text="${x.name}"></option>
+	
+							</select>
+							
+							<input type="submit" value="Add route" />
+						</form>
 					</div>
 				</div>
 			</article>

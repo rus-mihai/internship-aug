@@ -76,6 +76,7 @@ public class UserDAOImpl implements UserDAO{
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("username", u.getUsername());
 		List<User> users = query.getResultList();
+
 		
 		if(users == null || users.size() == 0 ){
 			entityManager.persist(u);

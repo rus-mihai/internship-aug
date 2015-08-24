@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "routes")
 public class Route {
+	
 	@Id
 	@Column(name = "id")
 	private int id;
