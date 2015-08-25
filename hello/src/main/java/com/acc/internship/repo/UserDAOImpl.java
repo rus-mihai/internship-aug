@@ -9,10 +9,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.acc.internship.model.User;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 
 
 @Repository
@@ -71,17 +75,11 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	@Transactional
-	public void add(User u) {
-		String hql = "from User a where a.username=:username";
-		Query query = getEntityManager().createQuery(hql);
-		query.setParameter("username", u.getUsername());
-		List<User> users = query.getResultList();
-
-		
-		if(users == null || users.size() == 0 ){
-			entityManager.persist(u);
-		}else{
-			System.out.println("exista deja");
+	public void add(User u) throws DuplicateKeyException {
+		try{
+			getEntityManager().persist(u);
+		}catch(Exception exception){
+			throw new DuplicateKeyException("User already exists");
 		}
 		
 	}
@@ -112,7 +110,7 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	@Transactional
 	public void update(User u) {
-		
+				
 		String hql = "update User a set a.firstName =:firstname,a.lastName =:lastname,a.username =:username where a.id =:id";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("firstname", u.getFirstName());

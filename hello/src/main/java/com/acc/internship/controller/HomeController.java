@@ -1,32 +1,35 @@
 package com.acc.internship.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.acc.internship.model.Assigment;
 import com.acc.internship.model.Route;
-import com.acc.internship.model.Station;
+import com.acc.internship.model.User;
+import com.acc.internship.repo.AssigmentDAO;
 import com.acc.internship.repo.RouteDAO;
 import com.acc.internship.repo.StationDAO;
+import com.acc.internship.repo.UserDAO;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
-	//@Autowired
-	//private  UserDAO userDao;
+	@Autowired
+	private  UserDAO userDao;
 	
 	@Autowired
 	private StationDAO stationDao;
 	
 	@Autowired
 	private RouteDAO routeDao;
+	
+	@Autowired
+	private AssigmentDAO assigmentDao;
 	
 	
 	@RequestMapping("/hello")
@@ -37,6 +40,14 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String root(Model model){
+		User u = userDao.get(2);
+		Route r = routeDao.get(35);
+		
+		Assigment a = new Assigment();
+		a.setDriver(u);
+		a.setRoute(r);
+		
+		assigmentDao.add(a);
 		
 		return "index";
 		

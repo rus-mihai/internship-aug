@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,10 +84,15 @@ public class AdminController {
 	@RequestMapping(value = "/admin/adduser", method = RequestMethod.POST)
 	public String newDriverPost(@ModelAttribute User user, Model model){
 		//set role to driver
-		user.setRole(userRoleDao.list().get(1));
+		user.setUserRole(userRoleDao.list().get(1));
 		//Crypt password
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-		userDao.add(user);
+		try{
+			userDao.add(user);
+		}catch(DuplicateKeyException e){
+			model.addAttribute("exists", "User already exists");
+		}
+
 		model.addAttribute("page", "newdriver");		
 		return "admin";
 	}
@@ -157,9 +164,14 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin/view-edit-route", method = RequestMethod.POST)
 	public String updateRoute(@ModelAttribute("route") Route route, Model model){
+				
+		Station start = stationDao.get(route.getStart().getId());
+		route.setStart(start);
+		Station end = stationDao.get(route.getEnd().getId());
+		route.setEnd(end);
 		
-		System.out.println(route.getId() + route.getDuration());
 		routeDao.update(route);
+		
 		model.addAttribute("page", "routes");
 		return "admin";
 	}

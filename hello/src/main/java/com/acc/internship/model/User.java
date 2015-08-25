@@ -1,14 +1,16 @@
 package com.acc.internship.model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +37,9 @@ public class User {
 	@JoinColumn(name = "idRole", nullable=false)
 	private UserRole userRole;
 	
+	@OneToMany(mappedBy="driver")
+	private Set<Assigment> assigments;
+	
 	public User(UserRole role, String lastName, String firstName, String username, String password){
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -48,13 +53,23 @@ public class User {
 	}
 	
 
-	public UserRole getRole(){
-		return this.userRole;
+
+	public UserRole getUserRole() {
+		return userRole;
 	}
-	public void setRole(UserRole role){
-		this.userRole = role;
+
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
 	}
-	
+
+	public Set<Assigment> getAssigments() {
+		return assigments;
+	}
+
+	public void setAssigments(Set<Assigment> assigments) {
+		this.assigments = assigments;
+	}
+
 	public int getId(){
 		return this.id;
 	}
