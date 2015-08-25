@@ -1,0 +1,83 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="routes">
+		<section id="main" class="column" >
+
+		<h4 class="alert_info">Welcome to admin panel.</h4>
+
+		<article class="module width_full">
+			<header>
+				<h3>Stats</h3>
+			</header>
+			<div class="module_content">
+
+				<div class="clear"></div>
+			</div>
+		</article>
+		<!-- end of stats article -->
+
+		<article class="module width_3_quarter">
+			<header>
+				<h3 class="tabs_involved">Content Manager</h3>
+
+			</header>
+			<div class="tab_container">
+				<div id="tab1" class="tab_content">
+					<table class="tablesorter" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Start</th>
+								<th>Destination</th>
+								<th>Duration</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr th:each="route: ${routes}" th:href="@{/admin/routes(id=${route.id})}">
+
+								<td th:text="${route.start.name}"></td>
+								<td th:text="${route.end.name}"></td>
+								<td th:text="${route.duration}"></td>
+<<<<<<< HEAD
+								<td>
+									<a th:href="@{/admin/view-edit-route(id=${route.id})}">
+										<input type="image" src="/images/icn_edit.png"
+										title="Edit" />
+									</a>
+									
+										<a th:href="@{/admin/deleteroute(id=${route.id})}">
+											<input type="image" src="/images/icn_trash.png" title="Trash" /> 
+										</a>
+=======
+								<td><input type="image" src="/images/icn_edit.png"
+									title="Edit" />
+									<form action="#" th:action="@{/admin/deleteroute}" th:object="${route}" method="post">
+										<input type="image" src="/images/icn_trash.png"
+										title="Trash" th:field="*{route.id}"/>
+									</form>
+>>>>>>> add route
+									</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- end of #tab1 -->
+
+
+			</div>
+			<!-- end of .tab_container -->
+
+		</article>
+		<!-- end of content manager article -->
+		</section>
+	</div>
+</body>
+</html>
