@@ -18,6 +18,7 @@ import com.acc.internship.model.User;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 
+<<<<<<< HEAD
 
 @Repository
 public class UserDAOImpl implements UserDAO{
@@ -43,11 +44,38 @@ public class UserDAOImpl implements UserDAO{
 	
 	@Override
 	public User login(String username, String password){
+=======
+@Repository
+public class UserDAOImpl implements UserDAO {
+	@Autowired
+	private EntityManager entityManager;
+
+	public UserDAOImpl() {
+
+	}
+
+	public UserDAOImpl(EntityManager em) {
+		this.entityManager = em;
+	}
+
+	@PersistenceContext
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
+	public EntityManager getEntityManager() {
+		return this.entityManager;
+	}
+
+	@Override
+	public User login(String username, String password) {
+>>>>>>> master
 		String hql = "from User d where d.username=:username and d.password=:password";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("username", username);
 		query.setParameter("password", password);
 		User u = null;
+<<<<<<< HEAD
 		try{
 			u = (User)query.getSingleResult();	
 		}catch(NoResultException e){
@@ -57,36 +85,77 @@ public class UserDAOImpl implements UserDAO{
 		return u;
 	}
 	
+=======
+		try {
+			u = (User) query.getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println("does not exist");
+		}
+
+		return u;
+	}
+
+>>>>>>> master
 	@Override
 	public List<User> list() {
 		String sql = "from User";
 		Query query = getEntityManager().createQuery(sql);
 		List<User> resultList = query.getResultList();
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> master
 		return resultList;
 	}
 
 	@Override
 	@Transactional
 	public User get(int id) {
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> master
 		return getEntityManager().find(User.class, id);
 	}
 
 	@Override
 	@Transactional
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
 	public void add(User u) throws DuplicateKeyException {
 		try{
 			getEntityManager().persist(u);
 		}catch(Exception exception){
 			throw new DuplicateKeyException("User already exists");
+<<<<<<< HEAD
 		}
 		
+=======
+=======
+	public void add(User u) {
+		String hql = "from User a where a.username=:username";
+		Query query = getEntityManager().createQuery(hql);
+		query.setParameter("username", u.getUsername());
+		List<User> users = query.getResultList();
+
+		if (users == null || users.size() == 0) {
+			entityManager.persist(u);
+		} else {
+			System.out.println("exista deja");
+>>>>>>> origin/master
+		}
+
+>>>>>>> master
 	}
 
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		
 	}
 	
@@ -111,6 +180,36 @@ public class UserDAOImpl implements UserDAO{
 	@Transactional
 	public void update(User u) {
 				
+=======
+
+	}
+
+	@Override
+	public User findByUsername(String username) {
+		List<User> users = new ArrayList<User>();
+
+		Query query = getEntityManager().createQuery("from User where username=?");
+		query.setParameter(1, username);
+
+		users = query.getResultList();
+
+		if (users.size() > 0) {
+			return users.get(0);
+		} else {
+			return null;
+		}
+
+	}
+
+	@Override
+	@Transactional
+	public void update(User u) {
+<<<<<<< HEAD
+				
+=======
+
+>>>>>>> origin/master
+>>>>>>> master
 		String hql = "update User a set a.firstName =:firstname,a.lastName =:lastname,a.username =:username where a.id =:id";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("firstname", u.getFirstName());
@@ -120,11 +219,15 @@ public class UserDAOImpl implements UserDAO{
 		query.executeUpdate();
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> master
 
 	@Override
 	@Transactional
 	public void updatepass(User u) {
+<<<<<<< HEAD
 		
 				String hql = "update User b set b.password=:password where b.id =:id";
 				Query query = getEntityManager().createQuery(hql);
@@ -136,4 +239,16 @@ public class UserDAOImpl implements UserDAO{
 	}
 >>>>>>> merge
 	
+=======
+		// TODO Auto-generated method stub
+		String hql = "update User b set b.password=:password where b.id =:id";
+		Query query = getEntityManager().createQuery(hql);
+		
+		query.setParameter("password", u.getPassword());
+		query.setParameter("id", u.getId());
+		query.executeUpdate();
+		
+	}
+
+>>>>>>> master
 }

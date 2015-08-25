@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table(name = "Users")
 public class User {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -38,9 +39,15 @@ public class User {
 	private UserRole userRole;
 	
 	@OneToMany(mappedBy="driver")
+<<<<<<< HEAD
 	private Set<Assignment> assigments;
 	
 	public User(UserRole role, String lastName, String firstName, String username, String password){
+=======
+	private Set<Assigment> assigments;
+	
+	public User(UserRole role, String lastName, String firstName, String username, String password, String password1, String password2){
+>>>>>>> master
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.username = username;
@@ -62,11 +69,19 @@ public class User {
 		this.userRole = userRole;
 	}
 
+<<<<<<< HEAD
 	public Set<Assignment> getAssigments() {
 		return assigments;
 	}
 
 	public void setAssigments(Set<Assignment> assigments) {
+=======
+	public Set<Assigment> getAssigments() {
+		return assigments;
+	}
+
+	public void setAssigments(Set<Assigment> assigments) {
+>>>>>>> master
 		this.assigments = assigments;
 	}
 
@@ -106,11 +121,11 @@ public class User {
 	public String getPassword(){
 		return this.password;
 	}
+	
 	public void setPassword(String password){
 		this.password = password;
 	}
-
-
+	
 	
 	
 	
