@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -48,14 +49,20 @@ public class AssignmentDAOImpl implements AssignmentDAO{
 
 	@Override
 	public List<Assignment> listRouteForUser(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "from Assignment where driver.id =?";
+		Query query = getEntityManager().createQuery(hql);
+		query.setParameter(1, id);
+		List<Assignment> result = query.getResultList();
+		return result;
 	}
 
 	@Override
 	@Transactional
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		String hql ="delete from Assignment where id = ?";
+		Query query = getEntityManager().createQuery(hql);
+		query.setParameter(1, id);
+		query.executeUpdate();
 		
 	}
 
