@@ -27,7 +27,7 @@ public class UserDetailServiceImpl implements UserDetailsService{
 		
 		User user = userDao.findByUsername(username);
 		
-		List<GrantedAuthority> authorities = buildUserAuthority(user.getRole());
+		List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRole());
 		
 		return buildUserForAuthentication(user, authorities);
 		

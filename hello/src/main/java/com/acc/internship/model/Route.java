@@ -1,11 +1,14 @@
 package com.acc.internship.model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +29,9 @@ public class Route {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idEnd", nullable=false)
 	private Station end;
+	
+	@OneToMany(mappedBy="route")
+	private Set<Assigment> assigments;
 
 	public int getId() {
 		return id;
@@ -57,6 +63,14 @@ public class Route {
 
 	public void setEnd(Station end) {
 		this.end = end;
+	}
+
+	public Set<Assigment> getAssigments() {
+		return assigments;
+	}
+
+	public void setAssigments(Set<Assigment> assigments) {
+		this.assigments = assigments;
 	}
 	
 	

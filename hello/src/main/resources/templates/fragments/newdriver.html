@@ -16,6 +16,7 @@
 
 			</header>
 			<h1>Add User</h1>
+			<p th:text="${exists}"></p>
 			<form action="#" method="post"
 				 th:action="@{/admin/adduser}" th:object="${user}" >
 
