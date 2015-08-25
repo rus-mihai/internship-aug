@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "assigments")
-public class Assigment {
+public class Assignment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +25,7 @@ public class Assigment {
 	@JoinColumn(name = "idDriver", nullable = false)
 	private User driver;
 	
-	public Assigment(){
+	public Assignment(){
 		
 	}
 

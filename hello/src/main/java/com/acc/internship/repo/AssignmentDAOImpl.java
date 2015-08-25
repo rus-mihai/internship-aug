@@ -9,19 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.acc.internship.model.Assigment;
+import com.acc.internship.model.Assignment;
 
 @Repository
-public class AssigmentDAOImpl implements AssigmentDAO{
+public class AssignmentDAOImpl implements AssignmentDAO{
 	
 	@Autowired
 	private EntityManager entityManager;
 	
-	public AssigmentDAOImpl(){
+	public AssignmentDAOImpl(){
 		
 	}
 	
-	public AssigmentDAOImpl(EntityManager em){
+	public AssignmentDAOImpl(EntityManager em){
 		this.entityManager = em;
 	}
 	
@@ -35,19 +35,19 @@ public class AssigmentDAOImpl implements AssigmentDAO{
 	
 	@Override
 	@Transactional
-	public Assigment get(int id) {
-		getEntityManager().find(Assigment.class, id);
+	public Assignment get(int id) {
+		getEntityManager().find(Assignment.class, id);
 		return null;
 	}
 
 	@Override
-	public List<Assigment> list() {
+	public List<Assignment> list() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Assigment> listRouteForUser(int id) {
+	public List<Assignment> listRouteForUser(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -61,14 +61,14 @@ public class AssigmentDAOImpl implements AssigmentDAO{
 
 	@Override
 	@Transactional
-	public void update(Assigment assigment) {
+	public void update(Assignment assigment) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	@Transactional
-	public void add(Assigment assigment) {
+	public void add(Assignment assigment) {
 		getEntityManager().persist(assigment);
 	}
 	

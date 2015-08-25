@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.acc.internship.model.Assigment;
+import com.acc.internship.model.Assignment;
 import com.acc.internship.model.Route;
 import com.acc.internship.model.User;
-import com.acc.internship.repo.AssigmentDAO;
+import com.acc.internship.repo.AssignmentDAO;
 import com.acc.internship.repo.RouteDAO;
 import com.acc.internship.repo.StationDAO;
 import com.acc.internship.repo.UserDAO;
@@ -29,7 +29,7 @@ public class HomeController {
 	private RouteDAO routeDao;
 	
 	@Autowired
-	private AssigmentDAO assigmentDao;
+	private AssignmentDAO assigmentDao;
 	
 	
 	@RequestMapping("/hello")
@@ -43,7 +43,7 @@ public class HomeController {
 		User u = userDao.get(2);
 		Route r = routeDao.get(35);
 		
-		Assigment a = new Assigment();
+		Assignment a = new Assignment();
 		a.setDriver(u);
 		a.setRoute(r);
 		

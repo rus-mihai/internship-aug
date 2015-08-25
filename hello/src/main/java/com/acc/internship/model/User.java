@@ -38,7 +38,7 @@ public class User {
 	private UserRole userRole;
 	
 	@OneToMany(mappedBy="driver")
-	private Set<Assigment> assigments;
+	private Set<Assignment> assigments;
 	
 	public User(UserRole role, String lastName, String firstName, String username, String password){
 		this.lastName = lastName;
@@ -62,11 +62,11 @@ public class User {
 		this.userRole = userRole;
 	}
 
-	public Set<Assigment> getAssigments() {
+	public Set<Assignment> getAssigments() {
 		return assigments;
 	}
 
-	public void setAssigments(Set<Assigment> assigments) {
+	public void setAssigments(Set<Assignment> assigments) {
 		this.assigments = assigments;
 	}
 
