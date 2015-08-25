@@ -119,5 +119,18 @@ public class UserDAOImpl implements UserDAO{
 		query.setParameter("id", u.getId());
 		query.executeUpdate();
 	}
+
+	@Override
+	@Transactional
+	public void updatepass(User u) {
+		
+				String hql = "update User b set b.password=:password where b.id =:id";
+				Query query = getEntityManager().createQuery(hql);
+				
+				query.setParameter("password", u.getPassword());
+				query.setParameter("id", u.getId());
+				query.executeUpdate();
+		
+	}
 	
 }
