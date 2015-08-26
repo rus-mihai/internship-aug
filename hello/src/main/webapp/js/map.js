@@ -23,13 +23,12 @@ function initMap() {
 
 						function calculateAndDisplayRoute(directionsService,
 								directionsDisplay) {
-							directionsService
-									.route(
+							directionsService.route(
 											{
 												origin : document
-														.getElementById('start').value,
+														.getElementById('start').options[document.getElementById('start').selectedIndex].text,
 												destination : document
-														.getElementById('end').value,
+														.getElementById('end').options[document.getElementById('end').selectedIndex].text,
 												travelMode : google.maps.TravelMode.DRIVING
 											},
 											function(response, status) {
