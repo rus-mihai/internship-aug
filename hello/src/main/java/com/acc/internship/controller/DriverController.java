@@ -68,8 +68,8 @@ public class DriverController {
 	@RequestMapping(value = { "/driver/updatepass" }, method = RequestMethod.POST)
 	public String updatePassPost(PasswordVerify passupdateoptions, BindingResult result, Model model) {
 
-		String old = passupdateoptions.getPasswordold();
-		String nPass = passupdateoptions.getPasswordnew();
+		String old = passupdateoptions.getOldpassword();
+		String nPass = passupdateoptions.getNewpassword();
 		String confirm = passupdateoptions.getConfirm();
 		
 		User user = userDao.get(passupdateoptions.getId());
