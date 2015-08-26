@@ -2,7 +2,6 @@ package com.acc.internship.config;
 
 import java.util.Properties;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -17,9 +16,6 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import com.acc.internship.repo.UserDAO;
-import com.acc.internship.repo.UserDAOImpl;
 
 import liquibase.integration.spring.SpringLiquibase;
 

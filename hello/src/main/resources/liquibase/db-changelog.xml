@@ -153,4 +153,22 @@
     <changeSet id="10" author="Cristi">
     	<addUniqueConstraint tableName="users" columnNames="username"/>
     </changeSet>
+    <changeSet id="11" author="Cristi">
+    	<dropForeignKeyConstraint baseTableName="assigments" constraintName="idDriver" />
+    	<addForeignKeyConstraint constraintName="idDriver" 
+    							referencedTableName="users" 
+    							baseColumnNames="idDriver" 
+    							baseTableName="assigments" 
+    							referencedColumnNames="id"
+    							onDelete="CASCADE"
+    							onUpdate="CASCADE"/>
+    	<dropForeignKeyConstraint baseTableName="assigments" constraintName="idRoute" />	
+    	<addForeignKeyConstraint constraintName="idRoute" 
+    							referencedTableName="routes" 
+    							baseColumnNames="idRoute" 
+    							baseTableName="assigments" 
+    							referencedColumnNames="id"
+    							onDelete="CASCADE"
+    							onUpdate="CASCADE" />
+    </changeSet>
 </databaseChangeLog>
