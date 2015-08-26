@@ -35,8 +35,16 @@ public class DriverController {
 	@Autowired
 	private StationDAO stationDao;
 
+<<<<<<< HEAD
+	
+
+	@RequestMapping( value = "/driver",method = RequestMethod.GET)
+	public String newDriverGet(ModelMap model) {
+		
+=======
 	@RequestMapping(value = "/driver", method = RequestMethod.GET)
 	public String newDriverGet(Model model) {
+>>>>>>> master
 
 		List<Route> routes = routeDao.list();
 		model.addAttribute("routes", routes);
@@ -46,17 +54,43 @@ public class DriverController {
 		String username = auth.getName();
 
 		User user = userDao.findByUsername(username);
+<<<<<<< HEAD
+		User user2 = userDao.findByUsername(username);
+
+		model.addAttribute("userupdate", user2);
+		model.addAttribute("passupdate", user);
+		
+=======
 
 		PasswordVerify pass = new PasswordVerify();
 		pass.setId(user.getId());
 
 		model.addAttribute("userupdate", user);
 		model.addAttribute("passupdateoptions", pass);
+>>>>>>> master
 
 		return "driver";
 
 	}
 
+<<<<<<< HEAD
+	@RequestMapping(value = {"/driver"},method = RequestMethod.POST)
+	public String updateDriverPost(User userupdate, BindingResult result ) {
+		
+		userDao.update(userupdate);
+		return "redirect:/driver";
+	}
+	
+	@RequestMapping(value = {"/driver/updatepass"},method = RequestMethod.POST)
+	public String updatePassPost(User passupdate, BindingResult result, Model model) {
+
+		passupdate.setPassword(new BCryptPasswordEncoder().encode(passupdate.getPassword()));
+		userDao.updatepass(passupdate);
+//		model.addAttribute("userupdate", passupdate);
+//		model.addAttribute("passupdate", passupdate);
+		return "redirect:/driver";
+	}
+=======
 	@RequestMapping(value = { "/driver" }, method = RequestMethod.POST)
 	public String updateDriverPost(User userupdate, BindingResult result) {
 
@@ -81,5 +115,6 @@ public class DriverController {
 		}
 		return "redirect:/driver";
 	}
+>>>>>>> master
 
 }

@@ -1,0 +1,95 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<title>Insert title here</title>
+
+</head>
+<body>
+	<div th:fragment="assign-route-driver">
+
+		<section id="main" class="column">
+
+			<!--start of NewStation-->
+			<article class="module width_3_quarter">
+				<header>
+					<h3 class="tabs_involved">Content Manager</h3>
+
+				</header>
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+					<div id="userDetails">
+						<h2 th:text="${user.firstName}"></h2>
+						<h3 th:text="${user.lastName}"></h3>
+					</div>
+					
+					<div id="working">
+						<table class="tablesorter" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Start</th>
+								<th>Destination</th>
+								<th>Duration</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr th:each="assignment: ${assignments}">
+
+								<td th:text="${assignment.route.start.name}"></td>
+								<td th:text="${assignment.route.end.name}"></td>
+								<td th:text="${assignment.route.duration}"></td>
+								<td>
+									<a th:href="@{/admin/assign-route-driver/unasign(id=${assignment.id})}">
+										<input type="submit" value = "Remove route from this driver" />
+									</a>
+									</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+					
+					<div id="available">
+						<table class="tablesorter" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Start</th>
+								<th>Destination</th>
+								<th>Duration</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr th:each="route: ${availableRoutes}" >
+
+								<td th:text="${route.start.name}"></td>
+								<td th:text="${route.end.name}"></td>
+								<td th:text="${route.duration}"></td>
+								<td>
+									<a th:href="@{/admin/assign-route-driver/asign(id=${route.id}, idDriver=${user.id})}">
+										<input type="submit" value = "Add this route to driver" />
+									</a>
+									</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+					
+					
+					</div>
+					<!-- end of #tab1 -->
+
+
+				</div>
+				<!-- end of .tab_container -->
+
+			</article>
+			<!-- end of content manager article -->
+		</section>
+	</div>
+</body>
+</html>

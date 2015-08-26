@@ -29,7 +29,32 @@
 							value="Reset" />
 					</p>
 				</form>
-				
+				<table class="tablesorter" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Station name</th>
+								<th>Actions</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr th:each="station: ${stations}">
+
+								<td th:text="${station.name}"></td>
+								<td>
+<!-- 									<a th:href="@{/admin/view-edit-route(id=${station.id})}"> -->
+<!-- 										<input type="image" src="/images/icn_edit.png" -->
+<!-- 										title="Edit" /> -->
+<!-- 									</a> -->
+									
+										<a th:href="@{/admin/newstation/delete-station(id=${station.id})}">
+											<input type="image" src="/images/icn_trash.png" title="Trash" /> 
+										</a>
+									</td>
+							</tr>
+						</tbody>
+					</table>
 	
 			</article>
 		<!-- end of NewStation-->

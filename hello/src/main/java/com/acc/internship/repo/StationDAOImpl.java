@@ -60,8 +60,12 @@ public class StationDAOImpl implements StationDAO {
 	}
 
 	@Override
+	@Transactional
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		String hql = "delete from Station where id=?";
+		Query query = getEntityManager().createQuery(hql);
+		query.setParameter(1, id);
+		query.executeUpdate();
 		
 	}
 

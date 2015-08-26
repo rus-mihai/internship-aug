@@ -2,6 +2,12 @@ package com.acc.internship.controller;
 
 import java.util.List;
 
+<<<<<<< HEAD
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+=======
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+>>>>>>> master
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,7 +53,10 @@ public class AdminController {
 	@RequestMapping(value = "/admin")
 	public String adminDash(Model model) {
 		model.addAttribute("page", "routes");
+<<<<<<< HEAD
+=======
 		
+>>>>>>> master
 		return "admin";
 	}
 	
@@ -84,6 +94,12 @@ public class AdminController {
 	@RequestMapping(value = "/admin/adduser", method = RequestMethod.POST)
 	public String newDriverPost(@ModelAttribute User user, Model model){
 		//set role to driver
+<<<<<<< HEAD
+		user.setRole(userRoleDao.list().get(1));
+		//Crypt password
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		userDao.add(user);
+=======
 		user.setUserRole(userRoleDao.list().get(1));
 		//Crypt password
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
@@ -93,6 +109,7 @@ public class AdminController {
 			model.addAttribute("exists", "User already exists");
 		}
 
+>>>>>>> master
 		model.addAttribute("page", "newdriver");		
 		return "admin";
 	}
@@ -101,6 +118,16 @@ public class AdminController {
 	public String newRouteGet(Model model){
 		
 		List<Station> stations = stationDao.list();
+<<<<<<< HEAD
+		
+		model.addAttribute("stations", stations);
+		
+		model.addAttribute("page", "newroute");
+		return "admin";
+	}
+	
+	
+=======
 		Route r=  new Route();
 		r.setStart(new Station());
 		r.setEnd(new Station());
@@ -196,5 +223,6 @@ public class AdminController {
 	
 =======
 >>>>>>> add route
+>>>>>>> master
 
 }

@@ -52,7 +52,11 @@
 						<label>FirstName</label> <input type="text" class="form-control"
 							th:value="${firstName}" th:field="*{firstName}" /> <label>
 							LastName</label> <input type="text" class="form-control"
+<<<<<<< HEAD
+							th:field="*{lastName}" /> <label>Username</label> <input
+=======
 							th:field="*{lastName}" />  <input
+>>>>>>> master
 							type="hidden" class="form-control" th:field="*{username}" /> <input
 							type="hidden" class="form-control" th:field="*{id}" /> <br></br>
 						<input type="submit" value="Update" style="width: 80px;"
@@ -79,6 +83,26 @@
 					</div>
 					<div class="form-group col-md-8">
 						<h3>Change YOur Password</h3>
+<<<<<<< HEAD
+						<form action="#" th:action="@{/driver/updatepass}" th:object="${passupdate}"
+							method="post">
+							<br></br> 
+<!-- 							<label>Enter Old Password</label> <input -->
+<!-- 								type="password" class="form-control" th:field="*{password}" /> -->
+							<input type="hidden" class="form-control" th:value="${firstName}"
+								th:field="*{firstName}" /> 
+							<input type="hidden"	class="form-control" th:field="*{lastName}" />
+							<label>EnterNew Password</label> <input type="password" class="form-control"
+								th:field="*{password}" /> 
+<!-- 								<label>Confirm New Password</label> <input -->
+<!-- 								type="password" class="form-control" th:field="*{password}" /> -->
+							<input type="hidden" th:value="${firstName}" class="form-control"
+								th:field="*{username}" /> <input type="hidden"
+								class="form-control" th:field="*{id}" /> <br></br> <input
+								type="submit" value="Change password" style="width: 140px;"
+								class="btn btn-warning" />
+						</form>
+=======
 									
 						
 						<form action="#" th:action="@{/driver/updatepass}" th:object="${passupdateoptions}"
@@ -98,6 +122,7 @@
 							
 						</form>
 						
+>>>>>>> master
 					</div>
 				</div>
 			</div>
