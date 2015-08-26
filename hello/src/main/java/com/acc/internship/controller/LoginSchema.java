@@ -7,4 +7,10 @@ public class LoginSchema implements RoleSchema{
 		return "login";
 	}
 
+	@Override
+	public String getBasePage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
