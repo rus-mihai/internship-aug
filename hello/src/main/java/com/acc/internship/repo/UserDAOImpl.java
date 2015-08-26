@@ -85,8 +85,12 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
+	@Transactional
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		String hql = "delete User where id=?";
+		Query query = getEntityManager().createQuery(hql);
+		query.setParameter(1, id);
+		query.executeUpdate();
 		
 	}
 	

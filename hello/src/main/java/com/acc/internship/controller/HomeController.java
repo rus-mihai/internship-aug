@@ -12,10 +12,8 @@ import com.acc.internship.model.Route;
 import com.acc.internship.model.User;
 import com.acc.internship.repo.AssignmentDAO;
 
-import com.acc.internship.model.Assigment;
 import com.acc.internship.model.Route;
 import com.acc.internship.model.User;
-import com.acc.internship.repo.AssigmentDAO;
 
 import com.acc.internship.repo.RouteDAO;
 import com.acc.internship.repo.StationDAO;
@@ -36,7 +34,7 @@ public class HomeController {
 	private RouteDAO routeDao;
 	
 	@Autowired
-	private AssigmentDAO assigmentDao;
+	private AssignmentDAO assigmentDao;
 
 	
 	
