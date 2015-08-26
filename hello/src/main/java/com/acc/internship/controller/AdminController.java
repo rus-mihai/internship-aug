@@ -157,8 +157,7 @@ public class AdminController {
 		
 		System.out.println(id);
 		routeDao.delete(id);
-		
-		
+
 		return "redirect:/admin/routes";
 	}
 	
@@ -196,6 +195,30 @@ public class AdminController {
 		model.addAttribute("page", "userview");
 		return "admin";
 
+	}
+	
+	@RequestMapping(value="/admin/userview/deleteuser", method= RequestMethod.GET)
+	public String deleteUser(@RequestParam("id") Integer id, HttpServletRequest request, Model model){
+		userDao.delete(id);
+		return "redirect:"+request.getHeader("Referer");
+	}
+	
+	@RequestMapping(value="/admin/userview/edituser", method= RequestMethod.GET)
+	public String editUser(@RequestParam("id") Integer id, HttpServletRequest request, Model model){
+		User user = userDao.get(id);
+		
+		model.addAttribute("user", user);
+		model.addAttribute("page", "edituser");
+		return "admin";
+	}
+	
+	@RequestMapping(value = "/admin/userview/edituser", method = RequestMethod.POST)
+	public String commitEditUser(@ModelAttribute User user, Model model, HttpServletRequest request){
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		userDao.update(user);
+		userDao.updatepass(user);
+		
+		return "redirect:"+request.getHeader("Referer");
 	}
 	
 	@RequestMapping(value = "/admin/assign-route", method = RequestMethod.GET)
@@ -241,6 +264,8 @@ public class AdminController {
 		assignmentDao.add(a);
 		return "redirect:"+request.getHeader("Referer");
 	}
+	
+	
 	
 	
 	
