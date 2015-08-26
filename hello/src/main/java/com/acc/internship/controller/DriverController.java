@@ -8,14 +8,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
-
 import com.acc.internship.model.PasswordVerify;
 import com.acc.internship.model.Route;
 import com.acc.internship.model.User;
@@ -32,19 +27,9 @@ public class DriverController {
 	@Autowired
 	private RouteDAO routeDao;
 
-	@Autowired
-	private StationDAO stationDao;
-
-<<<<<<< HEAD
-	
-
-	@RequestMapping( value = "/driver",method = RequestMethod.GET)
-	public String newDriverGet(ModelMap model) {
-		
-=======
 	@RequestMapping(value = "/driver", method = RequestMethod.GET)
 	public String newDriverGet(Model model) {
->>>>>>> master
+
 
 		List<Route> routes = routeDao.list();
 		model.addAttribute("routes", routes);
@@ -54,43 +39,25 @@ public class DriverController {
 		String username = auth.getName();
 
 		User user = userDao.findByUsername(username);
-<<<<<<< HEAD
+
 		User user2 = userDao.findByUsername(username);
 
 		model.addAttribute("userupdate", user2);
 		model.addAttribute("passupdate", user);
 		
-=======
-
 		PasswordVerify pass = new PasswordVerify();
 		pass.setId(user.getId());
 
 		model.addAttribute("userupdate", user);
 		model.addAttribute("passupdateoptions", pass);
->>>>>>> master
+
 
 		return "driver";
 
 	}
 
-<<<<<<< HEAD
-	@RequestMapping(value = {"/driver"},method = RequestMethod.POST)
-	public String updateDriverPost(User userupdate, BindingResult result ) {
-		
-		userDao.update(userupdate);
-		return "redirect:/driver";
-	}
 	
-	@RequestMapping(value = {"/driver/updatepass"},method = RequestMethod.POST)
-	public String updatePassPost(User passupdate, BindingResult result, Model model) {
 
-		passupdate.setPassword(new BCryptPasswordEncoder().encode(passupdate.getPassword()));
-		userDao.updatepass(passupdate);
-//		model.addAttribute("userupdate", passupdate);
-//		model.addAttribute("passupdate", passupdate);
-		return "redirect:/driver";
-	}
-=======
 	@RequestMapping(value = { "/driver" }, method = RequestMethod.POST)
 	public String updateDriverPost(User userupdate, BindingResult result) {
 
@@ -115,6 +82,6 @@ public class DriverController {
 		}
 		return "redirect:/driver";
 	}
->>>>>>> master
+
 
 }

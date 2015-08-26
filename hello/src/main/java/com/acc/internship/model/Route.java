@@ -31,11 +31,8 @@ public class Route {
 	private Station end;
 	
 	@OneToMany(mappedBy="route")
-<<<<<<< HEAD
 	private Set<Assignment> assigments;
-=======
-	private Set<Assigment> assigments;
->>>>>>> master
+
 
 	public int getId() {
 		return id;
@@ -69,19 +66,14 @@ public class Route {
 		this.end = end;
 	}
 
-<<<<<<< HEAD
+
 	public Set<Assignment> getAssigments() {
 		return assigments;
 	}
 
-	public void setAssigments(Set<Assignment> assigments) {
-=======
-	public Set<Assigment> getAssigments() {
-		return assigments;
-	}
+	
 
-	public void setAssigments(Set<Assigment> assigments) {
->>>>>>> master
+	public void setAssigments(Set<Assignment> assigments) {
 		this.assigments = assigments;
 	}
 	
