@@ -11,9 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.acc.internship.model.Assignment;
 import com.acc.internship.model.PasswordVerify;
 import com.acc.internship.model.Route;
 import com.acc.internship.model.User;
+import com.acc.internship.repo.AssignmentDAO;
 import com.acc.internship.repo.RouteDAO;
 import com.acc.internship.repo.StationDAO;
 import com.acc.internship.repo.UserDAO;
@@ -27,36 +31,29 @@ public class DriverController {
 	@Autowired
 	private RouteDAO routeDao;
 
+	@Autowired
+	private AssignmentDAO assignmentDao;
+
 	@RequestMapping(value = "/driver", method = RequestMethod.GET)
 	public String newDriverGet(Model model) {
-
-
-		List<Route> routes = routeDao.list();
-		model.addAttribute("routes", routes);
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		String username = auth.getName();
 
 		User user = userDao.findByUsername(username);
-
-		User user2 = userDao.findByUsername(username);
-
-		model.addAttribute("userupdate", user2);
-		model.addAttribute("passupdate", user);
-		
+		int id = user.getId();
 		PasswordVerify pass = new PasswordVerify();
 		pass.setId(user.getId());
+		List<Assignment> assignements = assignmentDao.listRouteForUser(id);
+		model.addAttribute("assignements", assignements);
 
 		model.addAttribute("userupdate", user);
 		model.addAttribute("passupdateoptions", pass);
 
-
 		return "driver";
 
 	}
-
-	
 
 	@RequestMapping(value = { "/driver" }, method = RequestMethod.POST)
 	public String updateDriverPost(User userupdate, BindingResult result) {
@@ -71,17 +68,16 @@ public class DriverController {
 		String old = passupdateoptions.getOldpassword();
 		String nPass = passupdateoptions.getNewpassword();
 		String confirm = passupdateoptions.getConfirm();
-		
+
 		User user = userDao.get(passupdateoptions.getId());
-		
-		if(new BCryptPasswordEncoder().matches(old, user.getPassword())){
-			if(nPass.equals(confirm)){
+
+		if (new BCryptPasswordEncoder().matches(old, user.getPassword())) {
+			if (nPass.equals(confirm)) {
 				user.setPassword(new BCryptPasswordEncoder().encode(nPass));
 				userDao.updatepass(user);
 			}
 		}
 		return "redirect:/driver";
 	}
-
 
 }

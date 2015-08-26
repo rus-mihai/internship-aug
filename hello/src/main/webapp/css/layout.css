@@ -4,6 +4,12 @@ html, div, map, dt, isindex, form, header, aside, section, section,
 	display: block;
 }
 
+div#map1{
+    height: 76.6%;
+    width: 95.2%;
+    left: 3%;
+}
+
 html, body {
 	height: 100%;
 	margin: 0;
