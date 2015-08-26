@@ -20,16 +20,75 @@ article, aside, details, figcaption, figure, footer, header, hgroup,
 	display: block;
 }
 
-body section{
-	padding-bottom: 50px; 
-	padding-top: 50px;
-	
-}
-
 audio, canvas, progress, video {
 	display: inline-block;
 	vertical-align: baseline;
 }
+
+audio
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 :not
 
@@ -64,29 +123,7 @@ audio, canvas, progress, video {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -155,29 +192,7 @@ controls
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -277,40 +292,7 @@ display
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -376,40 +358,7 @@ display
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 none
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -540,28 +489,6 @@ height
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -595,29 +522,7 @@ height
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -762,28 +667,6 @@ svg
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :not
 
 
@@ -811,29 +694,7 @@ svg
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -888,29 +749,7 @@ svg
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -992,40 +831,7 @@ overflow
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1079,40 +885,7 @@ overflow
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 hidden
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1193,11 +966,6 @@ button, input, optgroup, select, textarea {
 	color: inherit;
 }
 
-#button1src{
-	width: 15%;
-    height: 15%;
-    margin-left: 40%;
-}
 button {
 	overflow: visible;
 }
@@ -2187,7 +1955,7 @@ input, button, select, textarea {
 }
 
 a {
-	color: wheat;
+	color: #337ab7;
 	text-decoration: none;
 }
 
@@ -3393,40 +3161,39 @@ pre code {
 	}
 }
 
+
+
 table {
 	background: #f5f5f5;
 	border-collapse: separate;
 	box-shadow: inset 0 1px 0 #fff;
 	font-size: 12px;
 	line-height: 24px;
-	margin: no;
+	margin: 30px auto;
 	text-align: left;
-	width: 97.7%;
-	background: #fafafa
-		url(http://jackrugile.com/images/misc/noise-diagonal.png);
+	width: 800px;
+	background: #fafafa url(http://jackrugile.com/images/misc/noise-diagonal.png);
 	color: #444;
 	font: 100%/30px 'Helvetica Neue', helvetica, arial, sans-serif;
 	text-shadow: 0 1px 0 #fff;
-}
+}	
 
 th {
-	background: url(http://jackrugile.com/images/misc/noise-diagonal.png),
-		linear-gradient(#777, #444);
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
 	border-left: 1px solid #555;
 	border-right: 1px solid #777;
 	border-top: 1px solid #555;
 	border-bottom: 1px solid #333;
 	box-shadow: inset 0 1px 0 #999;
 	color: #fff;
-	font-weight: bold;
+  font-weight: bold;
 	padding: 10px 15px;
 	position: relative;
-	text-shadow: 0 1px 0 #000;
+	text-shadow: 0 1px 0 #000;	
 }
 
 th:after {
-	background: linear-gradient(rgba(255, 255, 255, 0),
-		rgba(255, 255, 255, .08));
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
 	content: '';
 	display: block;
 	height: 25%;
@@ -3438,7 +3205,7 @@ th:after {
 }
 
 th:first-child {
-	border-left: 1px solid #777;
+	border-left: 1px solid #777;	
 	box-shadow: inset 1px 1px 0 #999;
 }
 
@@ -3458,33 +3225,32 @@ td {
 
 td:first-child {
 	box-shadow: inset 1px 0 0 #fff;
-}
+}	
 
 td:last-child {
 	border-right: 1px solid #e8e8e8;
 	box-shadow: inset -1px 0 0 #fff;
-}
+}	
 
 tr {
-	background: url(http://jackrugile.com/images/misc/noise-diagonal.png);
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png);	
 }
 
 tr:nth-child(odd) td {
-	background: #f1f1f1
-		url(http://jackrugile.com/images/misc/noise-diagonal.png);
+	background: #f1f1f1 url(http://jackrugile.com/images/misc/noise-diagonal.png);	
 }
 
 tr:last-of-type td {
-	box-shadow: inset 0 -1px 0 #fff;
+	box-shadow: inset 0 -1px 0 #fff; 
 }
 
 tr:last-of-type td:first-child {
 	box-shadow: inset 1px -1px 0 #fff;
-}
+}	
 
 tr:last-of-type td:last-child {
 	box-shadow: inset -1px -1px 0 #fff;
-}
+}	
 
 tbody:hover td {
 	color: transparent;
@@ -3495,7 +3261,6 @@ tbody:hover tr:hover td {
 	color: #444;
 	text-shadow: 0 1px 0 #fff;
 }
-
 caption {
 	padding-top: 8px;
 	padding-bottom: 8px;
@@ -4328,7 +4093,6 @@ textarea.input-lg, textarea.form-group-lg .form-control, select[multiple].input-
 
 .row-fluid {
 	width: 100%;
-	margin-top: 4%;
 }
 
 row-fluid:before, .row-fluid:after {
@@ -4364,20 +4128,14 @@ row-fluid:before, .row-fluid:after {
 
 .row-fluid [class*="span"]:first-child {
 	margin-left: 0;
-	padding-bottom: 0;
-	
 }
 
 .row-fluid .span8 {
 	width: 65.95744680851064%;
 }
 
-#form2 {
-	margin: 6.5% 0 ;
-}
-
 form {
-	margin: 0 0 12%;
+	margin: 0 0 20px;
 }
 
 textarea {
@@ -4677,7 +4435,6 @@ user agent stylesheetform {
 
 .row-fluid .span4 {
 	width: 31.914893617021278%;
-	padding-bottom: 13.7%;
 }
 
 .services-icon, .service {
@@ -5192,28 +4949,6 @@ tbody.collapse.in {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :not
 
 
@@ -5241,29 +4976,7 @@ tbody.collapse.in {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5318,29 +5031,7 @@ tbody.collapse.in {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5395,29 +5086,7 @@ tbody.collapse.in {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5472,29 +5141,7 @@ tbody.collapse.in {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5549,29 +5196,7 @@ tbody.collapse.in {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5627,29 +5252,7 @@ tbody.collapse.in {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 	
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5731,28 +5334,6 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -5780,29 +5361,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5890,51 +5449,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :first-child
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6014,29 +5529,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6091,29 +5584,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6168,29 +5639,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6245,29 +5694,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6349,28 +5776,6 @@ border-top-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -6398,29 +5803,7 @@ border-top-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6501,28 +5884,6 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -6550,29 +5911,7 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6656,51 +5995,7 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :last-child
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6780,29 +6075,7 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6857,29 +6130,7 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -6962,40 +6213,7 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :not
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7050,17 +6268,6 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 (
 :first-child
 
@@ -7089,29 +6296,7 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7193,28 +6378,6 @@ border-top-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -7242,29 +6405,7 @@ border-top-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7345,28 +6486,6 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -7394,29 +6513,7 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7575,28 +6672,6 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :not
 
 
@@ -7624,29 +6699,7 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7701,29 +6754,7 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7778,29 +6809,7 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7855,29 +6864,7 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7959,28 +6946,6 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -8008,29 +6973,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8114,51 +7057,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :first-child
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8238,29 +7137,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8315,29 +7192,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8419,40 +7274,7 @@ border-top-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8506,41 +7328,8 @@ border-top-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 4
 px
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8647,28 +7436,6 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -8696,29 +7463,7 @@ border-bottom-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8799,40 +7544,7 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -8886,44 +7598,11 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 0;
 }
 .btn-group-vertical
 >
 .btn
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9029,28 +7708,6 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :not
 
 
@@ -9078,29 +7735,7 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9155,29 +7790,7 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9259,28 +7872,6 @@ border-top-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -9308,29 +7899,7 @@ border-top-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9411,28 +7980,6 @@ border-top-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -9460,29 +8007,7 @@ border-top-right-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9563,40 +8088,7 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9650,41 +8142,8 @@ border-bottom-left-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 4
 px
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9907,28 +8366,6 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :not
 
 
@@ -9956,29 +8393,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10033,29 +8448,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10110,29 +8503,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10187,29 +8558,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10290,28 +8639,6 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :not
 
 
@@ -10339,29 +8666,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10416,29 +8721,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10493,29 +8776,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10570,29 +8831,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10647,29 +8886,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10749,40 +8966,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :not
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10837,17 +9021,6 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 (
 :first-child
 
@@ -10876,29 +9049,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -10953,29 +9104,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -11030,29 +9159,7 @@ textarea.input-group-sm>.form-control, textarea.input-group-sm>.input-group-addo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -11134,28 +9241,6 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :
 
 
@@ -11183,29 +9268,7 @@ border-radius
 
 
 
-
-
-
-
-
-
-
-
-
-
-
  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -14356,33 +12419,4 @@ user agent stylesheettd, th {
 		display: none !important;
 	}
 }
-
-<!-- CUSTOM STYLE CSS -->
-
-div .col-md-8 .btn-social {
-	color: wheat;
-	opacity: 0.8;
-}
-
-div .col-md-8 .btn-social:hover {
-	opacity: 1;
-	text-decoration: none;
-}
-
- div .col-md-8 .btn-facebook {
-	background-color: #3b5998;
-}
-
- div .col-md-8 .btn-twitter {
-	background-color: #00aced;
-}
-
- div .col-md-8 .btn-linkedin {
-	background-color: #0e76a8;
-}
-
-div .col-md-8 .btn-google {
-	background-color: #c32f10;
-}
-
 /*# sourceMappingURL=bootstrap.css.map */

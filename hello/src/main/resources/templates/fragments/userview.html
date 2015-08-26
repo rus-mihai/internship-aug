@@ -35,9 +35,14 @@
 									<td th:text="${u.firstName}"></td>
 									<td th:text="${u.lastName}"></td>
 									<td th:text="${u.username}"></td>
-									<td><input type="image" src="/images/icn_edit.png"
-										title="Edit" /><input type="image"
-										src="/images/icn_trash.png" title="Trash" /></td>
+									<td>
+										<a th:href="@{/admin/userview/edituser(id=${u.id})}">
+											<input type="image" src="/images/icn_edit.png" title="Edit" />	
+										</a>
+										<a th:href="@{/admin/userview/deleteuser(id=${u.id})}">
+											<input type="image" src="/images/icn_trash.png" title="Trash" />
+										</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>

@@ -11,10 +11,37 @@
 <link href="css/font-awesome.css" rel="stylesheet" />
 
 <!-- CUSTOM STYLE CSS -->
+<style type="text/css">
+.btn-social {
+	color: white;
+	opacity: 0.8;
+}
 
+.btn-social:hover {
+	color: white;
+	opacity: 1;
+	text-decoration: none;
+}
+
+.btn-facebook {
+	background-color: #3b5998;
+}
+
+.btn-twitter {
+	background-color: #00aced;
+}
+
+.btn-linkedin {
+	background-color: #0e76a8;
+}
+
+.btn-google {
+	background-color: #c32f10;
+}
+</style>
 </head>
 <body>
-	<section >
+	<section style="padding-bottom: 50px; padding-top: 50px;">
 		<div th:fragment="updatedriver">
 
 			<div class="row" id="Home">
@@ -55,14 +82,14 @@
 					<div class="form-group col-md-8">
 						<h3>Change YOur Password</h3>									
 						
-						<form id="form2" action="#" th:action="@{/driver/updatepass}" th:object="${passupdateoptions}"
+						<form action="#" th:action="@{/driver/updatepass}" th:object="${passupdateoptions}"
 							method="post">
 							<br></br> 
 							<label>Enter Old Password</label> <input  value="***"
-								type="password" class="form-control" th:field="*{oldpassword}" /> 
+								type="password" class="form-control" th:field="*{passwordold}" /> 
 							
 							<label>New Password</label> <input 
-								 type="password" class="form-control" value="***" th:field="*{newpassword}" /> 
+								 type="password" class="form-control" value="***" th:field="*{passwordnew}" /> 
 								<label>Confirm New Password</label> <input 
 								 type="password" class="form-control" value="***" th:field="*{confirm}" /> 
 								 <input type="hidden" class="form-control" th:field="*{id}" th:value ="${userupdate.id}" />

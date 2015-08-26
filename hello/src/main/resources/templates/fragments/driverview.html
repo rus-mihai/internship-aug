@@ -4,17 +4,11 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-
 <meta charset="utf-8" />
 <title>Insert title here</title>
-<!-- BOOTSTRAP STYLE SHEET -->
-<link href="css/bootstrap.css" rel="stylesheet" />
-<!-- FONT-AWESOME STYLE SHEET FOR BEAUTIFUL ICONS -->
-<link href="css/font-awesome.css" rel="stylesheet" />
-
 </head>
 <body>
-	<section >
+	<section style="padding-bottom: 50px; padding-top: 50px;">
 	<div th:fragment="driverview">
 
 		<div class="container2"  id="Routes">
@@ -29,16 +23,13 @@
 					</tr>
 				</thead>
 				<tbody>
-						
-					<tr th:each="r: ${assignements}">
-									<td th:text="${r.route.id}"></td>
-									<td th:text="${r.route.start.name}"></td>
-									<td th:text="${r.route.end.name}"></td>
-									<td th:text="${r.route.duration}"></td>
-									<td>
-										<a >
-										<input id="button1src" type="image" src="/images/start.png"
-										title="Start" /></a></td>
+					<tr th:each="r: ${routes}">
+									<td th:text="${r.id}"></td>
+									<td th:text="${r.start.name}"></td>
+									<td th:text="${r.end.name}"></td>
+									<td th:text="${r.duration}"></td>
+									<td><input type="image" src="/images/icn_edit.png"
+										title="Edit" /></td>
 								</tr>
 				</tbody>
 			</table>
@@ -75,7 +66,7 @@
 						</div>
 
 					</div>
-					<div class="span4 well" >
+					<div class="span4 well" style="padding-bottom: 10.3%;">
 						<div class="address-subsection" style="text-align: center">
 							<div class="address-icon">
 								<i class="icon-map-marker icon-5x"></i>

@@ -5,18 +5,13 @@
 <head>
 <meta charset="utf-8" />
 <title>Insert title here</title>
-<link rel="stylesheet" href="/css/layout.css" type="text/css"
-	media="screen" />
-<link rel="stylesheet" href="/css/map.css" type="text/css"
-	media="screen" />
-
 </head>
 <body>
 	<div th:fragment="newroute">
 		<section id="main" class="column">
 			<!--start of NewRoute-->
 			<article class="module width_3_quarter">
-				<div id="biggerpanel2">
+				<div id="biggerpanel">
 					<header>
 						<h3 class="tabs_involved">Content Manager</h3>
 
@@ -24,11 +19,12 @@
 					<h1>Add new route</h1>
 					<h1>Insert route number and select Start and End stations</h1>
 					<div id="x">
-						<form action="#" th:action="@{/admin/newroute}"
-							th:object="${route}" method="post">
+						<form action="#" th:action="@{/admin/newroute}" th:object="${route}"
+							method="post">
 							<label>Line no. </label><input type="text" th:field="*{id}" /> <label>Duration
-							</label><input type="text" th:field="*{duration}" /> <b>Start: </b> <select
-								id="start" th:field="*{start.id}" onchange="calcRoute();">
+							</label><input type="text" th:field="*{duration}" /> <b>Start: </b> 
+							<select id="start"
+								th:field="*{start.id}" onchange="calcRoute();">
 								<option th:each="s: ${stations}" th:value="${s.id}"
 									th:text="${s.name}"></option>
 							</select> <b>End: </b> <select id="end" th:field="*{end.id}"
@@ -42,13 +38,13 @@
 				</div>
 			</article>
 
-			<div id="map1">
+			<div id="map">
 				<script>
 					function initMap() {
 						var directionsService = new google.maps.DirectionsService;
 						var directionsDisplay = new google.maps.DirectionsRenderer;
 						var map = new google.maps.Map(document
-								.getElementById('map1'), {
+								.getElementById('map'), {
 							zoom : 10,
 							center : {
 								lat : 46.767307,
@@ -67,7 +63,8 @@
 								'change', onChangeHandler);
 					}
 
-					function calcRoute(directionsService, directionsDisplay) {
+					function calcRoute(directionsService,
+							directionsDisplay) {
 						directionsService
 								.route(
 										{
@@ -89,9 +86,9 @@
 										});
 					}
 				</script>
-
+				
 				<script src="/js/maping.js"></script>
-
+				
 			</div>
 		</section>
 

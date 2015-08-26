@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table(name = "Users")
 public class User {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -41,7 +42,7 @@ public class User {
 	private Set<Assignment> assigments;
 
 	
-	public User(UserRole role, String lastName, String firstName, String username, String password){
+	public User(UserRole role, String lastName, String firstName, String username, String password, String password1, String password2){
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.username = username;
@@ -109,11 +110,11 @@ public class User {
 	public String getPassword(){
 		return this.password;
 	}
+	
 	public void setPassword(String password){
 		this.password = password;
 	}
-
-
+	
 	
 	
 	
