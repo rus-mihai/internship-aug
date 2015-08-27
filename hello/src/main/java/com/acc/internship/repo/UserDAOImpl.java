@@ -9,13 +9,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.acc.internship.model.User;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 
 
@@ -79,7 +78,7 @@ public class UserDAOImpl implements UserDAO{
 		try{
 			getEntityManager().persist(u);
 		}catch(Exception exception){
-			throw new DuplicateKeyException("User already exists");
+			throw new DuplicateKeyException("Username already exists in the database. Choose another one...");
 		}
 		
 	}

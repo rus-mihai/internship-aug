@@ -8,10 +8,5 @@ public class DriverSchema implements RoleSchema {
 		return "driver";
 	}
 
-	@Override
-	public String getBasePage() {
-		
-		return "updatedriver";
-	}
 
 }

@@ -7,10 +7,5 @@ public class AdminSchema implements RoleSchema{
 		return "admin";
 	}
 
-	@Override
-	public String getBasePage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

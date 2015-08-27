@@ -4,13 +4,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.acc.internship.model.Route;
 import com.acc.internship.model.Station;
 
 @Repository
@@ -61,12 +62,15 @@ public class StationDAOImpl implements StationDAO {
 
 	@Override
 	@Transactional
-	public void delete(int id) {
+	public void delete(int id) throws DataIntegrityViolationException{
 		String hql = "delete from Station where id=?";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter(1, id);
-		query.executeUpdate();
-		
+		try{
+			query.executeUpdate();
+		}catch(PersistenceException e){
+			throw new DataIntegrityViolationException("The station is used into a route, please check first the route containg this stataion and try to delete again");
+		}
 	}
 
 }
