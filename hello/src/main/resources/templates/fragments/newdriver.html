@@ -16,28 +16,31 @@
 
 			</header>
 			<h1>Add User</h1>
-
-			<div id="success">
-				<p class="successAdd" th:text="${success}"></p> 
-			</div>
 			
 			<form action="#" method="post"
 				 th:action="@{/admin/adduser}" th:object="${user}" >
 				 
-				 
 				<p>
 					Firstname: <input type="text" th:field="*{firstName}" />
 				</p>
+				<span class="validationError" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
 				<p>
 					Lastname: <input type="text" th:field="*{lastName}" />
 				</p>
+				<span class="validationError" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
 				<p>
 					Username: <input type="text" th:field="*{username}"/>
 				</p>
-				<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>	
+				<span class="validationError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>	
 				<p>
 					Password: <input type="password" th:field="*{password}"/>
 				</p>
+				<span class="validationError" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+				
+				<p>
+					Confirm password: <input type="password" th:field="*{confirmPassword}"/>
+				</p>
+				<span class="validationError" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></span>
 				<p>
 					<input type="submit" value="Submit" /> <input type="reset"
 						value="Reset" />

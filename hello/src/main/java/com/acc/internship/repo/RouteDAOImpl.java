@@ -7,6 +7,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,12 +53,8 @@ public class RouteDAOImpl implements RouteDAO{
 
 	@Override
 	@Transactional
-	public void add(Route r) {
-		Route already = get(r.getId());
-		
-		if( already == null){
-			getEntityManager().persist(r);
-		}
+	public void add(Route r){
+		getEntityManager().persist(r);
 	}
 
 	@Override

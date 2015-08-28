@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "Users")
@@ -21,16 +25,23 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@NotNull
+	@NotBlank
 	@Column(name = "lastName", nullable = false)
 	private String lastName;
 	
+	@NotNull
+	@NotBlank
 	@Column(name = "firstName", nullable = false)
 	private String firstName;
 	
-	
+	@NotNull
+	@NotBlank
 	@Column(name = "username", nullable = false, unique=true)
 	private String username;
 	
+	@NotNull
+	@NotBlank
 	@Column(name = "password", nullable = false)
 	private String password;
 	
@@ -40,7 +51,13 @@ public class User {
 	
 	@OneToMany(mappedBy="driver")
 	private Set<Assignment> assigments;
-
+	
+	@Transient
+	private String oldPassword;
+	
+	@NotBlank
+	@Transient 
+	private String confirmPassword;
 	
 	public User(UserRole role, String lastName, String firstName, String username, String password){
 		this.lastName = lastName;
@@ -112,6 +129,22 @@ public class User {
 	}
 	public void setPassword(String password){
 		this.password = password;
+	}
+
+	public String getOldPassword() {
+		return oldPassword;
+	}
+
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 

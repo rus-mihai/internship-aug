@@ -28,11 +28,15 @@
 				<h3 class="tabs_involved">Content Manager</h3>
 
 			</header>
+			<div th:if="${param.success}">
+				<p th:text="${{param.success}}">Route updated</p>
+			</div>
 			<div class="tab_container">
 				<div id="tab1" class="tab_content">
 					<table class="tablesorter" cellspacing="0">
 						<thead>
 							<tr>
+								<th>Line no.</th>
 								<th>Start</th>
 								<th>Destination</th>
 								<th>Duration</th>
@@ -42,12 +46,16 @@
 						<tbody>
 							
 							<tr th:each="route: ${routes}" th:href="@{/admin/routes(id=${route.id})}">
-
+								<td th:text="${route.start.id}"></td>
 								<td th:text="${route.start.name}"></td>
 								<td th:text="${route.end.name}"></td>
 								<td th:text="${route.duration}"></td>
 								<td>
+									
 									<a th:href="@{/admin/view-edit-route(id=${route.id})}">
+										<input type="submit" value="View" />
+									</a>
+									<a th:href="@{/admin/view-edit-route(id=${route.id},edit)}">
 										<input type="image" src="/images/icn_edit.png"
 										title="Edit" />
 									</a>

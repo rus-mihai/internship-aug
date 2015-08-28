@@ -17,7 +17,7 @@
 				</header>
 				<h1>Add New Station</h1>
 				 <!-- form new station -->
-	
+				
 				<form action="#" th:action="@{/admin/newstation}" th:object="${station}" method="post">
 					
 					<p>
@@ -29,6 +29,9 @@
 							value="Reset" />
 					</p>
 				</form>
+				
+				<p th:if="${used}" th:text="${used}"></p>
+				
 				<table class="tablesorter" cellspacing="0">
 						<thead>
 							<tr>

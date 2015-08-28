@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -82,12 +81,18 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin/newstation/delete-station", method = RequestMethod.GET)
-	public String deleteStation(@RequestParam("id") Integer id, HttpServletRequest request, Model model) {
+	public String deleteStation(@RequestParam("id") Integer id, @ModelAttribute Station station,
+			BindingResult bindingResult, HttpServletRequest request, Model model) {
 		try {
 			stationDao.delete(id);
 		} catch (DataIntegrityViolationException e) {
-
+			List<Station> stations = stationDao.list();
+			model.addAttribute("stations", stations);
+			model.addAttribute("used", e.getMessage());
+			model.addAttribute("page", "newstation");
+			return "admin";
 		}
+
 		return "redirect:" + request.getHeader("Referer");
 	}
 
@@ -100,23 +105,26 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin/adduser", method = RequestMethod.POST)
-	public String newDriverPost(@ModelAttribute User user, BindingResult bindingResult, HttpServletRequest request,
-			Model model) {
-		// set role to driver
+	public String newDriverPost(@Valid @ModelAttribute User user, BindingResult bindingResult, HttpServletRequest request, Model model) {
+
 		user.setUserRole(userRoleDao.list().get(1));
-		// Crypt password
-		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-		try {
-			userDao.add(user);
-		} catch (DuplicateKeyException e) {
-			model.addAttribute("exists", e.getMessage());
-			bindingResult.rejectValue("username", "username.duplicate", "The username exists");
-		}
 		
-		if(!bindingResult.hasErrors()){
-			model.addAttribute("success", "User added succesfully");
+		if(user.getPassword().equals(user.getConfirmPassword())){
+			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+			try {
+				userDao.add(user);
+			} catch (DuplicateKeyException e) {
+				bindingResult.rejectValue("username", "username.duplicate", "The username exists");
+			}
+	
+			if (!bindingResult.hasErrors()) {
+				model.addAttribute("success", "User added succesfully");
+				return "redirect:/admin/userview";
+			}
+		}else{
+			bindingResult.rejectValue("confirmPassword", "confirm.fail", "The passwords does not match");
 		}
-		
+
 		model.addAttribute("page", "newdriver");
 		return "admin";
 	}
@@ -136,29 +144,23 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin/newroute", method = RequestMethod.POST)
-	public String newRoutePost(@ModelAttribute("route") @Valid Route route, BindingResult bindingResult, Model model) {
-		if (bindingResult.hasErrors()) {
-			List<ObjectError> error = bindingResult.getAllErrors();
-			for (ObjectError e : error) {
-				System.out.println(e.toString());
-			}
-		} else {
-
+	public String newRoutePost(@ModelAttribute("route") @Valid Route route, BindingResult bindingResult,
+			HttpServletRequest request, Model model) {
+		try {
 			routeDao.add(route);
+		} catch (DataIntegrityViolationException e) {
+			bindingResult.rejectValue("id", "route.duplicate", "Route already exists.");
 		}
 
-		// after adding prepare a new add
+		if (bindingResult.hasErrors()) {
+			List<Station> stations = stationDao.list();
+			model.addAttribute("stations", stations);
+			model.addAttribute("page", "newroute");
+			return "admin";
+		}
 
-		List<Station> stations = stationDao.list();
-		Route r = new Route();
-		r.setStart(new Station());
-		r.setEnd(new Station());
-
-		model.addAttribute("stations", stations);
-		model.addAttribute("route", r);
-		model.addAttribute("page", "newroute");
-
-		return "admin";
+		model.addAttribute("success", "Route added");
+		return "redirect:/admin/routes";
 	}
 
 	@RequestMapping(value = "/admin/deleteroute")
@@ -191,10 +193,8 @@ public class AdminController {
 		route.setEnd(end);
 
 		routeDao.update(route);
-		
-		model.addAttribute("success","Route updated with success.");
-		model.addAttribute("page", "routes");
-		return "redirect:"+request.getHeader("Referer");
+		model.addAttribute("success", "Route updated");
+		return "redirect:/admin/routes";
 	}
 
 	@RequestMapping(value = "/admin/userview", method = RequestMethod.GET)
@@ -222,10 +222,19 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin/userview/edituser", method = RequestMethod.POST)
-	public String commitEditUser(@ModelAttribute User user, Model model, HttpServletRequest request) {
-		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-		userDao.update(user);
-		userDao.updatepass(user);
+	public String commitEditUser(@Valid @ModelAttribute User user, Model model, BindingResult bindingResult, HttpServletRequest request) {
+		
+		if(user.getPassword().equals(user.getConfirmPassword())){
+			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+			userDao.update(user);
+			userDao.updatepass(user);
+		}else{
+			bindingResult.rejectValue("confirmPassword", "confirm.fail","Password does not match");
+		}
+		
+		if(bindingResult.hasErrors()){
+			return "redirect:" + request.getHeader("Referer");
+		}
 
 		return "redirect:" + request.getHeader("Referer");
 	}
