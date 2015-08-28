@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>Business Frontpage - Start Bootstrap Template</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="/css/bootstrap.actions.min.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+
+
+	<!-- Page Content -->
+	<div class="container">
+
+
+		<div class="row">
+			<div class="col-sm-8">
+				<h2 id="change1">Actions You May do</h2>
+
+
+			</div>
+
+		</div>
+		<!-- /.row -->
+
+		<hr></hr>
+		<hr></hr>
+		<div id="time">
+			<div class="row">
+
+
+
+				<div class="col-sm-4">
+					<button onClick="myFunction(1)">
+						<img class="mg-circle img-responsive img-center" alt="START"
+							src="/img/start.png" />
+					</button>
+					<h2 id="change2">Start Working</h2>
+
+				</div>
+				<div class="col-sm-4">
+					<button onClick="myFunction(2)">
+						<img class="mg-circle img-responsive img-center" alt="START"
+							src="/img/pause.png" />
+					</button>
+					<h2>Pause</h2>
+
+				</div>
+				<div class="col-sm-4">
+					<button onClick="myFunction(3)">
+						<img class="mg-circle img-responsive img-center" alt="START"
+							src="/img/stop.png" />
+					</button>
+					<h2>Stops</h2>
+
+				</div>
+
+				<form>
+					<input type="text" id="time1"></input> 
+					<input type="text"	id="time2"></input> 
+					<input type="text" id="time3"></input>
+					<br></br>
+					 <input type="submit" id="raportSubmit" value="Job Done!"/>
+				</form>
+
+
+			</div>
+		</div>
+		<!-- /.row -->
+
+
+		<hr></hr>
+		<hr></hr>
+
+	</div>
+	<!-- /.container -->
+
+	<script src="/js/clock.js"></script>
+
+</body>
+
+</html>

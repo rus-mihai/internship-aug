@@ -18,3 +18,4 @@ target
 hs_err_pid*
 hello/src/main/resources/application.properties
 hello/src/main/java/com/acc/internship/controller/LoginController.java.orig
+hello/src/main/java/com/acc/internship/controller/AdminController.java

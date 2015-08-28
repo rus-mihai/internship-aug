@@ -4,7 +4,7 @@ html, div, map, dt, isindex, form, header, aside, section, section,
 	display: block;
 }
 
-div#map1{
+div#map{
     height: 76.6%;
     width: 95.2%;
     left: 3%;
@@ -206,6 +206,7 @@ aside#sidebar {
 	float: left;
 	min-height: 500px;
 	margin-top: -4px;
+	height: 660px;
 }
 
 #sidebar hr {
