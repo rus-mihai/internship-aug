@@ -17,7 +17,7 @@
 			<h1>Add User</h1>
 			<form action="#" method="post"
 				 th:action="@{/admin/userview/edituser}" th:object="${user}" >
-
+				<input type="hidden" th:field="*{id}"/>
 				<p>
 					Firstname: <input type="text" th:field="*{firstName}" />
 				</p>
@@ -40,7 +40,7 @@
 				</p>
 				<span class="validationError" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></span>
 					<input type="submit" value="Submit" />
-				</p>
+				
 			</form>
 
 

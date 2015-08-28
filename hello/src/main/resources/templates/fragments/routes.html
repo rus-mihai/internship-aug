@@ -46,7 +46,7 @@
 						<tbody>
 							
 							<tr th:each="route: ${routes}" th:href="@{/admin/routes(id=${route.id})}">
-								<td th:text="${route.start.id}"></td>
+								<td th:text="${route.id}"></td>
 								<td th:text="${route.start.name}"></td>
 								<td th:text="${route.end.name}"></td>
 								<td th:text="${route.duration}"></td>
