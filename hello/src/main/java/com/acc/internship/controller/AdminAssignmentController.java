@@ -1,5 +1,7 @@
 package com.acc.internship.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +49,19 @@ public class AdminAssignmentController {
 		List<Route> routes = routeDao.list();
 		List<Assignment> assignments = assignmentDao.listRouteForUser(id);
 		User user = userDao.get(id);
-
+		
+		HashMap<Integer, Route> routesMap = new HashMap<Integer, Route>();
+		
+		for(Route r: routes){
+			routesMap.put(r.getId(), r);
+		}
+		
+		for(Assignment assignment: assignments){
+			routesMap.remove(assignment.getRoute().getId());
+		}
+		
+		routes = new ArrayList<Route>(routesMap.values());
+		
 		model.addAttribute("user", user);
 		model.addAttribute("availableRoutes", routes);
 		model.addAttribute("assignments", assignments);

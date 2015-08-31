@@ -1,9 +1,5 @@
 package com.acc.internship.controller;
 
-
-
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.acc.internship.model.Assignment;
-import com.acc.internship.model.Record;
 import com.acc.internship.model.Route;
 import com.acc.internship.model.User;
 import com.acc.internship.repo.AssignmentDAO;
-import com.acc.internship.repo.RecordDAO;
+
 import com.acc.internship.model.Route;
 import com.acc.internship.model.User;
 import com.acc.internship.repo.RouteDAO;
@@ -30,6 +25,15 @@ import com.acc.internship.repo.UserDAO;
  */
 @Controller
 public class HomeController {
+	@Autowired
+	private UserDAO userDao;
+
+	@Autowired
+	private StationDAO stationDao;
+
+	@Autowired
+	private RouteDAO routeDao;
+
 	@RequestMapping("/hello")
 	public String hello(@RequestParam(value = "name", required = false, defaultValue = "world") String name,
 			Model model) {
@@ -40,8 +44,8 @@ public class HomeController {
 	@RequestMapping("/")
 	public String root(Model model) {
 		
+		
 		return "index";
-
 	}
 
 	@RequestMapping("/driver")
@@ -50,6 +54,9 @@ public class HomeController {
 		return "driver";
 	}
 	
-
+	@RequestMapping("/admin/realtime")
+	public String realtime(Model m){
+		return "websockets";
+	}
 
 }

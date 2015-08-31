@@ -37,7 +37,8 @@ public class AdminStationController {
 	@RequestMapping(value = "/admin/newstation", method = RequestMethod.POST)
 	public String newStationPost(@ModelAttribute Station station, Model model) {
 		stationDao.add(station);
-
+		model.addAttribute("stations",stationDao.list());
+		model.addAttribute("success","Station added");
 		model.addAttribute("page", "newstation");
 		return "admin";
 	}
