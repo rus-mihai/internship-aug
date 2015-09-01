@@ -6,29 +6,28 @@
 <meta charset="utf-8" />
 <title>Insert title here</title>
 <!-- BOOTSTRAP STYLE SHEET -->
-<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="/css/bootstrap.css" rel="stylesheet" />
 <!-- FONT-AWESOME STYLE SHEET FOR BEAUTIFUL ICONS -->
-<link href="css/font-awesome.css" rel="stylesheet" />
+<link href="/css/font-awesome.css" rel="stylesheet" />
 
 <!-- CUSTOM STYLE CSS -->
 
 </head>
 <body>
-	<section >
+	<section>
 		<div th:fragment="updatedriver">
 
 			<div class="row" id="Home">
 				<div class="col-md-4">
-					<img src="img/250x250.png" class="img-rounded img-responsive" /> <br></br>
+					<img src="/img/250x250.png" class="img-rounded img-responsive" />
+					<br></br>
 					<form action="#" th:action="@{/driver}" th:object="${userupdate}"
 						method="post">
 						<label>FirstName</label> <input type="text" class="form-control"
 							th:value="${firstName}" th:field="*{firstName}" /> <label>
 							LastName</label> <input type="text" class="form-control"
-
-							th:field="*{lastName}" /> 
-							  <input
-							type="hidden" class="form-control" th:field="*{username}" /> <input
+							th:field="*{lastName}" /> <input type="hidden"
+							class="form-control" th:field="*{username}" /> <input
 							type="hidden" class="form-control" th:field="*{id}" /> <br></br>
 						<input type="submit" value="Update" style="width: 80px;"
 							class="btn btn-warning" /> <br></br> <br></br>
@@ -53,25 +52,40 @@
 						</a>
 					</div>
 					<div class="form-group col-md-8">
-						<h3>Change YOur Password</h3>									
-						
-						<form id="form2" action="#" th:action="@{/driver/updatepass}" th:object="${passupdateoptions}"
-							method="post">
-							<br></br> 
-							<label>Enter Old Password</label> <input  value="***"
-								type="password" class="form-control" th:field="*{oldpassword}" /> 
+						<h3>Change YOur Password</h3>
+
+						<form id="form2" action="#" th:action="@{/driver/updatepass}"
+							th:object="${passupdateoptions}" method="post">
+							<br></br>
+							<p>
+								Enter Old Password <input value="***" type="password"
+									class="form-control" th:field="*{oldpassword}" />
+							</p>
 							
-							<label>New Password</label> <input 
-								 type="password" class="form-control" value="***" th:field="*{newpassword}" /> 
-								<label>Confirm New Password</label> <input 
-								 type="password" class="form-control" value="***" th:field="*{confirm}" /> 
-								 <input type="hidden" class="form-control" th:field="*{id}" th:value ="${userupdate.id}" />
-						 <input
-								type="submit" value="Change password" style="width: 140px;"
-								class="btn btn-warning" />
+							<p>
+								New Password <input type="password" class="form-control"
+									value="***" th:field="*{newpassword}" />
+							</p>
+							<p>
+								Confirm New Password <input type="password" class="form-control"
+									value="***" th:field="*{confirm}" />
+							</p><p>		
+								<input type="hidden" class="form-control" th:field="*{id}"
+									th:value="${userupdate.id}" />
+							</p>
+							<p>
+								<input type="submit" value="Change password"
+									style="width: 140px;" class="btn btn-warning" />
+							</p>
 							
 						</form>
-						
+
+						<span class="validationError"
+								th:text="${{param.error}}"></span>
+						<div class="success" th:if="${param.success}">
+							<p th:text="${{param.success}}"></p>
+						</div>
+
 					</div>
 				</div>
 			</div>
