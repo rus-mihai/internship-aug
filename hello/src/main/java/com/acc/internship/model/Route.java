@@ -33,6 +33,9 @@ public class Route {
 	@OneToMany(mappedBy="route")
 	private Set<Assignment> assigments;
 
+	@OneToMany(mappedBy="routerecord")
+	private Set<Record> records;
+
 
 	public int getId() {
 		return id;

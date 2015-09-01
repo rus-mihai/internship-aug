@@ -69,10 +69,13 @@
 
 				</div>
 
-				<form>
-					<input type="text" id="time1"></input> 
-					<input type="text"	id="time2"></input> 
-					<input type="text" id="time3"></input>
+				<form action="#" method="post"
+				 th:action="@{/driver/actions/submitReport}" th:object="${report}">
+				 
+					<input type="text" id="time1" th:field="*{startstring}"></input> 
+					<input type="text"	id="time2" th:field="*{pausestring}"></input> 
+					<input type="text" id="time3" th:field="*{stopstring}"></input>
+					<input type="hidden" id="time3" th:field="*{routerecord.id}"></input>
 					<br></br>
 					 <input type="submit" id="raportSubmit" value="Job Done!"/>
 				</form>
