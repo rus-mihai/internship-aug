@@ -49,6 +49,13 @@ public class Record {
 	@Transient
 	private String startstring;
 	
+	@Transient
+	private String pausestring;
+	
+	@Transient
+	private String stopstring;
+	
+	
 	public String getStartstring() {
 		return startstring;
 	}
@@ -73,12 +80,7 @@ public class Record {
 		this.stopstring = stopstring;
 	}
 
-	@Transient
-	private String pausestring;
-	
-	@Transient
-	private String stopstring;
-	
+
 	public Route getRouterecord() {
 		return routerecord;
 	}

@@ -30,14 +30,48 @@
 <body onload="connect();" onunload="disconnect();">
 	<div th:include="fragments/header :: header"></div>
 	<div th:include="fragments/sidebar :: sidebar"></div>
-	<div th:replace="|fragments/${page} :: ${page}|"></div>
+	
+	<section id="main" class="column">
+
+			<h4 class="alert_info">Welcome to admin panel.</h4>
+			<article class="module width_3_quarter">
+				
+				
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<table class="tablesorter" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Line no.</th>
+									<th>Start time</th>
+									<th>End time</th>
+									<th>Start station</th>
+									<th>End station</th>
+								</tr>
+							</thead>
+							<tbody id="tbody">
+								<tr id="response">
+									<td id="line"></td>
+									<td id="startTime"></td>
+									<td id="endTime"></td>
+									<td id="startStation"></td>
+									<td id="endStation"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- end of #tab1 -->
+
+
+				</div>
+				<!-- end of .tab_container -->
+
+			</article>
+
+		</section>
 	
 	
-	
-	<script src="/js/map.js"></script>
-		<script async="true"
-	      	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap">
-	    </script>
+
 </body>
 
 </html>

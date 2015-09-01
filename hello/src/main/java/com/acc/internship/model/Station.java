@@ -2,7 +2,6 @@ package com.acc.internship.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "stations")
+
 public class Station {
 
 	@Id
@@ -23,9 +25,11 @@ public class Station {
 	private String name;
 	
 	@OneToMany(mappedBy = "start")
+	@JsonManagedReference
 	private Set<Route> startRoutes;
 	
 	@OneToMany(mappedBy = "end")
+	@JsonManagedReference
 	private Set<Route> endRoutes;
 
 	public int getId() {

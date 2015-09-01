@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "routes")
 public class Route {
@@ -24,10 +26,12 @@ public class Route {
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idStart", nullable=false)
+	@JsonManagedReference
 	private Station start;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idEnd", nullable=false)
+	@JsonManagedReference
 	private Station end;
 	
 	@OneToMany(mappedBy="route")
