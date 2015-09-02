@@ -45,7 +45,7 @@
 
 
 				<div class="col-sm-4">
-					<button onClick="myFunction(1)">
+					<button onClick="myFunction(1);this.onclick=null;">
 						<img class="mg-circle img-responsive img-center" alt="START"
 							src="/img/start.png" />
 					</button>
@@ -53,31 +53,38 @@
 
 				</div>
 				<div class="col-sm-4">
-					<button onClick="myFunction(2)">
-						<img class="mg-circle img-responsive img-center" alt="START"
+					<button onClick="myFunction(2);this.onclick=null;">
+						<img class="mg-circle img-responsive img-center" alt="PAUSE"
 							src="/img/pause.png" />
 					</button>
 					<h2>Pause</h2>
 
 				</div>
 				<div class="col-sm-4">
-					<button onClick="myFunction(3)">
-						<img class="mg-circle img-responsive img-center" alt="START"
+					<button onClick="myFunction(3);this.onclick=null;">
+						<img class="mg-circle img-responsive img-center" alt="STOP"
 							src="/img/stop.png" />
 					</button>
-					<h2>Stops</h2>
+					<h2>Stop</h2>
 
 				</div>
 
-				<form action="#" method="post"
-				 th:action="@{/driver/actions/submitReport}" th:object="${report}">
-				 
-					<input type="text" id="time1" th:field="*{startstring}"></input> 
-					<input type="text"	id="time2" th:field="*{pausestring}"></input> 
-					<input type="text" id="time3" th:field="*{stopstring}"></input>
-					<input type="hidden" id="time3" th:field="*{routerecord.id}"></input>
-					<br></br>
-					 <input type="submit" id="raportSubmit" value="Job Done!"/>
+				<form action="#"  name="myForm"  onsubmit="return validateForm()" method="post"
+					th:action="@{/driver/actions/submitReport}" th:object="${report}">
+
+					<input name="time1" type="text" id="time1" th:field="*{startstring}"
+						readonly="true"></input>
+					 <input type="text" name="time2" id="time2"
+						th:field="*{pausestring}" readonly="true"></input> 
+					<input
+						type="text" name="time3" id="time3" th:field="*{stopstring}" readonly="true"></input>
+					<input type="hidden" id="time6" th:field="*{routerecord.id}"
+						readonly="true"></input>
+					 <br></br>
+					 <input type="button"
+						id="raportSubmit" onClick="history.go(0)" value="Correct" />
+					 <input
+						type="submit" id="raportSubmit"  value="Submit!" />
 				</form>
 
 
@@ -93,7 +100,7 @@
 	<!-- /.container -->
 
 	<script src="/js/clock.js"></script>
-
+	<script src="/js/verification.js"></script>
 </body>
 
 </html>

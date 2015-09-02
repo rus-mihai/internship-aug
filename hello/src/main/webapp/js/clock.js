@@ -1,6 +1,6 @@
 var timeStr, dateStr;
 
-function myFunction(x) {
+function myFunction(x) {   
 	now = new Date();
 	timer="time"+x;
 	hours = now.getHours();
@@ -16,5 +16,6 @@ function myFunction(x) {
 	timeStamp=""+dateStr+" "+timeStr;
 	
 	document.getElementById(timer).value=timeStamp;
+	
 
 }

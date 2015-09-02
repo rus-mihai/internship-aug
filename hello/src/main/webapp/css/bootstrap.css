@@ -2220,12 +2220,13 @@ tr:last-of-type td:last-child {
     box-shadow: inset -1px -1px 0 #fff;
 }
 tbody:hover td {
-    color: transparent;
+  
     text-shadow: 0 0 3px #aaa;
 }
 tbody:hover tr:hover td {
-    color: #444;
-    text-shadow: 0 1px 0 #fff;
+    color: #2D2626;
+    text-shadow: 0 1px 0 #636363;
+    transform: scale(1.2);
 }
 caption {
     padding-top: 8px;

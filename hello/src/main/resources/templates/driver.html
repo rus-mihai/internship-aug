@@ -32,8 +32,8 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav ">
 					<li><a href="#Home">HOME</a></li>
-					<li><a href="#">ABOUT</a></li>
-					<li><a href="#Routes">Routes</a></li>
+					<li><a href="#detail">ABOUT</a></li>
+					<li><a href="#ROUTES">ROUTES</a></li>
 					<li><a href="#contact">CONTACT</a></li>
 					<li id="logout">
 						<form th:action="@{/logout}" method="post">
@@ -49,9 +49,9 @@
 
 
 	<div class="container">
-		<section >
+		<section>
 
-			
+
 			<div th:include="fragments/updatedriver :: updatedriver "></div>
 			<div th:replace="fragments/driverview :: driverview "></div>
 
@@ -59,12 +59,11 @@
 		<!-- SECTION END -->
 	</div>
 	<!-- CONATINER END -->
-
 	<!-- REQUIRED SCRIPTS FILES -->
 	<!-- CORE JQUERY FILE -->
-	<script src="/js/jquery-1.11.1.js"></script>
+	<script src="js/jquery-1.11.1.js"></script>
 	<!-- REQUIRED BOOTSTRAP SCRIPTS -->
-	<script src="/js/bootstrap.js"></script>
+	<script src="js/bootstrap.js"></script>
 
 	<footer>
 		<div class="container spacer">
