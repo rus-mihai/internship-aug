@@ -29,6 +29,7 @@
 									<th>Firstname</th>
 									<th>Lastname</th>
 									<th>Username</th>
+									<th>Role</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
@@ -37,6 +38,7 @@
 									<td th:text="${u.firstName}"></td>
 									<td th:text="${u.lastName}"></td>
 									<td th:text="${u.username}"></td>
+									<td th:text="${u.userRole.role}"></td>
 									<td>
 										<a th:href="@{/admin/userview/edituser(id=${u.id})}">
 											<input type="image" src="/images/icn_edit.png" title="Edit" />	

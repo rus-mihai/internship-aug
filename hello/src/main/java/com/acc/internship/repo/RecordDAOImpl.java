@@ -34,14 +34,12 @@ public class RecordDAOImpl implements RecordDAO {
 	}
 
 	@Override
-	@Transactional
 	public Record getRecord(int id) {
 		getEntityManager().find(Record.class, id);
 		return null;
 	}
 
 	@Override
-	@Transactional
 	public List<Record> list() {
 		String hql = "from Record";
 		Query query = getEntityManager().createQuery(hql);
@@ -68,6 +66,17 @@ public class RecordDAOImpl implements RecordDAO {
 	public void add(Record record) {
 		getEntityManager().persist(record);
 
+	}
+
+	@Override
+	public void getAverageForRouteByHour(int idRoute, int hour) {
+		String hql = "select getAverageForRouteByHour(?,?)";
+		Query query = getEntityManager().createNativeQuery(hql);
+		
+		query.setParameter(1, hour);
+		query.setParameter(2, idRoute);
+		Integer duration = (Integer)query.getSingleResult();
+		//System.out.println(duration);
 	}
 
 }
