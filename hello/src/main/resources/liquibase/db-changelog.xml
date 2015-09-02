@@ -225,12 +225,26 @@
 			SET NEW.retour  = TIMEDIFF(NEW.stopTime,NEW.pauseTime);
 			end
 		</sql>	
-		
-		<rollback>
-			DROP TRIGGER after_insert ON internship.records
-		</rollback>
-
 	</changeSet>
-
+	
+	<changeSet id="15" author="Cristi">
+		<insert tableName="Routes">
+			<column name="id" value="1"></column>
+			<column name="idStart" value="1"></column>
+			<column name="idEnd" value="2"></column>
+			<column name="duration" value="30"></column>
+		</insert>
+		<insert tableName="Routes">
+			<column name="id" value="2"></column>
+			<column name="idStart" value="1"></column>
+			<column name="idEnd" value="2"></column>
+			<column name="duration" value="35"></column>
+		</insert>
+		
+		<insert tableName="assigments">
+			<column name="idDriver" value="2"></column>
+			<column name="idRoute" value="1"></column>
+		</insert>
+	</changeSet>
 
 </databaseChangeLog>
