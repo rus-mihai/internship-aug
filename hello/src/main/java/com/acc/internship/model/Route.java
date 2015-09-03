@@ -22,7 +22,7 @@ public class Route {
 	private int id;
 	
 	@Column(name = "duration")
-	private String duration;
+	private int duration;
 	
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idStart", nullable=false)
@@ -49,12 +49,12 @@ public class Route {
 		this.id = id;
 	}
 
-	public String getDuration() {
-		return duration;
+	public int getDuration() {
+		return duration/60;
 	}
 
-	public void setDuration(String duration) {
-		this.duration = duration;
+	public void setDuration(int duration) {
+		this.duration = duration*60;
 	}
 
 	public Station getStart() {

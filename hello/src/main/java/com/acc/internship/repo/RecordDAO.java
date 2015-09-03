@@ -12,4 +12,5 @@ public interface RecordDAO {
 	public void update(Record record);
 	public void add(Record record);
 	public void getAverageForRouteByHour(int idRoute, int hour);
+	public List<String> getReportByHourForRoute(int idRoute);
 }

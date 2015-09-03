@@ -38,7 +38,7 @@ public class HomeController {
 	@RequestMapping("/")
 	public String root(Model model) {
 		
-		recordDao.getAverageForRouteByHour(1, 19);
+		recordDao.getReportByHourForRoute(1);
 		return "index";
 	}
 

@@ -281,4 +281,7 @@
 		</sql>
 	</changeSet>
 
+	<changeSet id="18" author="Cristi">
+		<modifyDataType tableName="routes" columnName="duration" newDataType="int"/>
+	</changeSet>
 </databaseChangeLog>
