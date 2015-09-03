@@ -27,6 +27,9 @@ public class HomeController {
 	
 	@Autowired
 	private RecordDAO recordDao;
+	
+	@Autowired
+	private RouteDAO routeDao;
 
 @Autowired
 	private RouteDAO routeDao;
@@ -45,6 +48,7 @@ public class HomeController {
 		List<Route> lines = routeDao.list();
 		
 		List<Station> stations = stationDao.list();
+		model.addAttribute("lines", lines);
 		model.addAttribute("stations", stations);
 		model.addAttribute("lines", lines);
 		return "index";
