@@ -19,9 +19,6 @@
 
 
 <body>
-
-
-
 	<div class="header-container">
 		<header class="wrapper clearfix">
 			<h1 class="title">BUSControllerUnit</h1>
@@ -76,6 +73,9 @@
 						posuere enim eget turpis feugiat tempor.</p>
 				</footer>
 			</article>
+			
+			
+			
 
 			<aside>
 
@@ -93,6 +93,12 @@
 					</select>
 				</div>
 				<div id="map"></div>
+				
+				<div id="lines">
+					<ul th:each="line: ${lines}">
+						<a th:href="@{/line(id=${line.id})}"><li th:text = "|Line ${line.id}|"></li></a>
+					</ul>
+				</div>
 			</aside>
 
 		</div>

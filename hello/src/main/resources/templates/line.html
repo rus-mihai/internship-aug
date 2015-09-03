@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="publicFragments/head :: head">
+<meta charset="utf-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:replace="publicFragments/header :: header"></div>
+	<div class="main-container">
+		<div class="main wrapper clearfix">
+
+			<article th:fragment="line">
+				<div id="wrap">
+					<div class="aboutRoute">
+						<h1 th:text="|Line ${route.id}|"></h1>
+						<label>Start station</label>
+						<p th:text="${route.start.name}"></p>
+
+						<label>End station</label>
+						<p th:text="${route.end.name}"></p>
+
+						<label>Duration(minutes)</label>
+						<p th:text="${route.duration}"></p>
+					</div>
+
+					<div class="data">
+						<table class="tablesorter">
+							<thead>
+								<tr>
+									<th>Hour</th>
+									<th>Duration</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="hour,iterStat: ${hours}">
+									<td th:text="${iterStat.count}"></td>
+									<td th:text="${hour}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</article>
+			<div th:replace="publicFragments/sidebar :: sidebar"></div>
+
+		</div>
+		<!-- #main -->
+	</div>
+	<!-- #main-container -->
+	<div th:replace="publicFragments/footer :: footer"></div>
+</body>
+</html>

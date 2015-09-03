@@ -253,13 +253,15 @@
 	<changeSet id="16" author="Cristi">
 		<sql endDelimiter='' splitStatements="false">
 			CREATE function
-			getAverageForRouteByHour (forHour INT, route INT)
+			getAverageTourForRouteByHour (forHour INT, route INT)
 			RETURNS INT
 
 			BEGIN
 			DECLARE result INT;
-			SELECT sum(tour) div count(*) INTO result FROM internship.records where
-			hour(startTime) = forHour and idRoute = route;
+			SELECT sum(tour) div count(*) INTO result
+			FROM internship.records where
+			hour(startTime) = forHour and idRoute =
+			route;
 
 			RETURN result;
 			END
@@ -268,20 +270,47 @@
 
 	<changeSet id="17" author="Cristi">
 		<sql endDelimiter='' splitStatements="false">
-			create function getAverageByDayHourForRoute(forDay int, forHour int,idRoute int)
-					RETURNS INT
-					
-					BEGIN
-					DECLARE result INT;
-					SELECT sum(tour) div count(*) INTO result FROM internship.records WHERE
-					dayofweek(startTime) = forDay and hour(startTime) = forHour and idRoute = idRoute;
+			create function
+			getAverageTourByDayHourForRoute(forDay int, forHour int,idRoute int)
+			RETURNS INT
 
-					RETURN result;
-					END
+			BEGIN
+			DECLARE result INT;
+			SELECT sum(tour) div count(*) INTO result FROM internship.records WHERE
+			dayofweek(startTime) = forDay and hour(startTime) = forHour and
+			idRoute = idRoute;
+
+			RETURN result;
+			END
 		</sql>
 	</changeSet>
 
 	<changeSet id="18" author="Cristi">
-		<modifyDataType tableName="routes" columnName="duration" newDataType="int"/>
+		<modifyDataType tableName="routes" columnName="duration"
+			newDataType="int" />
+	</changeSet>
+
+	<changeSet id="19" author="Cristi">
+
+		<sql endDelimiter='' splitStatements="false">
+			Create function differenceTourDurationByRouteAndHour(idRoute int, forHour int)
+			returns int
+
+			begin
+
+			DECLARE durationRef int;
+			DECLARE averageForRouteByHour int;
+			DECLARE difference int;
+			SELECT duration INTO durationRef from routes where id = idRoute;
+
+			SELECT getAverageTourForRouteByHour(forHour,idRoute) into
+			averageForRouteByHour;
+
+			select averageForRouteByHour-durationRef INTO difference;
+
+			return difference;
+			END
+		</sql>
+
 	</changeSet>
 </databaseChangeLog>

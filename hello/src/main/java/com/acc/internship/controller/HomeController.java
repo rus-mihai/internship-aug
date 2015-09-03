@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.acc.internship.model.Route;
 import com.acc.internship.repo.RecordDAO;
 import com.acc.internship.model.Station;
 import com.acc.internship.repo.RouteDAO;
@@ -36,12 +37,21 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public String root(Model model) {
+		List<Route> lines = routeDao.list();
 		
-		
-		recordDao.getReportByHourForRoute(1);
 		List<Station> stations = stationDao.list();
 		model.addAttribute("stations", stations);
 		return "index";
+	}
+	
+	@RequestMapping("/line")
+	public String line(@RequestParam("id") Integer id, Model model){
+		Route route = routeDao.get(id);
+		List<String> averageRecords = recordDao.getReportTourByHourForRoute(id);
+		
+		model.addAttribute("hours", averageRecords);
+		model.addAttribute("route", route);
+		return "line";
 	}
 
 	@RequestMapping("/driver")
