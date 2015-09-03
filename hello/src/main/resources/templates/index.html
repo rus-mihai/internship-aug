@@ -80,54 +80,16 @@
 			<aside>
 
 				<div id="panel">
-					<b>Start: </b> <select id="start" onchange="calcRoute();">
-						<option
-							value="Observatorului I, Strada Observatorului, Cluj-Napoca 400000, Romania">Observatorului
-							I</option>
-						<option
-							value="Regionala CFR Bus Station, Bulevardul 21 Decembrie 1989, Cluj-Napoca, Romania">Regionala
-							CFR Bus Station</option>
-						<option value="Post Zorilor, Romania">Zorilor</option>
-						<option
-							value="Gheorghe Dima II, Strada Observatorului, Cluj-Napoca 400000, Romania">Gheorghe
-							Dima II</option>
-						<option value="Spitalul de Copii, Cluj-Napoca 400000,Romania">Spitalul
-							de Copii</option>
-						<option
-							value="Statia Campului, Calea Mănăștur, Cluj-Napoca 400000, Romania">Statia
-							Campului</option>
-						<option
-							value="Stația Piața 14 Iulie, Piața 14 Iulie, Cluj-Napoca 400000, Romania">Stația
-							Piața 14 Iulie</option>
-						<option value="Piața Mihai Viteazul, Cluj-Napoca 400000, Romania">Piața
-							Mihai Viteazul</option>
-						<option value="Sinterom, Romania">Sinterom</option>
-						<option value="Arte Plastice,Cluj-Napoca">Arte Plastice</option>
-
-					</select> <b>End: </b> <select id="end" onchange="calcRoute();">
-						<option
-							value="Observatorului I, Strada Observatorului, Cluj-Napoca 400000, Romania">Observatorului
-							I</option>
-						<option
-							value="Regionala CFR Bus Station, Bulevardul 21 Decembrie 1989, Cluj-Napoca, Romania">Regionala
-							CFR Bus Station</option>
-						<option value="Post Zorilor, Romania">Zorilor</option>
-						<option
-							value="Gheorghe Dima II, Strada Observatorului, Cluj-Napoca 400000, Romania">Gheorghe
-							Dima II</option>
-						<option value="Spitalul de Copii, Cluj-Napoca 400000,Romania">Spitalul
-							de Copii</option>
-						<option
-							value="Statia Campului, Calea Mănăștur, Cluj-Napoca 400000, Romania">Statia
-							Campului</option>
-						<option
-							value="Stația Piața 14 Iulie, Piața 14 Iulie, Cluj-Napoca 400000, Romania">Stația
-							Piața 14 Iulie</option>
-						<option value="Piața Mihai Viteazul, Cluj-Napoca 400000, Romania">Piața
-							Mihai Viteazul</option>
-						<option value="Sinterom, Romania">Sinterom</option>
-						<option value="Arte Plastice,Cluj-Napoca">Arte Plastice</option>
-
+					
+					<b>Start:</b> <select id="start" 
+						onchange="calculateAndDisplayRoute();">
+						<option th:each="s: ${stations}" 
+							th:text="*{s.name}"></option>
+					</select> 
+					<b>End: </b> <select id="end" 
+						onchange="calculateAndDisplayRoute();">
+						<option th:each="x: ${stations}" 
+							th:text="*{x.name}"></option>
 					</select>
 				</div>
 				<div id="map"></div>
@@ -156,11 +118,10 @@
 
 		</footer>
 	</div>
-	
+
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
-
 	<script src="js/map.js"></script>
 	<script async="true"
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap">

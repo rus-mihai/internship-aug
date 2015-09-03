@@ -21,9 +21,8 @@
 				<form action="#" th:action="@{/admin/newstation}" th:object="${station}" method="post">
 					
 					<p>
-						Name: <input type="text" th:field="*{name}"/>
+						Name: <input  id="address1" type="text" th:field="*{name}"/>
 					</p>
-	
 					<p>
 						<input type="submit" value="Submit" /> <input type="reset"
 							value="Reset" />
@@ -58,9 +57,11 @@
 							</tr>
 						</tbody>
 					</table>
+		
 	
 			</article>
 		<!-- end of NewStation-->
+		<div id="map"></div>
 		</section>
 	</div>
 </body>
