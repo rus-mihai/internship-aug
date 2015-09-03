@@ -1,9 +1,13 @@
 var marker;
 var map;
-var x = 1;
-function initMap() {
-	var directionsService = new google.maps.DirectionsService;
-	var directionsDisplay = new google.maps.DirectionsRenderer;
+var directionsService;
+var directionsDisplay;
+
+function neMap() {
+
+	directionsService = new google.maps.DirectionsService;
+	directionsDisplay = new google.maps.DirectionsRenderer;
+
 	map = new google.maps.Map(document.getElementById('map'), {
 		zoom : 10,
 		center : {
@@ -12,6 +16,11 @@ function initMap() {
 		}
 	});
 	directionsDisplay.setMap(map);
+}
+
+function initMap() {
+
+	neMap();
 
 	var geocoder = new google.maps.Geocoder;
 	var infowindow = new google.maps.InfoWindow;
@@ -57,26 +66,31 @@ function geocodeLatLng(latLng, geocoder, map, infowindow) {
 
 	} else {
 
-		geocoder.geocode({
-			'location' : latLng
-		}, function(results, status) {
-			if (status === google.maps.GeocoderStatus.OK) {
-				if (results[1]) {
-					map.setZoom(11);
-					marker = new google.maps.Marker({
-						position : latLng,
-						map : map
-					});
-					infowindow.setContent(results[1].formatted_address);
-					document.getElementById("address1").value = results[1].formatted_address;
-					infowindow.open(map, marker);
-				} else {
-					window.alert('No results found');
-				}
-			} else {
-				window.alert('Geocoder failed due to: ' + status);
-			}
-		});
+		geocoder
+				.geocode(
+						{
+							'location' : latLng
+						},
+						function(results, status) {
+							if (status === google.maps.GeocoderStatus.OK) {
+								if (results[1]) {
+									map.setZoom(11);
+									marker = new google.maps.Marker({
+										position : latLng,
+										map : map
+									});
+									infowindow
+											.setContent(results[1].formatted_address);
+									document.getElementById("address1").value = results[1].formatted_address;
+									infowindow.open(map, marker);
+								} else {
+									window.alert('No results found');
+								}
+							} else {
+								window.alert('Geocoder failed due to: '
+										+ status);
+							}
+						});
 	}
 }
 

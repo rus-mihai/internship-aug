@@ -28,6 +28,11 @@ public class HomeController {
 	@Autowired
 	private RecordDAO recordDao;
 
+@Autowired
+	private RouteDAO routeDao;
+
+
+	
 	@RequestMapping("/hello")
 	public String hello(@RequestParam(value = "name", required = false, defaultValue = "world") String name,
 			Model model) {
@@ -36,13 +41,15 @@ public class HomeController {
 	}
 
 	@RequestMapping("/")
-	public String root(Model model) {
+	public String line(Model model) {
 		List<Route> lines = routeDao.list();
 		
 		List<Station> stations = stationDao.list();
 		model.addAttribute("stations", stations);
+		model.addAttribute("lines", lines);
 		return "index";
 	}
+	
 	
 	@RequestMapping("/line")
 	public String line(@RequestParam("id") Integer id, Model model){

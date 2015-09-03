@@ -19,11 +19,11 @@
 				 <!-- form new station -->
 				
 				<form action="#" th:action="@{/admin/newstation}" th:object="${station}" method="post">
-					
 					<p>
 						Name: <input  id="address1" type="text" th:field="*{name}"/>
 					</p>
 					<p>
+						
 						<input type="submit" value="Submit" /> <input type="reset"
 							value="Reset" />
 					</p>
