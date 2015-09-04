@@ -1,5 +1,6 @@
 package com.acc.internship.controller;
 
+import java.sql.Time;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.acc.internship.model.Route;
-import com.acc.internship.repo.RecordDAO;
 import com.acc.internship.model.Station;
+import com.acc.internship.repo.RecordDAO;
 import com.acc.internship.repo.RouteDAO;
 import com.acc.internship.repo.StationDAO;
-import com.acc.internship.repo.UserDAO;
 
 /**
  * Handles requests for the application home page.
@@ -29,9 +29,6 @@ public class HomeController {
 	private RecordDAO recordDao;
 	
 	@Autowired
-	private RouteDAO routeDao;
-
-@Autowired
 	private RouteDAO routeDao;
 
 
@@ -58,7 +55,7 @@ public class HomeController {
 	@RequestMapping("/line")
 	public String line(@RequestParam("id") Integer id, Model model){
 		Route route = routeDao.get(id);
-		List<String> averageRecords = recordDao.getReportTourByHourForRoute(id);
+		List<Time> averageRecords = recordDao.getReportTourByHourForRoute(id);
 		
 		model.addAttribute("hours", averageRecords);
 		model.addAttribute("route", route);
@@ -70,7 +67,6 @@ public class HomeController {
 
 		return "driver";
 	}
-	
 	
 
 

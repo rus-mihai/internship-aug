@@ -80,8 +80,8 @@ public class RecordDAOImpl implements RecordDAO {
 	}
 
 	@Override
-	public List<String> getReportTourByHourForRoute(int idRoute) {
-		ArrayList<String> durations = new ArrayList<String>();
+	public List<Time> getReportTourByHourForRoute(int idRoute) {
+		ArrayList<Time> durations = new ArrayList<Time>();
 		String sql = "select sec_to_time(getAverageTourForRouteByHour(?,?))";
 		Query query = getEntityManager().createNativeQuery(sql);
 		query.setParameter(2, idRoute);
@@ -89,9 +89,9 @@ public class RecordDAOImpl implements RecordDAO {
 			query.setParameter(1, i);
 			Time s = (Time)query.getSingleResult();
 			if(s != null){
-				durations.add(s.toString());
+				durations.add(s);
 			}else{
-				durations.add("There is no record for this route");
+				durations.add(new Time(0));
 			}
 		}
 		return durations;
