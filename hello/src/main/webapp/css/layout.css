@@ -4,10 +4,10 @@ html, div, map, dt, isindex, form, header, aside, section, section,
 	display: block;
 }
 
-div#map{
-    height: 76.6%;
-    width: 95.2%;
-    left: 3%;
+div#map {
+	height:50%;
+	width: 95.2%;
+	left: 3%;
 }
 
 html, body {
@@ -56,6 +56,11 @@ header#header h1.site_title, header#header h2.section_title {
 	line-height: 55px;
 	color: #fff;
 	text-shadow: 0 -1px 0 #000;
+}
+
+div .scrollit{
+	 overflow: scroll;
+	 height:320px;
 }
 
 header#header h1.site_title a {
@@ -205,8 +210,7 @@ aside#sidebar {
 	background: #E0E0E3 url(../images/sidebar.png) repeat;
 	float: left;
 	min-height: 500px;
-	margin-top: -4px;
-	height: 660px;
+    height: 1130px;
 }
 
 #sidebar hr {
@@ -376,8 +380,10 @@ aside#sidebar {
 }
 
 #sidebar footer {
-	margin-top: 62%;
+	margin-top: 210%;
 }
+
+
 
 /* Main Content */
 section#main {
@@ -470,6 +476,7 @@ html body section#main.column article.module.width_3_quarter  form {
 }
 
 .width_3_quarter {
+	margin-bottom: 1%;
 	width: 95%;
 	margin-right: 0;
 	float: left;
@@ -926,13 +933,12 @@ fieldset textarea:focus {
 	font-size: 14px;
 }
 
-
 #viewRoute {
-    margin: 30px;
-    width: 50%;
+	margin: 30px;
+	width: 50%;
 }
 
-.no h1{
+.no h1 {
 	font-size: 50px;
 	color: #3CB371;
 }
@@ -942,13 +948,12 @@ fieldset textarea:focus {
 	color: #58064C
 }
 
-.station h3{
+.station h3 {
 	font-size: 35px !important;
 	color: #323232 !important;
 }
 
-.duration h3{
+.duration h3 {
 	font-size: 30px !important;
 	color: red !important;
 }
-

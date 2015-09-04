@@ -1,6 +1,8 @@
 package com.acc.internship.controller;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.validation.Valid;
 
@@ -56,13 +58,35 @@ public class DriverController {
 
 	}
 
-
 	@RequestMapping(value = { "/driver" }, method = RequestMethod.POST)
-	public String updateDriverPost(User userupdate, BindingResult result) {
+	public String updateDriverPost(@Valid @ModelAttribute User userupdate, BindingResult result, Model model) {
 
-		userDao.update(userupdate);
+		if ((userupdate.getFirstName() == "") || (userupdate.getFirstName() == null)
+				|| !((Pattern.compile("^[a-zA-Z ]*$").matcher(userupdate.getFirstName()).matches()))) {
+			result.rejectValue("firstName", "firstName.fail", "Not a normal name!Try with letters!");
+		} else {
+			if ((userupdate.getLastName() == "") ||(userupdate.getLastName() == null)
+					|| !((Pattern.compile("^[a-zA-Z ]*$").matcher(userupdate.getLastName()).matches()))) {
+				result.rejectValue("lastName", "lastName.fail", "Not a normal name!Try with letters!");
+			} else {
+				
+			}
+		}
 
-		return "redirect:/driver";
+		if (!result.hasErrors()) {
+			userDao.update(userupdate);
+			model.addAttribute("success1", "Credentials Succesfully changed!");
+			return "redirect:/driver";
+		}
+		{
+			List<ObjectError> errors = result.getAllErrors();
+			String s = null;
+			for (ObjectError o : errors) {
+				s = o.getDefaultMessage();
+			}
+			model.addAttribute("error1", s);
+			return "redirect:/driver";
+		}
 	}
 
 	@RequestMapping(value = { "/driver/updatepass" }, method = RequestMethod.POST)
@@ -94,12 +118,12 @@ public class DriverController {
 		} else {
 			List<ObjectError> errors = result.getAllErrors();
 			String s = null;
-			for(ObjectError o:errors){
-				s=o.getDefaultMessage();
+			for (ObjectError o : errors) {
+				s = o.getDefaultMessage();
 			}
-			
-			model.addAttribute("error",s);
-			
+
+			model.addAttribute("error", s);
+
 			return "redirect:/driver";
 		}
 

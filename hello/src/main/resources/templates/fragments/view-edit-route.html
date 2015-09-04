@@ -3,91 +3,111 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title>Insert title here</title>
 </head>
 <body>
 	<div th:fragment="view-edit-route">
-		<section id="main" class="column" >
+		<section id="main" class="column">
 
-		<h4 class="alert_info">Welcome to admin panel.</h4>
+			<h4 class="alert_info">Welcome to admin panel.</h4>
 
-		<article class="module width_full">
-			<header>
-				<h3>Stats</h3>
-			</header>
-			<div class="module_content">
+			<article class="module width_full">
+				<header>
+					<h3>Stats</h3>
+				</header>
+				<div class="module_content">
 
-				<div class="clear"></div>
-			</div>
-		</article>
-		<!-- end of stats article -->
-
-		<article class="module width_3_quarter">
-			<header>
-				<h3 class="tabs_involved">Content Manager</h3>
-
-			</header>
-			
-			
-			
-			<div class="tab_container" >
-				<div id="tab1" class="tab_content">
-				
-				<div id="viewRoute" class="viewRoute" th:if="${param.edit == null}">
-					<div class="no">
-						<h1 th:text="${route.id}"></h1>
-					</div>
-					<div class="station">
-						<h2>Start station</h2>
-						<h3 th:text="${route.start.name}"></h3>
-					</div>
-					
-					<div class="station">
-						<h2>End station</h2>
-						<h3 th:text="${route.end.name}"></h3>
-					</div>
-					
-					<div class="duration">
-						<h2>Duration</h2>
-						<h3 th:text="${route.duration}"> minute</h3>
-					</div>
-				</div>	
-				
-				<div id="editRoute" th:if="${param.edit}">
-					<form th:action="@{/admin/view-edit-route}" th:object="${route}" method="post">
-						<input type="text" th:field="*{id}" hidden="true"/>
-						<label>Duration</label><input type="text" th:field="*{duration}"/>
-						<label>Start station</label>
-						<select id="start"
-								th:field="*{start.id}">
-								<option selected="selected" th:value="${route.start.id}" th:text="${route.start.name}"></option>
-								<option th:each="s: ${stations}" th:value="${s.id}"
-									th:text="${s.name}"></option>
-							</select>
-						<label>End station</label>
-							<select id="end"
-								th:field="*{end.id}">
-								<option selected="selected" th:value="${route.end.id}" th:text="${route.end.name}"></option>
-								<option th:each="s: ${stations}" th:value="${s.id}"
-									th:text="${s.name}"></option>
-							</select>
-							<input type="submit" value="Update route"/>
-					</form>
+					<div class="clear"></div>
 				</div>
-				
-				<a th:href="@{/admin/view-edit-route(id=${route.id},edit)}">Edit</a>
-				<a th:href="@{/admin/view-edit-route(id=${route.id})}" th:if="${param.edit}">Cancel</a>
+			</article>
+			<!-- end of stats article -->
+
+			<article class="module width_3_quarter">
+				<header>
+					<h3 class="tabs_involved">Content Manager</h3>
+
+				</header>
+
+
+
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+
+						<div id="viewRoute" class="viewRoute"
+							th:if="${param.edit == null}">
+							<div class="no">
+								<h1 th:text="${route.id}"></h1>
+							</div>
+							<div class="station">
+								<h2>Start station</h2>
+								<h3 th:text="${route.start.name}"></h3>
+							</div>
+
+							<div class="station">
+								<h2>End station</h2>
+								<h3 th:text="${route.end.name}"></h3>
+							</div>
+
+							<div class="duration">
+								<h2>Duration</h2>
+								<h3 th:text="${route.duration}">minute</h3>
+							</div>
+						</div>
+
+						<div id="editRoute" th:if="${param.edit}">
+							<form th:action="@{/admin/view-edit-route}" th:object="${route}"
+								method="post">
+								<input type="text" th:field="*{id}" hidden="true" /> <label>Duration</label><input
+									type="text" th:field="*{duration}" /> <label>Start
+									station</label> <select id="start" th:field="*{start.id}">
+									<option selected="selected" th:value="${route.start.id}"
+										th:text="${route.start.name}"></option>
+									<option th:each="s: ${stations}" th:value="${s.id}"
+										th:text="${s.name}"></option>
+								</select> <label>End station</label> <select id="end"
+									th:field="*{end.id}">
+									<option selected="selected" th:value="${route.end.id}"
+										th:text="${route.end.name}"></option>
+									<option th:each="s: ${stations}" th:value="${s.id}"
+										th:text="${s.name}"></option>
+								</select> <input type="submit" value="Update route" />
+							</form>
+
+
+
+
+						</div>
+
+						<a th:href="@{/admin/view-edit-route(id=${route.id},edit)}">Edit</a>
+						<a th:href="@{/admin/view-edit-route(id=${route.id})}"
+							th:if="${param.edit}">Cancel</a>
+
+
+					</div>
+					<!-- end of #tab1 -->
+
+
 				</div>
-				<!-- end of #tab1 -->
+				<!-- end of .tab_container -->
+	<div onload="calculateAndDisplayRoute()">
 
-
+				<input id="start" type="hidden" th:field="${route.start.name}" />
+				 <input id="end"  type="hidden"
+					th:field="${route.end.name}" />
 			</div>
-			<!-- end of .tab_container -->
 
-		</article>
-		<!-- end of content manager article -->
+			</article>
+			<!-- end of content manager article -->
+
+		
+			<div id="map"></div>
 		</section>
+		<script src="/js/map.js"></script>
+		<script async="true"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap3">
+			</script>
+
 	</div>
 </body>
 </html>

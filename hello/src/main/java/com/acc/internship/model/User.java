@@ -55,7 +55,6 @@ public class User {
 	@Transient
 	private String oldPassword;
 	
-	@NotBlank
 	@Transient 
 	private String confirmPassword;
 	

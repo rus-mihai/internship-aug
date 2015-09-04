@@ -23,15 +23,30 @@
 					<br></br>
 					<form action="#" th:action="@{/driver}" th:object="${userupdate}"
 						method="post">
-						<label>FirstName</label> <input type="text" class="form-control"
-							th:value="${firstName}" th:field="*{firstName}" /> <label>
-							LastName</label> <input type="text" class="form-control"
-							th:field="*{lastName}" /> <input type="hidden"
-							class="form-control" th:field="*{username}" /> <input
+						<label>FirstName</label> 
+						<input type="text" class="form-control"
+							th:value="${firstName}" th:field="*{firstName}" /> 
+					<span class="validationError" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+						<label>LastName</label> 
+					<span class="validationError" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+					<input type="text" class="form-control"
+							th:field="*{lastName}" />
+					 <input type="hidden"
+							class="form-control" th:field="*{username}" />
+					<input type="hidden"
+							class="form-control" th:field="*{password}" />		
+						
+					 <input
 							type="hidden" class="form-control" th:field="*{id}" /> <br></br>
-						<input type="submit" value="Update" style="width: 80px;"
+					<input type="submit" value="Update" style="width: 80px;"
 							class="btn btn-warning" /> <br></br> <br></br>
 					</form>
+					
+					<span class="validationError"
+								th:text="${{param.error1}}"></span>
+						<div class="success" th:if="${param.success1}">
+							<p th:text="${{param.success1}}"></p>
+						</div>
 				</div>
 				<div class="col-md-8">
 					<div class="alert alert-info">

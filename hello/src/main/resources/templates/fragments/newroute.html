@@ -26,14 +26,13 @@
 					<div id="x">
 						<form action="#" th:action="@{/admin/newroute}"
 							th:object="${route}" method="post">
-							<input type="hidden" id="address1" />
-								<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>
-							
+							<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>
+
 							<label>Line no. </label><input type="text" th:field="*{id}" /> <label>Duration
-							</label><input type="text" th:field="*{duration}" /> <b>Start: </b> 
-							<select
-								id="start" th:field="*{start.id}" onchange="calculateAndDisplayRoute();">
-								<option th:each="s: ${stations}" th:value="${s.id}" 
+							</label><input type="text" th:field="*{duration}" /> <b>Start: </b> <select
+								id="start" th:field="*{start.id}"
+								onchange="calculateAndDisplayRoute();">
+								<option th:each="s: ${stations}" th:value="${s.id}"
 									th:text="${s.name}"></option>
 							</select> <b>End: </b> <select id="end" th:field="*{end.id}"
 								onchange="calculateAndDisplayRoute();">
@@ -48,7 +47,12 @@
 
 			<div id="map"></div>
 		</section>
-
+		<script src="/js/map.js"></script>
+		<script async="true"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap1">
+			
+		</script>
 	</div>
+
 </body>
 </html>

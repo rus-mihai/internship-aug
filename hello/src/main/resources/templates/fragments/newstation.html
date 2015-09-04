@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -13,56 +13,72 @@
 			<article class="module width_3_quarter">
 				<header>
 					<h3 class="tabs_involved">Content Manager</h3>
-	
+
 				</header>
 				<h1>Add New Station</h1>
-				 <!-- form new station -->
-				
-				<form action="#" th:action="@{/admin/newstation}" th:object="${station}" method="post">
+				<!-- form new station -->
+
+				<form action="#" th:action="@{/admin/newstation}"
+					th:object="${station}" method="post">
 					<p>
-						Name: <input  id="address1" type="text" th:field="*{name}"/>
+						Name: <input id="address1" type="text" th:field="*{name}" />
 					</p>
 					<p>
-						
+
 						<input type="submit" value="Submit" /> <input type="reset"
 							value="Reset" />
 					</p>
 				</form>
-				
+
 				<p th:if="${used}" th:text="${used}"></p>
 				<p th:if="${success}" th:text="${success}"></p>
-				<table class="tablesorter" cellspacing="0">
-						<thead>
-							<tr>
-								<th>Station name</th>
-								<th>Actions</th>
+				<table class="tablesorter" id="scrollbar" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Station name</th>
+							<th>Actions</th>
 
-							</tr>
-						</thead>
-						<tbody>
-							
-							<tr th:each="station: ${stations}">
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="2">
+								<div class="scrollit">
+									<table class="tablesorter" cellspacing="0">
+										<tr th:each="station: ${stations}">
 
-								<td th:text="${station.name}"></td>
-								<td>
-<!-- 									<a th:href="@{/admin/view-edit-route(id=${station.id})}"> -->
-<!-- 										<input type="image" src="/images/icn_edit.png" -->
-<!-- 										title="Edit" /> -->
-<!-- 									</a> -->
+											<td th:text="${station.name}"></td>
+											<td>
+												<!-- 									<a th:href="@{/admin/view-edit-route(id=${station.id})}"> -->
+												<!-- 										<input type="image" src="/images/icn_edit.png" -->
+												<!-- 										title="Edit" /> --> <!-- 									</a> --> <a
+												th:href="@{/admin/newstation/delete-station(id=${station.id})}">
+													<input type="image" src="/images/icn_trash.png"
+													title="Trash" />
+											</a>
+											</td>
+										</tr>
+									</table>
 									
-										<a th:href="@{/admin/newstation/delete-station(id=${station.id})}">
-											<input type="image" src="/images/icn_trash.png" title="Trash" /> 
-										</a>
-									</td>
-							</tr>
-						</tbody>
-					</table>
-		
-	
+								</div>
+								</td>
+								</tr>
+					</tbody>
+				</table>
+
+
 			</article>
-		<!-- end of NewStation-->
-		<div id="map"></div>
+			<!-- end of NewStation-->
+			<div id="map"></div>
 		</section>
+
+		<script src="/js/map.js"></script>
+		<script async="true"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap2">
+			
+		</script>
 	</div>
+
+
 </body>
 </html>

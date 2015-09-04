@@ -18,7 +18,19 @@ function neMap() {
 	directionsDisplay.setMap(map);
 }
 
-function initMap() {
+function initMap1() {
+
+	neMap();
+
+	var onChangeHandler = function() {
+		calculateAndDisplayRoute();
+	};
+	document.getElementById('start')
+			.addEventListener('change', onChangeHandler);
+	document.getElementById('end').addEventListener('change', onChangeHandler);
+}
+
+function initMap2() {
 
 	neMap();
 
@@ -29,12 +41,23 @@ function initMap() {
 		geocodeLatLng(e.latLng, geocoder, map, infowindow);
 	});
 
-	var onChangeHandler = function() {
-		calculateAndDisplayRoute(directionsService, directionsDisplay);
-	};
-	document.getElementById('start')
-			.addEventListener('change', onChangeHandler);
-	document.getElementById('end').addEventListener('change', onChangeHandler);
+}
+
+function initMap3() {
+
+	neMap();
+	directionsService.route({
+		origin : document.getElementById('start').value,
+		destination : document.getElementById('end').value,
+		travelMode : google.maps.TravelMode.DRIVING
+	}, function(response, status) {
+		if (status === google.maps.DirectionsStatus.OK) {
+			directionsDisplay.setDirections(response);
+		} else {
+			window.alert('Directions request failed due to ' + status);
+		}
+	});
+
 }
 
 function geocodeLatLng(latLng, geocoder, map, infowindow) {
@@ -94,7 +117,7 @@ function geocodeLatLng(latLng, geocoder, map, infowindow) {
 	}
 }
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+function calculateAndDisplayRoute() {
 	directionsService.route({
 		origin : document.getElementById('start').options[document
 				.getElementById('start').selectedIndex].text,
