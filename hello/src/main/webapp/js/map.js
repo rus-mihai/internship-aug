@@ -21,13 +21,22 @@ function neMap() {
 function initMap1() {
 
 	neMap();
-
+	
+	
+	if(document.getElementById('startE') != undefined){
+		calculateAndDisplayExistingRoute();
+	}
+	
 	var onChangeHandler = function() {
 		calculateAndDisplayRoute();
 	};
-	document.getElementById('start')
-			.addEventListener('change', onChangeHandler);
-	document.getElementById('end').addEventListener('change', onChangeHandler);
+	
+	if(document.getElementById('start') != undefined){
+		document.getElementById('start')
+		.addEventListener('change', onChangeHandler);
+		document.getElementById('end').addEventListener('change', onChangeHandler);
+	}
+	
 }
 
 function initMap2() {
@@ -39,23 +48,6 @@ function initMap2() {
 
 	map.addListener('click', function(e) {
 		geocodeLatLng(e.latLng, geocoder, map, infowindow);
-	});
-
-}
-
-function initMap3() {
-
-	neMap();
-	directionsService.route({
-		origin : document.getElementById('start').value,
-		destination : document.getElementById('end').value,
-		travelMode : google.maps.TravelMode.DRIVING
-	}, function(response, status) {
-		if (status === google.maps.DirectionsStatus.OK) {
-			directionsDisplay.setDirections(response);
-		} else {
-			window.alert('Directions request failed due to ' + status);
-		}
 	});
 
 }
@@ -123,6 +115,20 @@ function calculateAndDisplayRoute() {
 				.getElementById('start').selectedIndex].text,
 		destination : document.getElementById('end').options[document
 				.getElementById('end').selectedIndex].text,
+		travelMode : google.maps.TravelMode.DRIVING
+	}, function(response, status) {
+		if (status === google.maps.DirectionsStatus.OK) {
+			directionsDisplay.setDirections(response);
+		} else {
+			window.alert('Directions request failed due to ' + status);
+		}
+	});
+}
+
+function calculateAndDisplayExistingRoute(){
+	directionsService.route({
+		origin : document.getElementById('startE').innerHTML,
+		destination : document.getElementById('endE').innerHTML,
 		travelMode : google.maps.TravelMode.DRIVING
 	}, function(response, status) {
 		if (status === google.maps.DirectionsStatus.OK) {

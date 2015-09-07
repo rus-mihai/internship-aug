@@ -41,12 +41,12 @@
 							</div>
 							<div class="station">
 								<h2>Start station</h2>
-								<h3 th:text="${route.start.name}"></h3>
+								<h3 id="startE" th:text="${route.start.name}"></h3>
 							</div>
 
 							<div class="station">
 								<h2>End station</h2>
-								<h3 th:text="${route.end.name}"></h3>
+								<h3 id="endE" th:text="${route.end.name}"></h3>
 							</div>
 
 							<div class="duration">
@@ -60,13 +60,13 @@
 								method="post">
 								<input type="text" th:field="*{id}" hidden="true" /> <label>Duration</label><input
 									type="text" th:field="*{duration}" /> <label>Start
-									station</label> <select id="start" th:field="*{start.id}">
+									station</label> <select id="start" th:field="*{start.id}" onchange="calculateAndDisplayRoute();">
 									<option selected="selected" th:value="${route.start.id}"
 										th:text="${route.start.name}"></option>
 									<option th:each="s: ${stations}" th:value="${s.id}"
 										th:text="${s.name}"></option>
 								</select> <label>End station</label> <select id="end"
-									th:field="*{end.id}">
+									th:field="*{end.id}" onchange="calculateAndDisplayRoute();">
 									<option selected="selected" th:value="${route.end.id}"
 										th:text="${route.end.name}"></option>
 									<option th:each="s: ${stations}" th:value="${s.id}"
@@ -90,12 +90,6 @@
 
 				</div>
 				<!-- end of .tab_container -->
-	<div onload="calculateAndDisplayRoute()">
-
-				<input id="start" type="hidden" th:field="${route.start.name}" />
-				 <input id="end"  type="hidden"
-					th:field="${route.end.name}" />
-			</div>
 
 			</article>
 			<!-- end of content manager article -->
@@ -105,7 +99,7 @@
 		</section>
 		<script src="/js/map.js"></script>
 		<script async="true"
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap3">
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap1">
 			</script>
 
 	</div>
