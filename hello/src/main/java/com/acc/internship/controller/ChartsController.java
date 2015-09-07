@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.acc.internship.repo.RecordDAO;
@@ -16,8 +17,8 @@ public class ChartsController {
 	private RecordDAO recordDao;
 	
 	@RequestMapping("/charts")
-	public List<Time> charts(){
-		List<Time> averageRecords = recordDao.getReportTourByHourForRoute(1);
+	public List<Time> charts(@RequestParam("id") Integer id){
+		List<Time> averageRecords = recordDao.getReportTourByHourForRoute(id);
 		
 		return averageRecords;
 	}

@@ -1,41 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-
-<meta charset="utf-8"></meta>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
-<title></title>
-<meta name="description" content=""></meta>
-<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-<link rel="apple-touch-icon" href="apple-touch-icon.png"></link>
-<link rel="stylesheet" href="css/normalize.min.css"></link>
-<link rel="stylesheet" href="css/normalize.css"></link>
-<link rel="stylesheet" href="css/main.css"></link>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-<script src="/js/moment.js"></script>
-<script src="/js/charts.js"></script>
+<head th:replace="publicFragments/head :: head">
+<meta charset="utf-8" />
+<title>Insert title here</title>
 </head>
 
 
 <body>
-	<div class="header-container">
-		<header class="wrapper clearfix">
-			<h1 class="title">BUSControllerUnit</h1>
-			<nav>
-				<ul>
-					<li><a href="/">HomePage</a></li>
-					<li><a href="/login">Login</a></li>
-					<li><a href="#">ContactUs</a></li>
-
-				</ul>
-			</nav>
-		</header>
-	</div>
-
+	<div th:replace="publicFragments/header :: header"></div>
 	<div class="main-container">
 		<div class="main wrapper clearfix">
 
@@ -76,65 +49,21 @@
 						posuere enim eget turpis feugiat tempor.</p>
 				</footer>
 			</article>
-			
-			
-			
+			<div th:replace="publicFragments/sidebar :: sidebar"></div>
 
-			<aside>
-
-				<div id="panel">
-					<b>Start:</b> <select id="start" 
-						onchange="calculateAndDisplayRoute();">
-						<option th:each="s: ${stations}" 
-							th:text="*{s.name}"></option>
-					</select> 
-					<b>End: </b> <select id="end" 
-						onchange="calculateAndDisplayRoute();">
-						<option th:each="x: ${stations}" 
-							th:text="*{x.name}"></option>
-					</select>
-				</div>
-				<div id="map"></div>
-				
-				<div id="lines">
-					<ul th:each="line: ${lines}">
-						<a th:href="@{/line(id=${line.id})}"><li th:text = "|Line ${line.id}|"></li></a>
-					</ul>
-				</div>
-			</aside>
 
 		</div>
 		<!-- #main -->
 	</div>
 	<!-- #main-container -->
 
-	<div class="footer-container">
-		<footer class="wrapper clearfix">
-			<div class="footer">
-				© Copyright 2015. All Rights Reserved.© Copyright 2015. All Rights
-				Reserved.© Copyright 2015. All Rights Reserved.
-
-				<nav>
-					<ul>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">Privacy</a></li>
-						<li><a href="#">Suscribe</a></li>
-					</ul>
-				</nav>
-
-			</div>
-
-		</footer>
-	</div>
-
+	<div th:replace="publicFragments/footer :: footer"></div>
 	
 	<script src="js/map.js"></script>
 	<script async="true"
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap1">
 		
 	</script>
-	
-	<div id="container"></div>
 </body>
 
 </html>

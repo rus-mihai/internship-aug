@@ -14,6 +14,7 @@
 			<article th:fragment="line">
 				<div id="wrap">
 					<div class="aboutRoute">
+						<input type="hidden" id="id" th:value="${route.id}"/>
 						<h1 th:text="|Line ${route.id}|"></h1>
 						<label>Start station</label>
 						<p th:text="${route.start.name}"></p>
@@ -24,23 +25,7 @@
 						<label>Duration(minutes)</label>
 						<p th:text="${route.duration}"></p>
 					</div>
-
-					<div class="data">
-						<table class="tablesorter">
-							<thead>
-								<tr>
-									<th>Hour</th>
-									<th>Duration</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="hour,iterStat: ${hours}">
-									<td th:text="${iterStat.count}"></td>
-									<td th:text="${hour}"></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<div id="container"></div>
 				</div>
 			</article>
 			<div th:replace="publicFragments/sidebar :: sidebar"></div>

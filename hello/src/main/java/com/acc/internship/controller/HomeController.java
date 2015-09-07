@@ -48,6 +48,7 @@ public class HomeController {
 		model.addAttribute("lines", lines);
 		model.addAttribute("stations", stations);
 		model.addAttribute("lines", lines);
+		model.addAttribute("title", "Home");	
 		return "index";
 	}
 	
@@ -56,9 +57,12 @@ public class HomeController {
 	public String line(@RequestParam("id") Integer id, Model model){
 		Route route = routeDao.get(id);
 		List<Time> averageRecords = recordDao.getReportTourByHourForRoute(id);
+		List<Route> lines = routeDao.list();
 		
 		model.addAttribute("hours", averageRecords);
 		model.addAttribute("route", route);
+		model.addAttribute("lines", lines);
+		model.addAttribute("title", "Line "+id);
 		return "line";
 	}
 

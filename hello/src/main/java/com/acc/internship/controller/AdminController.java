@@ -1,5 +1,7 @@
 package com.acc.internship.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.acc.internship.model.Record;
 import com.acc.internship.model.RecordFeeding;
+import com.acc.internship.model.Route;
 import com.acc.internship.repo.RecordDAO;
 import com.acc.internship.repo.RouteDAO;
 
@@ -63,11 +66,13 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin/feed")
 	public String feedRecords(Model model){
-		
-		RecordFeeding recordFeeding = new RecordFeeding(routeDao);
-		for(int i=0; i<100; i++){
-			Record r = recordFeeding.getRecord();
-			recordDao.add(r);
+		List<Route> routes = routeDao.list();
+		RecordFeeding recordFeeding = new RecordFeeding();
+		for(Route route: routes){
+			for(int i=0; i<100; i++){
+				Record r = recordFeeding.getRecord(route);
+				recordDao.add(r);
+			}
 		}
 		
 		model.addAttribute("page", "routes");

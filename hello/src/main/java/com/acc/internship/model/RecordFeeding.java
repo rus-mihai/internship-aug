@@ -9,17 +9,14 @@ import com.acc.internship.repo.RouteDAO;
 
 public class RecordFeeding {
 	
-	private RouteDAO routeDao;
-	private Route route;
 	private int MIN = 10;
 	private int MAX = 40;
 	
-	public RecordFeeding(RouteDAO routeDao){
-		route = routeDao.get(1);
-		this.routeDao = routeDao;
+	public RecordFeeding(){
+
 	}
 	
-	public Record getRecord(){
+	public Record getRecord(Route route){
 		int duration = randBetween(MIN, MAX);
 		Date start = randomDate();
 		Date intermediar = getNext(start,duration);

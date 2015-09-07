@@ -1,7 +1,9 @@
 $(function() {
-	var processed_json = new Array();
-	$.getJSON('/charts', function(data) {
-		// Populate series
+	var processed_json = [];
+	var id = document.getElementById('id').value;
+	var chartPath = '/charts?id='+id;
+	$.getJSON(chartPath, function(data) {
+		processed_json = [];
 		for (i = 0; i < data.length; i++) {
 			processed_json.push(data[i]);
 
@@ -13,10 +15,10 @@ $(function() {
 				type : "column"
 			},
 			title : {
-				text : "Student data"
+				text : "Duration per hour"
 			},
 			xAxis : {
-				type : 'category',
+				type : 'hours',
 				allowDecimals : false,
 				title : {
 					text : ""
@@ -24,11 +26,11 @@ $(function() {
 			},
 			yAxis : {
 				title : {
-					text : "Scores"
+					text : "Minutes spent"
 				}
 			},
 			series : [ {
-				name : 'Subjects',
+				name : 'Hour',
 				data : series(processed_json)
 			} ]
 		});
