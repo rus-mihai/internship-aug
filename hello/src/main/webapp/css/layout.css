@@ -5,7 +5,7 @@ html, div, map, dt, isindex, form, header, aside, section, section,
 }
 
 div#map {
-	height:50%;
+	height: 50%;
 	width: 95.2%;
 	left: 3%;
 }
@@ -17,6 +17,14 @@ html, body {
 	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
 	background: #F8F8F8;
 	font-size: 12px;
+}
+
+#start {
+	width: 35%;
+}
+
+#end {
+	width: 35%;
 }
 
 .clear {
@@ -58,9 +66,15 @@ header#header h1.site_title, header#header h2.section_title {
 	text-shadow: 0 -1px 0 #000;
 }
 
-div .scrollit{
-	 overflow: scroll;
-	 height:320px;
+div .scrollit {
+	overflow: scroll;
+	height: 320px;
+}
+
+#sgnout {
+	margin-top: 7%;
+	width: 40%;
+	height: 25px;
 }
 
 header#header h1.site_title a {
@@ -209,8 +223,7 @@ aside#sidebar {
 	width: 23%;
 	background: #E0E0E3 url(../images/sidebar.png) repeat;
 	float: left;
-	min-height: 500px;
-    height: 1130px;
+	height: auto;
 }
 
 #sidebar hr {
@@ -367,7 +380,7 @@ aside#sidebar {
 	color: #666666;
 	padding-left: 6%;
 	text-shadow: 0 1px 0 #fff;
-	margin: 10px 0 0 0;
+	bottom: 0;
 }
 
 #sidebar a {
@@ -380,10 +393,9 @@ aside#sidebar {
 }
 
 #sidebar footer {
-	margin-top: 210%;
+	margin-top: 5%;
+	font-size: 120%;
 }
-
-
 
 /* Main Content */
 section#main {

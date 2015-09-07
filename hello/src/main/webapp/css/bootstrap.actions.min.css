@@ -42,6 +42,12 @@ div h2 {
 	width: 15%;
 	float: right;
 }
+section #map {
+	height: 50%;
+	width: 95.2%;
+	left: 3%;
+}
+
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
 	main, menu, nav, section, summary {

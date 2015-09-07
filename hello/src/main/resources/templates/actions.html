@@ -22,83 +22,81 @@
 <body>
 
 
-
-	<!-- Page Content -->
-	<div class="container">
-
-
-		<div class="row">
-			<div class="col-sm-8">
-				<h2 id="change1">Actions You May do</h2>
+	<section id="main" class="column">
+		<!-- Page Content -->
+		<div class="container">
 
 
-			</div>
-
-		</div>
-		<!-- /.row -->
-
-		<hr></hr>
-		<hr></hr>
-		<div id="time">
 			<div class="row">
+				<div class="col-sm-8">
+					<h2 id="change1">Actions You May do</h2>
 
-
-
-				<div class="col-sm-4">
-					<button onClick="myFunction(1);this.onclick=null;">
-						<img class="mg-circle img-responsive img-center" alt="START"
-							src="/img/start.png" />
-					</button>
-					<h2 id="change2">Start Working</h2>
 
 				</div>
-				<div class="col-sm-4">
-					<button onClick="myFunction(2);this.onclick=null;">
-						<img class="mg-circle img-responsive img-center" alt="PAUSE"
-							src="/img/pause.png" />
-					</button>
-					<h2>Pause</h2>
-
-				</div>
-				<div class="col-sm-4">
-					<button onClick="myFunction(3);this.onclick=null;">
-						<img class="mg-circle img-responsive img-center" alt="STOP"
-							src="/img/stop.png" />
-					</button>
-					<h2>Stop</h2>
-
-				</div>
-
-				<form action="#"  name="myForm"  onsubmit="return validateForm()" method="post"
-					th:action="@{/driver/actions/submitReport}" th:object="${report}">
-
-					<input name="time1" type="text" id="time1" th:field="*{startstring}"
-						readonly="true"></input>
-					 <input type="text" name="time2" id="time2"
-						th:field="*{pausestring}" readonly="true"></input> 
-					<input
-						type="text" name="time3" id="time3" th:field="*{stopstring}" readonly="true"></input>
-					<input type="hidden" id="time6" th:field="*{routerecord.id}"
-						readonly="true"></input>
-					 <br></br>
-					 <input type="button"
-						id="raportSubmit" onClick="history.go(0)" value="Correct" />
-					 <input
-						type="submit" id="raportSubmit"  value="Submit!" />
-				</form>
-
 
 			</div>
+			<!-- /.row -->
+
+			<hr></hr>
+			<hr></hr>
+			<div id="time">
+				<div class="row">
+
+
+
+					<div class="col-sm-4">
+						<button onClick="myFunction(1);this.onclick=null;">
+							<img class="mg-circle img-responsive img-center" alt="START"
+								src="/img/start.png" />
+						</button>
+						<h2 id="change2">Start Working</h2>
+
+					</div>
+					<div class="col-sm-4">
+						<button onClick="myFunction(2);this.onclick=null;">
+							<img class="mg-circle img-responsive img-center" alt="PAUSE"
+								src="/img/pause.png" />
+						</button>
+						<h2>Pause</h2>
+
+					</div>
+					<div class="col-sm-4">
+						<button onClick="myFunction(3);this.onclick=null;">
+							<img class="mg-circle img-responsive img-center" alt="STOP"
+								src="/img/stop.png" />
+						</button>
+						<h2>Stop</h2>
+
+					</div>
+
+					<form action="#" name="myForm" onsubmit="return validateForm()"
+						method="post" th:action="@{/driver/actions/submitReport}"
+						th:object="${report}">
+
+						<input name="time1" type="text" id="time1"
+							th:field="*{startstring}" readonly="true"></input> <input
+							type="text" name="time2" id="time2" th:field="*{pausestring}"
+							readonly="true"></input> <input type="text" name="time3"
+							id="time3" th:field="*{stopstring}" readonly="true"></input> <input
+							type="hidden" id="time6" th:field="*{routerecord.id}"
+							readonly="true"></input> <br></br> <input type="button"
+							id="raportSubmit" onClick="history.go(0)" value="Correct" /> <input
+							type="submit" id="raportSubmit" value="Submit!" />
+					</form>
+
+
+				</div>
+			</div>
+			<!-- /.row -->
+
+
+			<hr></hr>
+			<hr></hr>
+		
 		</div>
-		<!-- /.row -->
-
-
-		<hr></hr>
-		<hr></hr>
-
-	</div>
-	<!-- /.container -->
-
+		<!-- /.container -->
+		
+	</section>
 	<script src="/js/clock.js"></script>
 	<script src="/js/verification.js"></script>
 </body>

@@ -29,8 +29,9 @@
 							<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>
 
 							<label>Line no. </label><input type="text" th:field="*{id}" /> <label>Duration
-							</label><input type="text" th:field="*{duration}" /> <b>Start: </b> <select
-								id="start" th:field="*{start.id}"
+							</label><input type="text" th:field="*{duration}" /> <br></br> 
+							<b>Start:
+							</b> <select id="start" th:field="*{start.id}"
 								onchange="calculateAndDisplayRoute();">
 								<option th:each="s: ${stations}" th:value="${s.id}"
 									th:text="${s.name}"></option>

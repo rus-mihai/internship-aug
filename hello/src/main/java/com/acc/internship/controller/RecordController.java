@@ -35,9 +35,10 @@ public class RecordController {
 	@RequestMapping(value = "/driver/actions",method = RequestMethod.GET)
 	public String root(@RequestParam("id") Integer id, Model model) {
 		Route r=new Route();
-		r.setId(id);
+		r=routeDao.get(id);
 		Record rec=new Record();
 		rec.setRouterecord(r);
+		model.addAttribute("route",r);
 		model.addAttribute("report",rec);
 		return "actions";
 
