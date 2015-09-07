@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.authorizeRequests()
 				.antMatchers("/admin/**").access("hasRole('admin')")
-				.antMatchers("/driver/**").access("hasRole('driver')")				
+				.antMatchers("/driver/**").access("hasRole('driver')")
 				.and()
 					.formLogin()
 					.loginPage("/login")

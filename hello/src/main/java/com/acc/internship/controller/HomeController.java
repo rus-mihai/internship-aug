@@ -32,6 +32,11 @@ public class HomeController {
 	private RouteDAO routeDao;
 
 
+	@RequestMapping("/403")
+	public String accessDenied(Model model){
+		
+		return "403";
+	}
 	
 
 
