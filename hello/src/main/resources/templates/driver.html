@@ -18,7 +18,7 @@
 <link href="/css/font-awesome.css" rel="stylesheet" />
 
 </head>
-<body>
+<body onLoad="myFunction(1)">
 	<div class="navbar navbar-default navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -53,7 +53,8 @@
 
 
 			<div th:include="fragments/updatedriver :: updatedriver "></div>
-			<div th:replace="fragments/driverview :: driverview "></div>
+			<div th:include="fragments/driverview :: driverview "></div>
+				<div th:include="fragments/chat :: chat "></div>
 
 		</section>
 		<!-- SECTION END -->

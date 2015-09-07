@@ -1,0 +1,59 @@
+
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+
+<meta charset="utf-8" />
+<title>Insert title here</title>
+<!-- BOOTSTRAP STYLE SHEET -->
+<link href="/css/bootstrap.css" rel="stylesheet" />
+<!-- FONT-AWESOME STYLE SHEET FOR BEAUTIFUL ICONS -->
+<link href="/css/font-awesome.css" rel="stylesheet" />
+
+</head>
+<body onLoad="myFunction(1)">
+	<section>
+		<div th:fragment="chat">
+
+			<div class="container2" id="ROUTES">
+
+			
+				<div class="row-fluid" id="contact">
+					<h1>Your message</h1>
+
+					<div class="span8 well">
+						<div class="feedback-form">
+
+
+
+							<form action="" th:action="@{/driver/chatform}"
+								th:object="${chat}" method="post" id="contact-form">
+								<fieldset>
+									<div class="form-group form-group-message">
+										<input type="hidden" class="form-control" id="time1"
+											th:field="*{date}" />
+									</div>
+									<div class="form-group form-group-message">
+										<label class="control-label">MESSAGE *</label>
+										<textarea class="form-control" name="message" id="message"
+											th:field="*{usermessage}" rows="3"></textarea>
+
+									</div>
+									<button type="submit" class="btn btn-brand">Submit</button>
+								</fieldset>
+							</form>
+							<script src="/js/clock.js"></script>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+</body>
+</html>

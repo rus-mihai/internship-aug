@@ -3141,7 +3141,8 @@ row-fluid:before,
     padding-bottom: 0;
 }
 .row-fluid .span8 {
-    width: 65.95744680851064%;
+    width: 98%;
+   height: 200px;
 }
 #form2 {
     margin: 6.5% 0;

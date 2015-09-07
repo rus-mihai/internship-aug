@@ -8,7 +8,7 @@ public class Message {
 	private String endStation;
 	
 	
-	
+
 	public Message(int line, String startTime, String endTime, String startStation, String endStation) {
 		super();
 		this.line = line;

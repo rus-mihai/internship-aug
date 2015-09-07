@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.acc.internship.model.Assignment;
+import com.acc.internship.model.Message;
 import com.acc.internship.model.PasswordVerify;
 import com.acc.internship.model.User;
+import com.acc.internship.model.UserMessage;
 import com.acc.internship.repo.AssignmentDAO;
 import com.acc.internship.repo.RouteDAO;
 import com.acc.internship.repo.UserDAO;
@@ -36,6 +39,9 @@ public class DriverController {
 
 	@Autowired
 	private AssignmentDAO assignmentDao;
+	
+	@Autowired
+	private SimpMessagingTemplate template1;
 
 	@RequestMapping(value = "/driver", method = RequestMethod.GET)
 	public String newDriverGet(Model model) {
@@ -49,8 +55,9 @@ public class DriverController {
 		PasswordVerify pass = new PasswordVerify();
 		pass.setId(user.getId());
 		List<Assignment> assignements = assignmentDao.listRouteForUser(id);
+		
+		model.addAttribute("chat", new UserMessage());
 		model.addAttribute("assignements", assignements);
-
 		model.addAttribute("userupdate", user);
 		model.addAttribute("passupdateoptions", pass);
 
@@ -128,4 +135,19 @@ public class DriverController {
 		}
 
 	}
+	
+	@RequestMapping(value = { "/driver/chatform" }, method = RequestMethod.POST)
+	public String UserMessagePost(@ModelAttribute("chat") UserMessage chat, BindingResult result) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		String username = auth.getName();
+		chat.setName(username);
+		
+		
+		UserMessage um = new UserMessage(chat.getDate(),chat.getName(),chat.getUsermessage());
+		this.template1.convertAndSend("/admin/topic/message", um);
+				return "redirect:/driver";
+	}
+	
 }

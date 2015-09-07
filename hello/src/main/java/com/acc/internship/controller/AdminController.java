@@ -33,6 +33,21 @@ public class AdminController {
 		return "admin";
 	}
 	
+	
+	
+	@MessageMapping("/admin/messages")
+	@SendTo("/admin/topic/message")
+	public String messages(Model model){
+		
+		return null;
+	}
+	
+	@RequestMapping(value = "/admin/messages")
+	public String adminMessages(Model model) {
+		
+		return "messages";
+	}
+	
 	@MessageMapping("/admin/realtime")
 	@SendTo("/admin/topic/view")
 	public String realtime(Model model){

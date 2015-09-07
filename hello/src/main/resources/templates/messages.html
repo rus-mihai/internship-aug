@@ -27,14 +27,48 @@
 </head>
 
 
-<body>
+<body onload="connect1();" onunload="disconnect1();">
 	<div th:include="fragments/header :: header"></div>
 	<div th:include="fragments/sidebar :: sidebar"></div>
-	<div th:replace="|fragments/${page} :: ${page}|"></div>
+	
+	<section id="main" class="column">
+
+			<h4 class="alert_info">Welcome to admin panel.</h4>
+			<article class="module width_3_quarter">
+				
+				
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<table class="tablesorter" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Recived at</th>
+									<th>Driver</th>
+									<th>Message</th>
+									
+								</tr>
+							</thead>
+							<tbody id="tbody">
+								<tr id="response1">
+									<td id="date"></td>
+									<td id="driver"></td>
+									<td id="message"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- end of #tab1 -->
+
+
+				</div>
+				<!-- end of .tab_container -->
+
+			</article>
+
+		</section>
 	
 	
-	
-	
+
 </body>
 
 </html>
