@@ -65,6 +65,8 @@ public class HomeController {
 		model.addAttribute("title", "Line "+id);
 		return "line";
 	}
+	
+
 
 	@RequestMapping("/driver")
 	public String driver(Model model) {

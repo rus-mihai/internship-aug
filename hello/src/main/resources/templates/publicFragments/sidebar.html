@@ -11,17 +11,16 @@
 	<aside th:fragment="sidebar">
 
 		<div id="panel">
-			<b>Start:</b> <select id="start" 
-						onchange="calculateAndDisplayRoute();">
-						<option th:each="s: ${stations}" 
-							th:text="*{s.name}"></option>
-					</select> 
-					<b>End: </b> <select id="end" 
-						onchange="calculateAndDisplayRoute();">
-						<option th:each="x: ${stations}" 
-							th:text="*{x.name}"></option>
-					</select>
+			<b>Start:</b> <select id="start"
+				onchange="calculateAndDisplayRoute();">
+				<option th:each="s: ${stations}" th:text="*{s.name}"></option>
+			</select> <b>End: </b> <select id="end" onchange="calculateAndDisplayRoute();">
+				<option th:each="x: ${stations}" th:text="*{x.name}"></option>
+			</select>
 		</div>
+
+
+		
 		<script src="js/map.js"></script>
 		<script async="true"
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap1">
@@ -32,7 +31,7 @@
 		<div id="lines">
 			<ul th:each="line: ${lines}">
 				<a th:href="@{/line(id=${line.id})}"><li
-					th:text="|Line ${line.id}|"></li></a>
+					th:text="|Line ${line.id}|" ></li></a>
 			</ul>
 		</div>
 	</aside>
