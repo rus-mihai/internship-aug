@@ -99,8 +99,12 @@ public class AdminUserController {
 		}
 		
 		if(bindingResult.hasErrors()){
-			model.addAttribute("page","edituser");
-			return "admin";
+			if(!(user.getPassword() == null || user.getPassword().equals(""))){
+				model.addAttribute("page","edituser");
+				return "admin";
+			}else{
+				userDao.update(user);
+			}
 		}
 		model.addAttribute("success", "User updated");
 		return "redirect:/admin/userview";

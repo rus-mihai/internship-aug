@@ -49,35 +49,11 @@ public class RecordDAOImpl implements RecordDAO {
 
 	@Override
 	@Transactional
-	public void delete(int id) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	@Transactional
-	public void update(Record record) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	@Transactional
 	public void add(Record record) {
 		getEntityManager().persist(record);
 
 	}
 
-	@Override
-	public void getAverageTourForRouteByHour(int idRoute, int hour) {
-		String hql = "select getAverageTourForRouteByHour(?,?)";
-		Query query = getEntityManager().createNativeQuery(hql);
-		
-		query.setParameter(1, hour);
-		query.setParameter(2, idRoute);
-		Integer duration = (Integer)query.getSingleResult();
-		//System.out.println(duration);
-	}
 
 	@Override
 	public List<Time> getReportTourByHourForRoute(int idRoute) {

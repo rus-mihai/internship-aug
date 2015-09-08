@@ -27,7 +27,6 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
         String targetUrl = getTargetUrl(authentication);
   
         if (response.isCommitted()) {
-            System.out.println("Can't redirect");
             return;
         }
   
@@ -39,11 +38,8 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
 		List<GrantedAuthority> authorities = (List<GrantedAuthority>) authentication.getAuthorities();
 	
 		if(authorities.size() > 0){
-
-			
 			SchemaFactory schemaFactory = new SchemaFactory();
 			RoleSchema schema = schemaFactory.getSchema(authorities.get(0).getAuthority());
-			
 			url = "/"+schema.getRoleSchema();
 		}
 		

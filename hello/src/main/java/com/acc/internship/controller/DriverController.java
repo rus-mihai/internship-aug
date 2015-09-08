@@ -1,11 +1,8 @@
 package com.acc.internship.controller;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.regex.Pattern;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.Authentication;
@@ -18,14 +15,11 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.acc.internship.model.Assignment;
-import com.acc.internship.model.Message;
 import com.acc.internship.model.PasswordVerify;
 import com.acc.internship.model.User;
 import com.acc.internship.model.UserMessage;
 import com.acc.internship.repo.AssignmentDAO;
-import com.acc.internship.repo.RouteDAO;
 import com.acc.internship.repo.UserDAO;
 
 @Controller
@@ -33,9 +27,6 @@ public class DriverController {
 
 	@Autowired
 	private UserDAO userDao;
-
-	@Autowired
-	private RouteDAO routeDao;
 
 	@Autowired
 	private AssignmentDAO assignmentDao;
@@ -75,8 +66,6 @@ public class DriverController {
 			if ((userupdate.getLastName() == "") ||(userupdate.getLastName() == null)
 					|| !((Pattern.compile("^[a-zA-Z ]*$").matcher(userupdate.getLastName()).matches()))) {
 				result.rejectValue("lastName", "lastName.fail", "Not a normal name!Try with letters!");
-			} else {
-				
 			}
 		}
 
@@ -85,15 +74,13 @@ public class DriverController {
 			model.addAttribute("success1", "Credentials Succesfully changed!");
 			return "redirect:/driver";
 		}
-		{
+		
 			List<ObjectError> errors = result.getAllErrors();
 			String s = null;
-			for (ObjectError o : errors) {
-				s = o.getDefaultMessage();
-			}
+			s = errors.get(errors.size()-1).getDefaultMessage();
 			model.addAttribute("error1", s);
 			return "redirect:/driver";
-		}
+
 	}
 
 	@RequestMapping(value = { "/driver/updatepass" }, method = RequestMethod.POST)
@@ -123,12 +110,7 @@ public class DriverController {
 			model.addAttribute("success", "Password succesfully change!");
 			return "redirect:/driver";
 		} else {
-			List<ObjectError> errors = result.getAllErrors();
-			String s = null;
-			for (ObjectError o : errors) {
-				s = o.getDefaultMessage();
-			}
-
+			String s = result.getAllErrors().get(result.getAllErrors().size()-1).getDefaultMessage();
 			model.addAttribute("error", s);
 
 			return "redirect:/driver";

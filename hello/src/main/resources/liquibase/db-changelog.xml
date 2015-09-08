@@ -313,4 +313,12 @@
 		</sql>
 
 	</changeSet>
+	
+	<changeSet id="20" author="Cristi">
+		<dropForeignKeyConstraint baseTableName="records"
+			constraintName="idRouteRecords" />
+		<addForeignKeyConstraint constraintName="idRouteRecords"
+			referencedTableName="routes" baseColumnNames="idRoute" baseTableName="records"
+			referencedColumnNames="id" onDelete="CASCADE" onUpdate="CASCADE" />
+	</changeSet>
 </databaseChangeLog>

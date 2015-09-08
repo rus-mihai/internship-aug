@@ -4,13 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.thymeleaf.resourceresolver.ClassLoaderResourceResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebMvc
@@ -22,7 +19,6 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		registry.addResourceHandler("/css/**").addResourceLocations("/css/");
 		registry.addResourceHandler("/img/**").addResourceLocations("/img/");
 		registry.addResourceHandler("/images/**").addResourceLocations("/images/");
-		registry.addResourceHandler("/SOURCE FILES/**").addResourceLocations("/SOURCE FILES/");
 		registry.addResourceHandler("/**").addResourceLocations("/");
 		
 	
@@ -52,11 +48,5 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		view.setTemplateEngine(template());
 		return view;
 	}
-	
-	
-	
-	
-	
- 
 	
 }

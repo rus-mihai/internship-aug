@@ -24,14 +24,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	@Qualifier("userDetailsService")
-	UserDetailsService userDetailsService;
+	private UserDetailsService userDetailsService;
 	
 	@Autowired
-	AuthenticationSuccessHandler authenticationSuccessHandler;
+	private AuthenticationSuccessHandler authenticationSuccessHandler;
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/js/**/*.{js}").antMatchers("/css/**").antMatchers("/img/**").antMatchers("/images/**").antMatchers("/SOURCE FILES/**");
+		web.ignoring()
+			.antMatchers("/js/**/*.{js}")
+			.antMatchers("/css/**")
+			.antMatchers("/img/**")
+			.antMatchers("/images/**");
 	}
 
 	@Override

@@ -26,13 +26,9 @@ public class LoginController {
 		if(SecurityContextHolder.getContext().getAuthentication() != null){
 			List<GrantedAuthority> authorities= (List<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 			if(authorities.size() > 0){
-				
 				SchemaFactory schemaFactory = new SchemaFactory();
 				schema = schemaFactory.getSchema(authorities.get(0).getAuthority());
-				
 			}
-			
-			
 		}
 		
 		if(schema.getRoleSchema().equals("login")){

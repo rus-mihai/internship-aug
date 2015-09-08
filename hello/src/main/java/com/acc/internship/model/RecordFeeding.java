@@ -3,10 +3,6 @@ package com.acc.internship.model;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.acc.internship.repo.RouteDAO;
-
 public class RecordFeeding {
 	
 	private int MIN = 10;

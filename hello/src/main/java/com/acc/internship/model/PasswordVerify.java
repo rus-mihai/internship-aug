@@ -5,6 +5,7 @@ public class PasswordVerify {
 	private String confirm;
 	private String newpassword;
 	private int id;
+	
 	public String getOldpassword() {
 		return oldpassword;
 	}

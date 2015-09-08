@@ -6,11 +6,8 @@ public class Message {
 	private String endTime;
 	private String startStation;
 	private String endStation;
-	
-	
 
 	public Message(int line, String startTime, String endTime, String startStation, String endStation) {
-		super();
 		this.line = line;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -18,7 +15,6 @@ public class Message {
 		this.endStation = endStation;
 	}
 
-	
 	public int getLine() {
 		return line;
 	}

@@ -42,12 +42,6 @@ public class AssignmentDAOImpl implements AssignmentDAO{
 	}
 
 	@Override
-	public List<Assignment> list() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Assignment> listRouteForUser(int id) {
 		String hql = "from Assignment where driver.id =?";
 		Query query = getEntityManager().createQuery(hql);
@@ -66,12 +60,6 @@ public class AssignmentDAOImpl implements AssignmentDAO{
 		
 	}
 
-	@Override
-	@Transactional
-	public void update(Assignment assigment) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	@Transactional
