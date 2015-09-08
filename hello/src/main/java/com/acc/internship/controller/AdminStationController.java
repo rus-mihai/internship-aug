@@ -3,6 +3,7 @@ package com.acc.internship.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -35,11 +36,14 @@ public class AdminStationController {
 	}
 
 	@RequestMapping(value = "/admin/newstation", method = RequestMethod.POST)
-	public String newStationPost(@ModelAttribute Station station, Model model) {
+	public String newStationPost(@Valid @ModelAttribute Station station, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()){
+			model.addAttribute("stations",stationDao.list());
+			model.addAttribute("page", "newstation");
+			return "admin";
+		}
 		stationDao.add(station);
-		model.addAttribute("stations",stationDao.list());
 		model.addAttribute("success","Station added");
-		model.addAttribute("page", "newstation");
 		return "admin";
 	}
 
