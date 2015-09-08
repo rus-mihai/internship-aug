@@ -3093,7 +3093,7 @@ fieldset[disabled] .btn-primary.active {
 .navbar-static-top .container2,
 .navbar-fixed-top .container2,
 .navbar-fixed-bottom .containe2 {
-    width: 940px;
+    width: 139%;
 }
 .container2:before,
 .container2:after {
@@ -3105,7 +3105,7 @@ fieldset[disabled] .btn-primary.active {
     clear: both;
 }
 .row-fluid {
-    width: 100%;
+    width: 136.4%;
     margin-top: 4%;
 }
 row-fluid:before,
@@ -3141,7 +3141,7 @@ row-fluid:before,
     padding-bottom: 0;
 }
 .row-fluid .span8 {
-    width: 98%;
+    width: 71.6%;
    height: 200px;
 }
 #form2 {
