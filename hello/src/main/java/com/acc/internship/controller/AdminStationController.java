@@ -44,6 +44,8 @@ public class AdminStationController {
 		}
 		stationDao.add(station);
 		model.addAttribute("success","Station added");
+		model.addAttribute("stations",stationDao.list());
+		model.addAttribute("page", "newstation");
 		return "admin";
 	}
 
