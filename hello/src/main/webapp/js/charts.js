@@ -21,7 +21,7 @@ $(function() {
 				type : 'hours',
 				allowDecimals : false,
 				title : {
-					text : ""
+					text : "Hour "
 				}
 			},
 			yAxis : {
@@ -30,7 +30,7 @@ $(function() {
 				}
 			},
 			series : [ {
-				name : 'Hour',
+				name : 'Minutes',
 				data : series(processed_json)
 			} ]
 		});
