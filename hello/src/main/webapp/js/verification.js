@@ -14,4 +14,8 @@
         alert("Stop must be filled out");
         return false;
     }
+    
+    confirm("Your time was succesfully submited!");
+    
 }
+ 
