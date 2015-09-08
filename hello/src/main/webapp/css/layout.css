@@ -19,6 +19,7 @@ html, body {
 	font-size: 12px;
 }
 
+
 #start {
 	width: 35%;
 }
@@ -97,6 +98,15 @@ header#header h2.section_title {
 #biggerpanel {
 	width: 99.98%;
 }
+
+.success p{
+	color:green;
+}
+
+#main .success {
+	color:green;
+}
+
 
 .btn_view_site a {
 	display: block;
@@ -317,6 +327,21 @@ aside#sidebar {
 
 #sidebar li a:hover {
 	color: #444444;
+}
+
+.validationError{
+	color:red;
+}
+
+#main article form span.validationError{
+	color:red;
+}
+
+#main #biggerpanel2 #x p .validationError{
+	color:red;
+}
+.validationError{
+	color:red;
 }
 
 /* Sidebar Icons */

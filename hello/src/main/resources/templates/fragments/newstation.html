@@ -30,8 +30,8 @@
 					</p>
 				</form>
 
-				<p th:if="${used}" th:text="${used}"></p>
-				<p th:if="${success}" th:text="${success}"></p>
+				<p class="validationError" th:if="${used}" th:text="${used}"></p>
+				<p class="success" th:if="${success}" th:text="${success}"></p>
 				<table class="tablesorter" id="scrollbar" cellspacing="0">
 					<thead>
 						<tr>

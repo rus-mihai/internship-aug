@@ -26,7 +26,7 @@
 					<div id="x">
 						<form action="#" th:action="@{/admin/newroute}"
 							th:object="${route}" method="post">
-							<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>
+							<p class="validationError" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></p>
 
 							<label>Line no. </label><input type="text" th:field="*{id}" /> <label>Duration
 							</label><input type="text" th:field="*{duration}" /> <br></br> 

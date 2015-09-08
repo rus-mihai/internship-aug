@@ -50,6 +50,19 @@ template {
 a {
     background-color: transparent;
 }
+ .success p{
+	color:green;
+}
+
+#Home .validationError 
+{
+	color:red;
+}
+
+#Home div.success{
+	color:green;
+}
+
 a:active,
 a:hover {
     outline: 0;
@@ -3488,7 +3501,7 @@ user agent stylesheetform {
 }
 .container {
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 17%;
 }
 .container,
 .navbar-static-top .container,
