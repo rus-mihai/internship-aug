@@ -12,7 +12,7 @@ $(function() {
 		// draw chart
 		$('#container').highcharts({
 			chart : {
-				type : "column"
+				type : "line"
 			},
 			title : {
 				text : "Duration per hour"
