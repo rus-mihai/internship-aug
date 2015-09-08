@@ -4,7 +4,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta charset="utf-8" />
-<title>Insert title here</title>
+<title>BusControllUnit</title>
 </head>
 <body>
 
@@ -20,19 +20,23 @@
 		</div>
 
 
-		
+
 		<script src="js/map.js"></script>
 		<script async="true"
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1LFnHvlFt1sdmh-bfPg0CDIGk11GieaI&amp;callback=initMap1">
 			
 		</script>
 		<div id="map"></div>
-
 		<div id="lines">
-			<ul th:each="line: ${lines}">
-				<a th:href="@{/line(id=${line.id})}"><li
-					th:text="|Line ${line.id}|" ></li></a>
-			</ul>
+			<div class="well">
+				<ul class="nav nav-stacked" id="sidebar" th:each="line: ${lines}">
+					<a id="speciala" th:href="@{/line(id=${line.id})}"><li
+						th:text="|Line ${line.id}|"></li></a>
+				</ul>
+			</div>
+
+
+
 		</div>
 	</aside>
 </body>

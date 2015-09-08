@@ -4,7 +4,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head th:replace="publicFragments/head :: head">
 <meta charset="utf-8" />
-<title>Insert title here</title>
+<title>BusControllUnit</title>
 </head>
 <body>
 	<div th:replace="publicFragments/header :: header"></div>
@@ -17,10 +17,10 @@
 						<input type="hidden" id="id" th:value="${route.id}" />
 						<h1 th:text="|Line ${route.id}|"></h1>
 						<label>Start station</label>
-						<p th:text="${route.start.name}"></p>
+						<p id="startE" th:text="${route.start.name}"></p>
 
 						<label>End station</label>
-						<p th:text="${route.end.name}"></p>
+						<p id="endE" th:text="${route.end.name}"></p>
 
 						<label>Duration(minutes)</label>
 						<p th:text="${route.duration}"></p>
@@ -29,8 +29,6 @@
 				</div>
 			</article>
 			<div th:replace="publicFragments/sidebar :: sidebar"></div>
-		
-
 		</div>
 		<!-- #main -->
 	</div>

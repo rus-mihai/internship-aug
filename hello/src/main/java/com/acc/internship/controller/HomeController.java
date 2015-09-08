@@ -33,6 +33,9 @@ public class HomeController {
 
 
 	
+
+
+	
 	@RequestMapping("/hello")
 	public String hello(@RequestParam(value = "name", required = false, defaultValue = "world") String name,
 			Model model) {
@@ -59,6 +62,9 @@ public class HomeController {
 		List<Time> averageRecords = recordDao.getReportTourByHourForRoute(id);
 		List<Route> lines = routeDao.list();
 		
+		
+		List<Station> stations = stationDao.list();
+		model.addAttribute("stations", stations);
 		model.addAttribute("hours", averageRecords);
 		model.addAttribute("route", route);
 		model.addAttribute("lines", lines);
