@@ -43,7 +43,7 @@
 										<a th:href="@{/admin/userview/edituser(id=${u.id})}">
 											<input type="image" src="/images/icn_edit.png" title="Edit" />	
 										</a>
-										<a th:href="@{/admin/userview/deleteuser(id=${u.id})}">
+										<a th:if="${u.userRole.role != 'admin'}" th:href="@{/admin/userview/deleteuser(id=${u.id})}">
 											<input type="image" src="/images/icn_trash.png" title="Trash" />
 										</a>
 									</td>
