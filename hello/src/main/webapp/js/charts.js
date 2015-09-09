@@ -8,8 +8,6 @@ function populateChart(type) {
 	var processed_json = [];
 	var id = document.getElementById('id').value;
 	var chartPath = '/charts'+type+'?id='+id;
-	
-	console.log(chartPath);
 	$.getJSON(chartPath, function(data) {
 		processed_json = [];
 		for (i = 0; i < data.length; i++) {
