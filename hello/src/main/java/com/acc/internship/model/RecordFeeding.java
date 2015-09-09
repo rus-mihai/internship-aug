@@ -1,5 +1,8 @@
 package com.acc.internship.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -7,6 +10,7 @@ public class RecordFeeding {
 	
 	private int MIN = 10;
 	private int MAX = 40;
+	private GregorianCalendar gc;
 	
 	public RecordFeeding(){
 
@@ -15,6 +19,7 @@ public class RecordFeeding {
 	public Record getRecord(Route route){
 		int duration = randBetween(MIN, MAX);
 		Date start = randomDate();
+		
 		Date intermediar = getNext(start,duration);
 		
 		duration = randBetween(MIN,MAX);
@@ -35,12 +40,13 @@ public class RecordFeeding {
 		int min = randBetween(0, 59);
 		int sec = randBetween(0, 59);
 		
-		GregorianCalendar gc = new GregorianCalendar(year, month, 1);
+		gc = new GregorianCalendar(year, month, 1);
 		int day = randBetween(1, gc.getActualMaximum(gc.DAY_OF_MONTH));
 		
 		gc.set(year, month, day, hour, min, sec);
 		return gc.getTime();
 	}
+	
 	
 	public Date getNext(Date date, int duration){
 		

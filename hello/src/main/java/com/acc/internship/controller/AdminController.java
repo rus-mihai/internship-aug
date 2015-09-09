@@ -71,6 +71,8 @@ public class AdminController {
 		for(Route route: routes){
 			for(int i=0; i<100; i++){
 				Record r = recordFeeding.getRecord(route);
+				r.computeTour();
+				r.computeRetour();
 				recordDao.add(r);
 			}
 		}

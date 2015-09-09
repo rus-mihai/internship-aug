@@ -153,7 +153,10 @@ public class Record {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
+		this.computeTour();
 	}
+	
 	public void stopFormat()
 	{
 		DateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -161,6 +164,19 @@ public class Record {
 			stop=format.parse(stopstring);
 		} catch (ParseException e) {
 			e.printStackTrace();
+		}
+		this.computeRetour();
+	}
+	
+	public void computeTour(){
+		if(start != null && pause != null){
+			this.tour = (int) ((pause.getTime() - start.getTime())/1000);
+		}
+	}
+	
+	public void computeRetour(){
+		if(pause != null && stop != null){
+			this.retour = (int) ((stop.getTime() - pause.getTime()) / 1000);
 		}
 	}
 	
