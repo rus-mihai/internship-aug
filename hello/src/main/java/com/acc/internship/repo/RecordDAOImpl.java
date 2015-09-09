@@ -1,7 +1,6 @@
 package com.acc.internship.repo;
 
-import java.sql.Time;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.acc.internship.model.Record;
+import com.acc.internship.model.Route;
 
 @Repository
 public class RecordDAOImpl implements RecordDAO {
@@ -43,7 +43,7 @@ public class RecordDAOImpl implements RecordDAO {
 	public List<Record> list() {
 		String hql = "from Record";
 		Query query = getEntityManager().createQuery(hql);
-		List<Record> records= query.getResultList();
+		List<Record> records = query.getResultList();
 		return records;
 	}
 
@@ -53,41 +53,27 @@ public class RecordDAOImpl implements RecordDAO {
 		getEntityManager().persist(record);
 
 	}
+	
+	public List<Integer> listTour(Route route, int forHou) {
+		String hql = "select tour from Record where routerecord=? and hour(startTime)=?";
+		Query query = getEntityManager().createQuery(hql);
+		query.setParameter(1, route);
+		query.setParameter(2, forHou);
+		List<Integer> tour = query.getResultList();
 
-
-	@Override
-	public List<Time> getReportTourByHourForRoute(int idRoute) {
-		ArrayList<Time> durations = new ArrayList<Time>();
-		String sql = "select sec_to_time(getAverageTourForRouteByHour(?,?))";
-		Query query = getEntityManager().createNativeQuery(sql);
-		query.setParameter(2, idRoute);
-		for(int i = 0; i<24; i++){
-			query.setParameter(1, i);
-			Time s = (Time)query.getSingleResult();
-			if(s != null){
-				durations.add(s);
-			}else{
-				durations.add(new Time(0));
-			}
-		}
-		return durations;
+		return tour;
 	}
 
-	@Override
-	public List<Time> getReportRetourByHourForRoute(int idRoute) {
-		ArrayList<Time> durations = new ArrayList<Time>();
-		String sql = "select sec_to_time(getAverageRetourForRouteByHour(?,?))";
-		Query query = getEntityManager().createNativeQuery(sql);
-		query.setParameter(2, idRoute);
-		for(int i = 0; i<24; i++){
-			query.setParameter(1, i);
-			Time s = (Time)query.getSingleResult();
-			if(s != null){
-				durations.add(s);
-			}else{
-				durations.add(new Time(0));
-			}
-		}
-		return durations;
+	public List<Integer> listReTour(Route route, int forHou) {
+		String hql = "select retour from Record where routerecord=? and hour(startTime)=?";
+		Query query = getEntityManager().createQuery(hql);
+		query.setParameter(1, route);
+		query.setParameter(2, forHou);
+		List<Integer> retour = query.getResultList();
+
+		return retour;
 	}
+
+	
+
 }
