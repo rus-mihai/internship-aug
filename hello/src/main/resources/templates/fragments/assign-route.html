@@ -30,7 +30,7 @@
 								</tr>
 							</thead>
 							<tbody id="ByParameter">
-								<tr th:each="u: ${users}">
+								<tr  th:if="${u.userRole.role != 'admin'}" th:each="u: ${users}">
 									<td th:text="${u.firstName}"></td>
 									<td th:text="${u.lastName}"></td>
 									<td>
