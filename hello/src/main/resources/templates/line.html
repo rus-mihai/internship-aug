@@ -26,8 +26,11 @@
 						<label>Duration(minutes)</label>
 						<p th:text="${route.duration}"></p>
 					</div>
-					<div id="tour"></div>
 					
+					<button id="button1">Show Tour</button>
+					<div id="tour"></div>
+					<br/><br/>
+					<button  id="button2">Show Retour</button>
 					<div id="retour"></div>
 				</div>
 			</article>
@@ -37,5 +40,7 @@
 	</div>
 	<!-- #main-container -->
 	<div th:replace="publicFragments/footer :: footer"></div>
+	
+	<script src="/js/toggle.js"></script>
 </body>
 </html>

@@ -113,6 +113,7 @@ textarea {
 
 button,
 select {
+	width:15%;
     text-transform: none;
 }
 
