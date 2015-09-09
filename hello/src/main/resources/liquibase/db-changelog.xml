@@ -321,4 +321,21 @@
 			referencedTableName="routes" baseColumnNames="idRoute" baseTableName="records"
 			referencedColumnNames="id" onDelete="CASCADE" onUpdate="CASCADE" />
 	</changeSet>
+	
+	<changeSet id="21" author="Cristi">
+		<sql endDelimiter="" splitStatements="false">
+		CREATE function getAverageRetourForRouteByHour (forHour INT, route INT)
+			RETURNS INT
+
+			BEGIN
+			DECLARE result INT;
+			SELECT sum(retour) div count(*) INTO result
+			FROM internship.records where
+			hour(startTime) = forHour and idRoute =
+			route;
+
+			RETURN result;
+			END
+		</sql>
+	</changeSet>
 </databaseChangeLog>

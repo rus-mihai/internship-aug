@@ -1,7 +1,15 @@
-$(function() {
+$(function(){
+	var tour = populateChart('tour');
+	var retour = populateChart('retour');
+});
+
+
+function populateChart(type) {
 	var processed_json = [];
 	var id = document.getElementById('id').value;
-	var chartPath = '/charts?id='+id;
+	var chartPath = '/charts'+type+'?id='+id;
+	
+	console.log(chartPath);
 	$.getJSON(chartPath, function(data) {
 		processed_json = [];
 		for (i = 0; i < data.length; i++) {
@@ -10,7 +18,7 @@ $(function() {
 		}
 		console.log(processed_json);
 		// draw chart
-		$('#container').highcharts({
+		$('#'+type).highcharts({
 			chart : {
 				type : "line"
 			},
@@ -35,7 +43,9 @@ $(function() {
 			} ]
 		});
 	});
-});
+}
+
+
 
 function series(array){
 	var series = [];

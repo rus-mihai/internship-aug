@@ -72,7 +72,22 @@ public class RecordDAOImpl implements RecordDAO {
 		}
 		return durations;
 	}
-	
-	
 
+	@Override
+	public List<Time> getReportRetourByHourForRoute(int idRoute) {
+		ArrayList<Time> durations = new ArrayList<Time>();
+		String sql = "select sec_to_time(getAverageRetourForRouteByHour(?,?))";
+		Query query = getEntityManager().createNativeQuery(sql);
+		query.setParameter(2, idRoute);
+		for(int i = 0; i<24; i++){
+			query.setParameter(1, i);
+			Time s = (Time)query.getSingleResult();
+			if(s != null){
+				durations.add(s);
+			}else{
+				durations.add(new Time(0));
+			}
+		}
+		return durations;
+	}
 }

@@ -17,9 +17,15 @@ public class ChartsController {
 	private RecordDAO recordDao;
 	
 	
-	@RequestMapping("/charts")
-	public List<Time> charts(@RequestParam("id") Integer id){
+	@RequestMapping("/chartstour")
+	public List<Time> chartsTour(@RequestParam("id") Integer id){
 		List<Time> averageRecords = recordDao.getReportTourByHourForRoute(id);
+		return averageRecords;
+	}
+	
+	@RequestMapping("/chartsretour")
+	public List<Time> chartsRetour(@RequestParam("id") Integer id){
+		List<Time> averageRecords = recordDao.getReportRetourByHourForRoute(id);
 		return averageRecords;
 	}
 }

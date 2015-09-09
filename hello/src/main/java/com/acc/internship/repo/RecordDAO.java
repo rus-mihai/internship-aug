@@ -11,4 +11,5 @@ public interface RecordDAO {
 	public List<Record> list();
 	public void add(Record record);
 	public List<Time> getReportTourByHourForRoute(int idRoute);
+	public List<Time> getReportRetourByHourForRoute(int idRoute);
 }
