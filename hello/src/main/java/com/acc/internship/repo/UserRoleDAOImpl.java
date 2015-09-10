@@ -36,6 +36,7 @@ public class UserRoleDAOImpl implements UserRoleDAO{
 	
 	public List<UserRole> list(){
 		Query query =  getEntityManager().createQuery("from UserRole");
+		@SuppressWarnings("unchecked")
 		List<UserRole> roles = query.getResultList();
 		
 		return roles;

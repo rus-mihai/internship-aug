@@ -35,6 +35,7 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
 	
 	protected String getTargetUrl(Authentication authentication){
 		String url = "";
+		@SuppressWarnings("unchecked")
 		List<GrantedAuthority> authorities = (List<GrantedAuthority>) authentication.getAuthorities();
 	
 		if(authorities.size() > 0){

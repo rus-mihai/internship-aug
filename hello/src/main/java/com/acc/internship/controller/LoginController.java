@@ -24,6 +24,7 @@ public class LoginController {
 		RoleSchema schema = null;
 		
 		if(SecurityContextHolder.getContext().getAuthentication() != null){
+			@SuppressWarnings("unchecked")
 			List<GrantedAuthority> authorities= (List<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 			if(authorities.size() > 0){
 				SchemaFactory schemaFactory = new SchemaFactory();

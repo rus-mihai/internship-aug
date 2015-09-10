@@ -1,8 +1,5 @@
 package com.acc.internship.model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -41,6 +38,7 @@ public class RecordFeeding {
 		int sec = randBetween(0, 59);
 		
 		gc = new GregorianCalendar(year, month, 1);
+		@SuppressWarnings("static-access")
 		int day = randBetween(1, gc.getActualMaximum(gc.DAY_OF_MONTH));
 		
 		gc.set(year, month, day, hour, min, sec);
@@ -48,6 +46,7 @@ public class RecordFeeding {
 	}
 	
 	
+	@SuppressWarnings("static-access")
 	public Date getNext(Date date, int duration){
 		
 		GregorianCalendar gc = new GregorianCalendar();

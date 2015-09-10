@@ -43,6 +43,7 @@ public class RecordDAOImpl implements RecordDAO {
 	public List<Record> list() {
 		String hql = "from Record";
 		Query query = getEntityManager().createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<Record> records = query.getResultList();
 		return records;
 	}
@@ -59,6 +60,7 @@ public class RecordDAOImpl implements RecordDAO {
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter(1, route);
 		query.setParameter(2, forHou);
+		@SuppressWarnings("unchecked")
 		List<Integer> tour = query.getResultList();
 
 		return tour;
@@ -69,6 +71,7 @@ public class RecordDAOImpl implements RecordDAO {
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter(1, route);
 		query.setParameter(2, forHou);
+		@SuppressWarnings("unchecked")
 		List<Integer> retour = query.getResultList();
 
 		return retour;

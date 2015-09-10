@@ -1,8 +1,6 @@
 package com.acc.internship.repo;
 
-import java.sql.Time;
 import java.util.List;
-
 import com.acc.internship.model.Record;
 import com.acc.internship.model.Route;
 

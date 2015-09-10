@@ -47,6 +47,7 @@ public class StationDAOImpl implements StationDAO {
 	public List<Station> list() {
 		String hql = "from Station";
 		Query query = getEntityManager().createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<Station> stations = query.getResultList();
 		return stations;
 	}

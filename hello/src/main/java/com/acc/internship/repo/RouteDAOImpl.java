@@ -45,6 +45,7 @@ public class RouteDAOImpl implements RouteDAO{
 	public List<Route> list() {
 		String hql = "from Route";
 		Query query = getEntityManager().createQuery(hql);
+		@SuppressWarnings("unchecked")
 		List<Route> routes = query.getResultList();
 		return routes;
 	}

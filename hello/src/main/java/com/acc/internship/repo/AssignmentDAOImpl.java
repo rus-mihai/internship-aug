@@ -46,6 +46,7 @@ public class AssignmentDAOImpl implements AssignmentDAO{
 		String hql = "from Assignment where driver.id =?";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter(1, id);
+		@SuppressWarnings("unchecked")
 		List<Assignment> result = query.getResultList();
 		return result;
 	}

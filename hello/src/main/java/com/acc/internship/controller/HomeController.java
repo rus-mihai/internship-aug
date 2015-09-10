@@ -33,7 +33,7 @@ public class HomeController {
 	}
 
 	@RequestMapping("/")
-	public String line(Model model) {
+	public String index(Model model) {
 		List<Route> lines = routeDao.list();
 		
 		List<Station> stations = stationDao.list();

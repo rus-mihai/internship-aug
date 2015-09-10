@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,6 +59,7 @@ public class UserDAOImpl implements UserDAO{
 	public List<User> list() {
 		String sql = "from User";
 		Query query = getEntityManager().createQuery(sql);
+		@SuppressWarnings("unchecked")
 		List<User> resultList = query.getResultList();
 		
 		return resultList;
@@ -93,6 +93,7 @@ public class UserDAOImpl implements UserDAO{
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public User findByUsername(String username){
 		List<User> users = new ArrayList<User>();
