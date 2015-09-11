@@ -6,6 +6,17 @@ public class PasswordVerify {
 	private String newpassword;
 	private int id;
 	
+	public PasswordVerify(){
+	}
+	public PasswordVerify(String oldpassword,String confirm,String newpassword,int id){
+		super();
+		this.oldpassword=oldpassword;
+		this.confirm=confirm;
+		this.newpassword=newpassword;
+		this.id=id;
+	}
+	
+	
 	public String getOldpassword() {
 		return oldpassword;
 	}

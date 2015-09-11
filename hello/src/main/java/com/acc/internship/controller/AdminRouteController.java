@@ -30,7 +30,7 @@ public class AdminRouteController {
 	private StationDAO stationDao;
 
 	
-	@RequestMapping(value = "admin/routes")
+	@RequestMapping(value = "/admin/routes")
 	public String viewRoutes(Model model) {
 		model.addAttribute("page", "routes");
 		List<Route> list = routeDao.list();

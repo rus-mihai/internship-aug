@@ -1,12 +1,10 @@
 package com.acc.internship.model;
 
-import com.acc.internship.repo.RecordDAO;
-import com.acc.internship.repo.RecordDAOImpl;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.acc.internship.repo.RecordDAO;
 
 public class TimeMeasuring {
 
@@ -20,7 +18,7 @@ public class TimeMeasuring {
 		int sum = 0;
 		List<Integer> li = recordDao.listTour(route, forHou);
 		if (li != null) {
-			for (Integer i : li) {
+			for (Integer i : li) {	
 				sum = sum + i;
 			}
 			if (sum != 0) {
