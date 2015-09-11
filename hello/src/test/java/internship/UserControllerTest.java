@@ -41,6 +41,7 @@ public class UserControllerTest {
 		MockitoAnnotations.initMocks(this);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void addUserSuccess(){
 		User user = Mockito.mock(User.class);
@@ -55,6 +56,7 @@ public class UserControllerTest {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void addUserFail(){
 		User user = Mockito.mock(User.class);
@@ -68,6 +70,7 @@ public class UserControllerTest {
 		assertEquals("admin",test.newDriverPost(user, bindingResult, Mockito.mock(HttpServletRequest.class), Mockito.mock(Model.class)));
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void editUserSuccess(){
 		User user = Mockito.mock(User.class);
@@ -81,6 +84,7 @@ public class UserControllerTest {
 		assertEquals("redirect:/admin/userview",test.newDriverPost(user, bindingResult, Mockito.mock(HttpServletRequest.class), Mockito.mock(Model.class)));
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void editUserFail(){
 		User user = Mockito.mock(User.class);

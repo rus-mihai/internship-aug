@@ -44,6 +44,7 @@ public class RouteControllerTest {
 		BindingResult bindingResult = Mockito.mock(BindingResult.class);
 		Model model = Mockito.mock(Model.class);
 		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
+		@SuppressWarnings("unchecked")
 		List<Station> stations = Mockito.mock(List.class);
 		
 		when(stationDao.list()).thenReturn(stations);
@@ -57,6 +58,7 @@ public class RouteControllerTest {
 		BindingResult bindingResult = Mockito.mock(BindingResult.class);
 		Model model = Mockito.mock(Model.class);
 		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
+		@SuppressWarnings("unchecked")
 		List<Station> stations = Mockito.mock(List.class);
 		
 		when(bindingResult.hasErrors()).thenReturn(true);
