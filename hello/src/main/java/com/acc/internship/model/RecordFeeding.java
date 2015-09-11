@@ -61,22 +61,6 @@ public class RecordFeeding {
 	public static int randBetween(int start, int end){
 		return start + (int)Math.round(Math.random() * (end - start));
 	}
-
-	public int getMIN() {
-		return MIN;
-	}
-
-	public void setMIN(int mIN) {
-		MIN = mIN;
-	}
-
-	public int getMAX() {
-		return MAX;
-	}
-
-	public void setMAX(int mAX) {
-		MAX = mAX;
-	}
 	
 	
 }
