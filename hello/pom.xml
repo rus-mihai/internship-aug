@@ -19,12 +19,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        
-<!--     	<dependency>  -->
-<!-- 			<groupId>org.thymeleaf</groupId>  -->
-<!-- 			<artifactId>thymeleaf-spring4</artifactId>  -->
-<!-- 			<version>2.1.2.RELEASE</version>  -->
-<!-- 		</dependency> -->
     
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,7 +29,6 @@
         <dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
-			<version>3.4.1</version>
 		</dependency>
 		
 		<dependency>
@@ -67,18 +60,8 @@
         </dependency>
 
 		<dependency>
-			<groupId>com.zaxxer</groupId>
-			<artifactId>HikariCP</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>xalan</groupId>
-			<artifactId>xalan</artifactId>
-			<version>2.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -98,27 +81,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            
-<!--             <plugin> -->
-<!--                 <groupId>org.liquibase</groupId> -->
-<!--                 <artifactId>liquibase-maven-plugin</artifactId> -->
-<!--                 <version>2.0.1</version> -->
-<!--                 <configuration> -->
-<!--                     <changeLogFile>src/main/resources/liquibase/db-changelog.xml</changeLogFile> -->
-<!--                     <driver>com.mysql.jdbc.Driver</driver> -->
-<!--                     <url>jdbc:mysql://localhost/internship</url> -->
-<!--                     <username>root</username> -->
-<!--                     <password>cristian</password> -->
-<!--                 </configuration> -->
-<!--                 <dependencies> -->
-<!--                     <dependency> -->
-<!--                         <groupId>mysql</groupId> -->
-<!--                         <artifactId>mysql-connector-java</artifactId> -->
-<!--                         <version>5.1.13</version> -->
-<!--                     </dependency> -->
-<!--                 </dependencies> -->
-<!--             </plugin> -->
-            
         </plugins>
     </build>
 
