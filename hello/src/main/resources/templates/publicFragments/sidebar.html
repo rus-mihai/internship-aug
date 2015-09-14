@@ -10,14 +10,6 @@
 
 	<aside th:fragment="sidebar">
 
-		<div id="panel">
-			<b>Start:</b> <select id="start"
-				onchange="calculateAndDisplayRoute();">
-				<option th:each="s: ${stations}" th:text="*{s.name}"></option>
-			</select> <b>End: </b> <select id="end" onchange="calculateAndDisplayRoute();">
-				<option th:each="x: ${stations}" th:text="*{x.name}"></option>
-			</select>
-		</div>
 
 		<div id="map"></div>
 		<div id="lines">

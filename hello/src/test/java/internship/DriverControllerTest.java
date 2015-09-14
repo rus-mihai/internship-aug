@@ -1,4 +1,4 @@
-package test;
+package internship;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
@@ -77,7 +77,22 @@ public class DriverControllerTest {
 					.andExpect(model().hasErrors())
 					.andExpect(view().name("redirect:/driver"));
 	 	    		
-
 	}
 	
+	@Test
+	public void updatePassPostTest() throws Exception {
+		
+		PasswordVerify passupdateoptions=Mockito.mock(PasswordVerify.class);
+		User user =Mockito.mock(User.class);
+		
+		when(userDaoMock.get(passupdateoptions.getId())).thenReturn(user);
+				
+		this.mockMvc.perform(post( "/driver/updatepass" )
+								.flashAttr("passupdateoptions", passupdateoptions))
+					.andExpect(status().is3xxRedirection())
+					.andExpect(model().hasErrors())
+					.andExpect(view().name("redirect:/driver"));
+	 	    		
+
+	}
 }

@@ -17,7 +17,7 @@
 	<section >
 	<div th:fragment="driverview">
 
-		<div class="container2"  id="ROUTES">
+		<div  class="container2"  id="ROUTES">
 			<table>
 				<thead>
 					<tr>
@@ -30,7 +30,7 @@
 				</thead>
 				<tbody>
 						
-					<tr th:each="r: ${assignements}">
+					<tr  th:each="r: ${assignements}">
 									<td th:text="${r.route.id}"></td>
 									<td th:text="${r.route.start.name}"></td>
 									<td th:text="${r.route.end.name}"></td>
