@@ -56,7 +56,11 @@ public class AdminRouteController {
 	public String newRoutePost(@ModelAttribute("route") @Valid Route route, BindingResult bindingResult,
 			HttpServletRequest request, Model model) {
 		try {
-			routeDao.add(route);
+			if(route.getStart().getId() != route.getEnd().getId()){
+				routeDao.add(route);
+			}else{
+				bindingResult.rejectValue("start.name", "route.invalid", "Route cannot have same station on start and end!");
+			}
 		} catch (DataIntegrityViolationException e) {
 			bindingResult.rejectValue("id", "route.duplicate", "Route no." + route.getId() + " already exists!");
 		}
