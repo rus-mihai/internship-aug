@@ -60,7 +60,7 @@
 										title="Edit" />
 									</a>
 									
-										<a th:href="@{/admin/deleteroute(id=${route.id})}">
+										<a onclick="deleteConfirm();" th:href="@{/admin/deleteroute(id=${route.id})}">
 											<input type="image" src="/images/icn_trash.png" title="Trash" /> 
 										</a>
 									</td>

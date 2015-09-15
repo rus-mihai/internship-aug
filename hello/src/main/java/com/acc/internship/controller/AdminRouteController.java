@@ -58,7 +58,7 @@ public class AdminRouteController {
 		try {
 			routeDao.add(route);
 		} catch (DataIntegrityViolationException e) {
-			bindingResult.rejectValue("id", "route.duplicate", "Route already exists.");
+			bindingResult.rejectValue("id", "route.duplicate", "Route no." + route.getId() + " already exists!");
 		}
 
 		if (bindingResult.hasErrors()) {
