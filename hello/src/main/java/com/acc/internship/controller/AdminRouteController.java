@@ -22,14 +22,13 @@ import com.acc.internship.repo.StationDAO;
 
 @Controller
 public class AdminRouteController {
-	
+
 	@Autowired
 	private RouteDAO routeDao;
-	
+
 	@Autowired
 	private StationDAO stationDao;
 
-	
 	@RequestMapping(value = "/admin/routes")
 	public String viewRoutes(Model model) {
 		model.addAttribute("page", "routes");
@@ -37,7 +36,7 @@ public class AdminRouteController {
 		model.addAttribute("routes", list);
 		return "admin";
 	}
-	
+
 	@RequestMapping(value = "/admin/newroute", method = RequestMethod.GET)
 	public String newRouteGet(Model model) {
 
@@ -84,8 +83,8 @@ public class AdminRouteController {
 	}
 
 	@RequestMapping(value = "/admin/view-edit-route", method = RequestMethod.GET)
-	public String viewRoute(@RequestParam("id") Integer id,
-			@RequestParam(value = "edit", required = false) String edit, Model model) {
+	public String viewRoute(@RequestParam("id") Integer id, @RequestParam(value = "edit", required = false) String edit,
+			Model model) {
 		if (edit != null) {
 			model.addAttribute("stations", stationDao.list());
 		}
@@ -109,6 +108,5 @@ public class AdminRouteController {
 		model.addAttribute("success", "Route updated");
 		return "redirect:/admin/routes";
 	}
-
 
 }

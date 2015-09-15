@@ -35,12 +35,12 @@
 								onchange="calculateAndDisplayRoute();">
 								<option th:each="s: ${stations}" th:value="${s.id}"
 									th:text="${s.name}"></option>
-							</select> <b>End: </b> <select id="end" th:field="*{end.id}"
-								onchange="calculateAndDisplayRoute();">
+							</select> <b>End: </b><select id="end" th:field="*{end.id}" 
+								onchange="calculateAndDisplayRoute();" >
 								<option th:each="x: ${stations}" th:value="${x.id}"
-									th:text="${x.name}"></option>
-
-							</select> <input type="submit" value="Add route" />
+									 th:text="${x.name}"></option>
+						</select> 
+						<input type="submit" value="Add route" />
 						</form>
 					</div>
 				</div>
