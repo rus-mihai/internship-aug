@@ -16,8 +16,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup,
 
 aside{
 	
-	  width: 450px;
-    height: 300px;
+	width: 450px;
+    height: auto;
     position: relative;
     display: block;
 }

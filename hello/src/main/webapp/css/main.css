@@ -263,7 +263,8 @@ nav a:hover {
 }
 
 div#map {
-	height: 91.8%;
+	position: relative;
+	height: 300px;
 	width: 136%;
 	right: 17.75%;
 }
